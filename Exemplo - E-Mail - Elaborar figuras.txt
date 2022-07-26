@@ -1,0 +1,27 @@
+> Abaixo segue um exemplo. 
+> Se haver alguma figura específica, por favor, descreva ela melhor após o título.
+
+-------------------------------------------------------------------------------------
+Projeto: 
+Investigação confirmatória - Sítio X - Descrição
+
+Cliente: 
+Fraport Brasil S/A
+
+Data: 
+Mês 2000
+
+Caminho da pasta de Figuras: 
+T:\Tecnico POA\Projetos\Avaliacoes Ambientais\FRAPORT\PORTO ALEGRE\Investigação Confirmatória\31. Sítio 32_Área Militar desativada\7. Figuras
+
+Figura 1 - Localização geográfica e vias de acesso
+Figura 2 - Entorno do empreendimento: uso e ocupação
+Figura 3 - Entorno imediato da área de estudo  // (Alguma referência já que não fui na área)
+Figura 4 - Mapa de localização dos poços tubulares - SIAGAS
+Figura 5 - Layout da infraestrutura da área de estudo // (Alguma referência já que eu não fui na área)
+Figura 6 - Localização das sondagens e poços de monitoramento
+Figura 7 - Perfis de sondagem e poços de monitoramento: SO-XX/PM-XXX e SO-XX/PM-XXX
+Figura 8 - Perfis de sondagem superficial: SS-XX, SS-XX, SS-XX e SS-XX
+Figura 9 - Mapa potenciométrico
+Figura 10 - Modelo conceitual de contaminação: corte AA' // (Quais os contaminantes? Alguma ideia do histórico e possível fonte da contaminação?)
+Figura 11 – Localização dos pontos de Soil Gas Survey

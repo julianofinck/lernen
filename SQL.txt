@@ -1,0 +1,27 @@
+When left table fields are not found in right table field, print 'N.A.'
+
+--------------------------------------------------------------------------------
+SELECT [1 Poços e sondagens].ID_poco, 
+             IIF(ISNULL([Dados amostragem IC].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem IC].[Nível d’água (m)])
+                 AS [NA IC],
+             IIF(ISNULL([Dados amostragem ID_AR].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem ID_AR].[Nível d’água (m)])
+                 AS [NA ID AR],
+             IIF(ISNULL([Dados amostragem AC_2].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem AC_2].[Nível d’água (m)])
+                 AS [NA AC]
+
+FROM (([1 Poços e sondagens] LEFT JOIN [Dados amostragem IC] ON [1 Poços e sondagens].ID_poco = [Dados amostragem IC].Poço) LEFT JOIN [Dados amostragem ID_AR] ON [1 Poços e sondagens].ID_poco = [Dados amostragem ID_AR].Poço) LEFT JOIN [Dados amostragem AC_2] ON [1 Poços e sondagens].ID_poco = [Dados amostragem AC_2].Poço
+
+WHERE ((([1 Poços e sondagens].ID_poco) Is Not Null And ([1 Poços e sondagens].ID_poco) Not Like 'Po*'));
+--------------------------------------------------------------------------------
+
+
+
+Access:
+type mismatch in expression <- quer dizer que os campos com os quais está tentando dar JOIN são de diferentes tipos. 
+Para arrumar, abra a tabela, clique sobre a coluna desses campos e na aba "Campo" altere o tipo para ser o mesmo nas duas tabelas

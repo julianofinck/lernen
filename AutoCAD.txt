@@ -1,0 +1,145 @@
+EXPERT 1		(disables "the current layer will be turned off...")
+H (hatch), ENTER, Match Properties -> select the source-hatch, click within the polygon to be hatched
+
+Super hatch (https://youtu.be/NYjgWuiD8oc)
+criar hatch como .txt, trocar extensão para .pat, adicionar
+No AutoCAD, botão direito na tela de desenho, Options, 
+Files, Expand "Support File Search Path", "Add...", "Browse", Select the DIR where you saved the custom .pat
+
+C:\Program Files\Autodesk\AutoCAD 2016\UserDataCache\en-us\Support\acad.pat
+
+ACABEI 3
+
+NBR 17025
+Limite de quantificação dos ensaios
+(LQ e Faixas de trabalho adicionadas aos parâmetros, rede metrológica)
+
+MRC - Material de Referencia
+
+Cond, OD, pH, Temperatura, TUrbidez, ORP
+
+FT - 14 - rev 10 - Plano de Amostragem
+FT - 14a - rev 02 - Plano de Trabalho
+FT - 01 -
+NC - 2020
+Relato de resultados: 
+
+IT = Instruções de Trabalho
+FT = Formulário Técnico (para reportar resultados)
+
+
+
+Add "pena" to new page (aba), right-click>Page Setup Manager
+
+
+
+
+
+Servidor:
+SGQA - Sistema de Gestão da Qualidade para Amostragens
+\\server-poa\Compartilhamentos\SGQA\Público
+
+FTs e ITs
+\\server-poa\Compartilhamentos\SGQA\Editáveis
+
+1º Nível: PT - Procedimentos gerais sobre matrizes
+2º Nível: IT - Sub-Documento específico de uma matriz
+3º Nível: FT - Sub-Sub-Documento 
+
+Relato de Resultados
+
+
+
+import csv to autocad:
+save as .scr with the following format:
+
+Point X,Y
+Point X,Y
+Point X,Y
+Point X,Y
+Point X,Y
+Point X,Y
+Point X,Y
+Point X,Y
+
+
+
+QGIS
+create point layer, toggle editing, create fields lat lon nome,
+field calculator $x for lon, and $y for lat (update existing field)
+
+Custom Hatch
+Right-click on drawing > Options > Files > Support File Search Path > add new path to "*.pat"
+
+hatch syntax:
+
+*pattern-name[, description]
+
+angle, x-origin,y-origin, delta-x,delta-y [, dash1, dash2, …]
+
+Hatch-pattern definitions have a few rules:
+
+- The description is optional; if you include one, precede it with a comma.
+- Add the dash specifications only for noncontinuous lines.
+- You can have more than one definition line (the second line in the syntax I just showed), creating sets of hatch definitions that combine to create the hatch pattern.
+- Each definition line can be no more than 80 characters.
+- You can include a maximum of six dash specifications (which include spaces and dots).
+- You can add spaces in the definition lines for readability.
+
+
+
+
+Imagem Google Earth para o AutoCAD
+- Abrir Google Earth, focar na área, Visualizar>Redefinir>Inclinação e Bússola
+- Adicionar dois pontos extremos bem identificáveis (anotando os pontos Long e Lat)
+- Garantir que esteja no UTM (Ferramentas>Opções>Mostrar Lat/long: UTM)
+- Clicar no ícone salvar imagem para exportar.
+== No AutoCAD, 
+- ctrl+V ou attach.
+- criar dois Point com as mesmas coordenadas.
+- Allign > selecionar a imagem > selecionar o primeiro ponto, segundo ponto e no terceiro dar enter, marcar que quer redimensionar o objeto.
+
+
+
+
+Importar pro QGIS:
+- Salvar arquivo como .dxf
+- Arrastar pro QGIS
+- Se polígono, Vector > Geometry tools > Line to Polygon
+- Export > Save feature as > ESRI shapefile
+
+
+
+ERROR - Product license - Out of time
+
+"License checkout timed out. What do you want to do?"
+Services:
+- den Dienst "Autodesk Desktop Licensing Service" beenden und wieder starten
+- den Dienst "FlexNet Licensing Service" beenden und wieder starten
+
+
+
+AVISO: "A licença do autocad que você está usando não é válida"
+
+1. Fechar o AutoCAD,
+2. Ctrl+Shift+Esc > Inicializar > Desabilitar o Autodesk Dektop App (e, se tiver, Autodesk Genuine Service)
+3. Clicar com o botão direito e abrir local do arquivo desses desabilitados, copiar esses caminhos para um bloco de notas.
+4. Abrir local do arquivo do AutoCAD, copiar esse caminho para o bloco de notas
+
+5. Windows Defender Firewall com Segurança Avançada
+6. Adicionar regras de entrada e saída para bloquear os arquivos nos caminhos anotados
+7. Regras de Entrada > Nova Regra... > Programa > Caminho do programa (pasta do Autocad) > Bloquear conexão > Três opções marcadas > Dar um nome oportuno
+8. Regras de Saída > Nova Regra... > Programa >  Caminho do programa (pasta do Autocad) > Bloquear conexão > Três opções marcadas > Dar um nome oportuno
+
+
+Abrir serviços, 
+Parar os seguintes serviços:
+Autodesk Desktop App Service
+Autodesk Desktop Licensing Service
+FlexNet Licensing Service
+
+Iniciar os seguintes serviços:
+Autodesk Desktop App Service
+Autodesk Desktop Licensing Service
+FlexNet Licensing Service
+

@@ -1,0 +1,1 @@
+Although Python is not primarily a functional language, it's good to be familiar with lambda , map() , filter() , and reduce() because they can help you write concise, high-level, parallelizable code. You'll also see them in code that others have written.

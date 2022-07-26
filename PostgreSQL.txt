@@ -1,0 +1,160 @@
+Source: https://youtu.be/qw--VYLpxG4
+
+In this course we learn how to use a interactive shell because the tutor believes that by using a UI (User Interface), ie adding and draging, students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
+
+- Create databases
+- Create tables
+- Insert, delete, update records
+- Join tables
+- Foreign keys
+- Relationships
+- Sequences
+- Exporte to csv
+- Gruping
+- Aggreggate
+- Database constraints (assure there is no garbage data)
+- Primary keys
+
+Database = store, manipulate, retrieve (typically stored inside a computer server) 
+Postgres = database engine with high conformance with the latest SQL-standard
+SQL 	 = Structured Query Language for databases (started in 1974) Object-relational database management system
+SSH	 = Secure Shell (a cryptographed network protocol for the secure operation of network services over unsecured networks)
+
+1. Download PostgreSQL
+The most advanced open source relational database, in development for over 30 years. Many new startups use PostgreSQL instead of Oracle because there is no license.
+https://www.postgresql.org/
+Download > Windows > Download the installer
+Download the latest version
+
+	at 10.07.2022 I downloaded ""
+
+
+
+Data directory [default] C:\Program Files\PostgreSQL\XX\data
+
+Download the Installer, which includes the PostgreSQL server:
+- pgAdmin (a graphical tool for managing and developing your databases)
+- StackBuilder (a package manager that can be used to download and install additional PostgreSQL tools and drivers. Stackbuilder includes management, integration, migration, replication, geospatial, connectors and other tools.)
+
+
+SQL Shell (psql)
+\?			Help
+\l			List all database we have
+CREATE DATABASE name;	Creates a database
+DROP DATABASE name;	Deletes a database
+psql --h		get help	
+ctrl+l			clean the screen
+\d			describes all tables
+\d table_name		describes table
+\dt			only shows tables
+\i FILE			executes commands from file
+
+Operators:
+ AND
+ OR
+ >
+ <
+ <=
+ >=
+ =
+ <>			differs
+
+
+[How to connect to a database]
+psql -h -p -U -w -W
+
+[How switch to a database]
+once in psql,
+\c database_name
+
+[How to create table with Postgres] ------------------------------------------------------
+Data types -> postgresql.org/docs/14/datatype.html
+CREATE TABLE table_name (
+    Column name + data type + constraints if any
+);
+
+Example:
+CREATE TABLE person (
+    id int NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(6) NOT NULL,
+    data_of_birth DATE NOT NULL,
+    email, <- "wout not null bc some do not have an email"
+);
+
+BIGSERIAL <- signed int that auto-increment
+
+
+[How to insert records into tables] ------------------------------------------------------
+INSERT INTO table_name (
+    first_name,
+    last_name,
+    gender,
+    date_of_birth)
+VALUES ('Anne', 'Smith', 'FEMALE', DATE '1988-01-31');
+
+
+SELECT * FROM table_name ORDER BY col1, col2, col3 ASC/DESC;
+
+[To select unique]
+SELECT DISTINCT col1 FROM table_name ORDER BY col1 ASC/DESC;
+
+[WHERE]
+SELECT * FROM table WHERE gender = 'Male' AND (country = 'Poland' or country = 'China');
+
+[KEYWORDS]
+LIMIT int (does not print more than int)
+OFFSET int (ignore the first int)
+LIMIT+OFFSET is not a SQL standrd -> OFFSET 5 FETCH FIRST 3 ROW ONLY; (this is the standard)
+IN
+BETWEEN -> WHERE col1 BETWEEN min AND max;
+LIKE -> SELECT * FROM table WHERE email LIKE '%google.%'; '___a%' (has 3 caracteres and then any other thing)
+GROUP BY -> SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
+HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 40 ORDER BY..."
+	HAVING takes SQL Aggregating Functions
+
+
+
+[ERRORS] -----------------------------------------------------------------------------
+
+> pgadmin4 : postgresql application server could not be contacted. [pgAdmin4 err]
+delete content inside
+C:\Users\%USERNAME%\AppData\Roaming\pgAdmin\sessions
+
+> postgresql permission denied while importing from file:
+Windows does not accept backslash '\'; change em to '/'
+
+
+
+
+
+
+
+
+
+
+
+SQL:
+
+When left table fields are not found in right table field, print 'N.A.'
+
+--------------------------------------------------------------------------------
+SELECT [1 Poços e sondagens].ID_poco, 
+             IIF(ISNULL([Dados amostragem IC].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem IC].[Nível d’água (m)])
+                 AS [NA IC],
+             IIF(ISNULL([Dados amostragem ID_AR].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem ID_AR].[Nível d’água (m)])
+                 AS [NA ID AR],
+             IIF(ISNULL([Dados amostragem AC_2].[Nível d’água (m)]),
+                 'N.A.',
+                 [Dados amostragem AC_2].[Nível d’água (m)])
+                 AS [NA AC]
+
+FROM (([1 Poços e sondagens] LEFT JOIN [Dados amostragem IC] ON [1 Poços e sondagens].ID_poco = [Dados amostragem IC].Poço) LEFT JOIN [Dados amostragem ID_AR] ON [1 Poços e sondagens].ID_poco = [Dados amostragem ID_AR].Poço) LEFT JOIN [Dados amostragem AC_2] ON [1 Poços e sondagens].ID_poco = [Dados amostragem AC_2].Poço
+
+WHERE ((([1 Poços e sondagens].ID_poco) Is Not Null And ([1 Poços e sondagens].ID_poco) Not Like 'Po*'));
+--------------------------------------------------------------------------------
