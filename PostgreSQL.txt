@@ -1,6 +1,6 @@
 Source: https://youtu.be/qw--VYLpxG4
 
-In this course we learn how to use a interactive shell because the tutor believes that by using a UI (User Interface), ie adding and draging, students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
+In this course, we learn how to use an interactive shell (psql) because the tutor believes that by using an UI (User Interface) – ie clicking, adding and draging – students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
 
 - Create databases
 - Create tables
@@ -9,8 +9,8 @@ In this course we learn how to use a interactive shell because the tutor believe
 - Foreign keys
 - Relationships
 - Sequences
-- Exporte to csv
-- Gruping
+- Export to csv
+- Grouping
 - Aggreggate
 - Database constraints (assure there is no garbage data)
 - Primary keys
