@@ -15,28 +15,46 @@ In this course, we learn how to use an interactive shell (psql) because the tuto
 - Database constraints (assure there is no garbage data)
 - Primary keys
 ________________________________________________________________________________
+FEW CONCEPTS:
 Database = store, manipulate, retrieve (typically stored inside a computer server) 
 Postgres = database engine with high conformance with the latest SQL-standard
 SQL 	 = Structured Query Language for databases (started in 1974) Object-relational database management system
 SSH	 = Secure Shell (a cryptographed network protocol for the secure operation of network services over unsecured networks)
-
+________________________________________________________________________________
 1. Download PostgreSQL
 The most advanced open source relational database, in development for over 30 years. Many new startups use PostgreSQL instead of Oracle because there is no license.
 https://www.postgresql.org/
 Download > Windows > Download the installer
 Download the latest version
 
-	at 10.07.2022 I downloaded ""
-
-
-
-Data directory [default] C:\Program Files\PostgreSQL\XX\data
-
-Download the Installer, which includes the PostgreSQL server:
+- PostgreSQL server
 - pgAdmin (a graphical tool for managing and developing your databases)
 - StackBuilder (a package manager that can be used to download and install additional PostgreSQL tools and drivers. Stackbuilder includes management, integration, migration, replication, geospatial, connectors and other tools.)
 
+Data directory [default] C:\Program Files\PostgreSQL\XX\data
 
+Password: admin; Port: 5432
+
+> Wanna work with geospatial data .gpkg, .shp?
+  Add PostGIS Bundle  3.2.1 for PostgreSQL x64 14 via StackBuilder (postgis_32_sample <- database name
+  a series of Environmental Variables will be set
+  PROJ
+  GDAL_DATA (env variable)
+________________________________________________________________________________
+2. Connecting to the database
+open "SQL Shell (psql)".
+It prompts to enter to a server. SQL Databases use the Service-Framework to allow
+several users accessing the Database. A file can only have one user writing it at a time. Others may solely access read-only
+
+If connecting to a remote server, type the "Server url"
+Else,
+Server: localhost
+Database: postgres
+Port: 5432
+Password for user postgres: admin
+
+Encoding error: <https://stackoverflow.com/questions/20794035/postgresql-warning-console-code-page-437-differs-from-windows-code-page-125>
+________________________________________________________________________________
 SQL Shell (psql)
 \?			Help
 \l			List all database we have
@@ -117,17 +135,12 @@ HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 4
 
 
 [ERRORS] -----------------------------------------------------------------------------
-
 > pgadmin4 : postgresql application server could not be contacted. [pgAdmin4 err]
 delete content inside
 C:\Users\%USERNAME%\AppData\Roaming\pgAdmin\sessions
 
 > postgresql permission denied while importing from file:
 Windows does not accept backslash '\'; change em to '/'
-
-
-
-
 ________________________________________________________________________________
 SQL: <https://youtu.be/zsjvFFKOm3c>
 > Relational database organizes data in tables. Columns contain attributes or types of data.
@@ -163,7 +176,22 @@ FROM (([1 Poços e sondagens] LEFT JOIN [Dados amostragem IC] ON [1 Poços e son
 WHERE ((([1 Poços e sondagens].ID_poco) Is Not Null And ([1 Poços e sondagens].ID_poco) Not Like 'Po*'));
 --------------------------------------------------------------------------------
 ________________________________________________________________________________
-
 Access:
 type mismatch in expression <- quer dizer que os campos com os quais está tentando dar JOIN são de diferentes tipos. 
 Para arrumar, abra a tabela, clique sobre a coluna desses campos e na aba "Campo" altere o tipo para ser o mesmo nas duas tabelas
+________________________________________________________________________________
+Further videos:
+https://youtu.be/17AZQ2-5Rrk
+https://youtu.be/eddcoyLtqqs
+https://youtu.be/gC0z4miZmtQ
+https://youtu.be/7OUxHAhqMv8
+https://youtu.be/m6jLnEOoZvw
+https://youtu.be/0yMXbew4tsA
+https://youtu.be/QpUZd2TQ0H0
+https://youtu.be/gUKrlBNYxlg
+https://youtu.be/t8-BQjWJFKw
+https://youtu.be/F3AkNXiSv50
+https://youtu.be/Vfq0Mje1z-E
+https://youtu.be/vlqLJtZW3AA
+https://youtu.be/nqRjg5SQJiw
+https://youtu.be/P-iHxxj7heE
