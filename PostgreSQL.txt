@@ -4,17 +4,17 @@ In this course, we learn how to use an interactive shell (psql) because the tuto
 
 - Create databases
 - Create tables
-- Insert, delete, update records
+- Insert, delete, update/mutate records
 - Join tables
 - Foreign keys
 - Relationships
 - Sequences
 - Export to csv
 - Grouping
-- Aggreggate
+- Aggreggation
 - Database constraints (assure there is no garbage data)
 - Primary keys
-
+________________________________________________________________________________
 Database = store, manipulate, retrieve (typically stored inside a computer server) 
 Postgres = database engine with high conformance with the latest SQL-standard
 SQL 	 = Structured Query Language for databases (started in 1974) Object-relational database management system
@@ -128,16 +128,22 @@ Windows does not accept backslash '\'; change em to '/'
 
 
 
-
-
-
-
-
-
 ________________________________________________________________________________
-SQL:
+SQL: <https://youtu.be/zsjvFFKOm3c>
+> Relational database organizes data in tables. Columns contain attributes or types of data.
+Each row is a record with its unique id, the Primary Key. Relations are stablished associating keys, 
+storing the Foreign Key which are the actual Primary Key in another table. 
+
+> Data is structured in its smallest normal form (normalized) to eliminate duplication and redundancy
+
+> The syntax is comprised of several key parts. A statement reads or writes/mutates the database
+SELECT <- grab columns		table and column names are known as identifiers
+FROM   <- table name
+WHERE  <- filters, only return records where the Predicate evaluates to True
+INNER/LEFT/RIGHT JOIN <- connect data between tables by matching Primary and Foreign keys
+
 > Example: are left table fields not found in right table, returns 'N.A.'
-________________________________________________________________________________
+--------------------------------------------------------------------------------
 SELECT [1 Poços e sondagens].ID_poco, 
              IIF(ISNULL([Dados amostragem IC].[Nível d’água (m)]),
                  'N.A.',
@@ -155,6 +161,7 @@ SELECT [1 Poços e sondagens].ID_poco,
 FROM (([1 Poços e sondagens] LEFT JOIN [Dados amostragem IC] ON [1 Poços e sondagens].ID_poco = [Dados amostragem IC].Poço) LEFT JOIN [Dados amostragem ID_AR] ON [1 Poços e sondagens].ID_poco = [Dados amostragem ID_AR].Poço) LEFT JOIN [Dados amostragem AC_2] ON [1 Poços e sondagens].ID_poco = [Dados amostragem AC_2].Poço
 
 WHERE ((([1 Poços e sondagens].ID_poco) Is Not Null And ([1 Poços e sondagens].ID_poco) Not Like 'Po*'));
+--------------------------------------------------------------------------------
 ________________________________________________________________________________
 
 Access:
