@@ -1,4 +1,5 @@
 Source: https://youtu.be/qw--VYLpxG4
+timestamp: 58m04s
 
 In this course, we learn how to use an interactive shell (psql) because the tutor believes that by using an UI (User Interface) – ie clicking, adding and draging – students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
 
@@ -21,7 +22,7 @@ Postgres = database engine with high conformance with the latest SQL-standard
 SQL 	 = Structured Query Language for databases (started in 1974) Object-relational database management system
 SSH	 = Secure Shell (a cryptographed network protocol for the secure operation of network services over unsecured networks)
 ________________________________________________________________________________
-1. Download PostgreSQL
+1. DOWNLOAD PostgreSQL
 The most advanced open source relational database, in development for over 30 years. Many new startups use PostgreSQL instead of Oracle because there is no license.
 https://www.postgresql.org/
 Download > Windows > Download the installer
@@ -41,8 +42,8 @@ Password: admin; Port: 5432
   PROJ
   GDAL_DATA (env variable)
 ________________________________________________________________________________
-2. Connecting to the database
-open "SQL Shell (psql)".
+2. Connect to the Database (two ways)
+> Option A - through "SQL Shell (psql)"
 It prompts to enter to a server. SQL Databases use the Service-Framework to allow
 several users accessing the Database. A file can only have one user writing it at a time. Others may solely access read-only
 
@@ -54,18 +55,24 @@ Port: 5432
 Password for user postgres: admin
 
 Encoding error: <https://stackoverflow.com/questions/20794035/postgresql-warning-console-code-page-437-differs-from-windows-code-page-125>
+
+> Option B - psql in the Env Variables
+One can also connect to a database calling "psql" in the Command Prompt (psql -h -p -U -w -W)
+
+Example:
+psql -h localhost -p 5432 -U postgres database_name
 ________________________________________________________________________________
 SQL Shell (psql)
+\! command		Invoke command from current console (cmd.exe)
 \?			Help
 \l			List all database we have
-CREATE DATABASE name;	Creates a database
-DROP DATABASE name;	Deletes a database
-psql --h		get help	
-ctrl+l			clean the screen
+\c database_name	Connect to database
 \d			describes all tables
 \d table_name		describes table
 \dt			only shows tables
 \i FILE			executes commands from file
+CREATE DATABASE name;	Creates a database
+DROP DATABASE name;	Deletes a database
 
 Operators:
  AND
@@ -76,20 +83,15 @@ Operators:
  >=
  =
  <>			differs
+________________________________________________________________________________
+> CREATE A TABLE
 
-
-[How to connect to a database]
-psql -h -p -U -w -W
-
-[How switch to a database]
-once in psql,
-\c database_name
-
-[How to create table with Postgres] ------------------------------------------------------
-Data types -> postgresql.org/docs/14/datatype.html
 CREATE TABLE table_name (
     Column name + data type + constraints if any
 );
+
+Data types -> postgresql.org/docs/14/datatype.html
+	      BIGSERIAL is zB a signed int that auto-increment
 
 Example:
 CREATE TABLE person (
@@ -98,13 +100,12 @@ CREATE TABLE person (
     last_name VARCHAR(50) NOT NULL,
     gender VARCHAR(6) NOT NULL,
     data_of_birth DATE NOT NULL,
-    email, <- "wout not null bc some do not have an email"
+    email VARCHAR(150) <- "no NOT NULL constraint because some might not have an email"
 );
 
-BIGSERIAL <- signed int that auto-increment
 
-
-[How to insert records into tables] ------------------------------------------------------
+--------------------------------------------------------------------------------
+> INSET RECORDS INTO TABLE
 INSERT INTO table_name (
     first_name,
     last_name,
@@ -195,3 +196,6 @@ https://youtu.be/Vfq0Mje1z-E
 https://youtu.be/vlqLJtZW3AA
 https://youtu.be/nqRjg5SQJiw
 https://youtu.be/P-iHxxj7heE
+
+Still cant see tables in QGIS:
+https://gis.stackexchange.com/questions/285543/tables-do-not-show-in-qgis-postgis
