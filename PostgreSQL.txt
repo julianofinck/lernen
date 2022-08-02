@@ -16,6 +16,32 @@ In this course, we learn how to use an interactive shell (psql) because the tuto
 - Database constraints (assure there is no garbage data)
 - Primary keys
 ________________________________________________________________________________
+SQL Shell (psql)
+\! command		Invoke command from current console (cmd.exe)
+\?			Help
+\l			List all database we have
+\c database_name	Connect to database
+\d			describes all tables
+\d table_name		describes table
+\dt			only shows tables
+\i FILE			executes commands from file
+CREATE DATABASE name;	Creates a database
+DROP DATABASE name;	Deletes a database
+DROP TABLE name;
+
+OPERATORS:
+ AND
+ OR
+ >
+ <
+ <=
+ >=
+ =
+ <>			differs
+ 
+ KEY WORDS:
+ 
+________________________________________________________________________________
 FEW CONCEPTS:
 Database = store, manipulate, retrieve (typically stored inside a computer server) 
 Postgres = database engine with high conformance with the latest SQL-standard
@@ -42,8 +68,8 @@ Password: admin; Port: 5432
   PROJ
   GDAL_DATA (env variable)
 ________________________________________________________________________________
-2. Connect to the Database (two ways)
-> Option A - through "SQL Shell (psql)"
+2. CONNECT TO THE DATABASE (two ways)
+> 1ST OPTION [via "SQL Shell (psql)"]-------------------------------------------
 It prompts to enter to a server. SQL Databases use the Service-Framework to allow
 several users accessing the Database. A file can only have one user writing it at a time. Others may solely access read-only
 
@@ -56,36 +82,13 @@ Password for user postgres: admin
 
 Encoding error: <https://stackoverflow.com/questions/20794035/postgresql-warning-console-code-page-437-differs-from-windows-code-page-125>
 
-> Option B - psql in the Env Variables
+> 2ND OPTION [psql in the Env Variables] ---------------------------------------
 One can also connect to a database calling "psql" in the Command Prompt (psql -h -p -U -w -W)
 
 Example:
 psql -h localhost -p 5432 -U postgres database_name
 ________________________________________________________________________________
-SQL Shell (psql)
-\! command		Invoke command from current console (cmd.exe)
-\?			Help
-\l			List all database we have
-\c database_name	Connect to database
-\d			describes all tables
-\d table_name		describes table
-\dt			only shows tables
-\i FILE			executes commands from file
-CREATE DATABASE name;	Creates a database
-DROP DATABASE name;	Deletes a database
-
-Operators:
- AND
- OR
- >
- <
- <=
- >=
- =
- <>			differs
-________________________________________________________________________________
 > CREATE A TABLE
-
 CREATE TABLE table_name (
     Column name + data type + constraints if any
 );
@@ -102,18 +105,20 @@ CREATE TABLE person (
     data_of_birth DATE NOT NULL,
     email VARCHAR(150) <- "no NOT NULL constraint because some might not have an email"
 );
-
-
 --------------------------------------------------------------------------------
-> INSET RECORDS INTO TABLE
+> INSERT RECORDS INTO TABLE
 INSERT INTO table_name (
     first_name,
     last_name,
     gender,
     date_of_birth)
 VALUES ('Anne', 'Smith', 'FEMALE', DATE '1988-01-31');
+--------------------------------------------------------------------------------
+> Running several commands from a file "\i path"
+On Windows, the path must have "/" instead of "\"
 
-
+\i 'C:/juliano/sapotec/Memoria/2022 08 01/SQL (Thomas)/Dados_brutos/SQL_commands.sql'
+--------------------------------------------------------------------------------
 SELECT * FROM table_name ORDER BY col1, col2, col3 ASC/DESC;
 
 [To select unique]
@@ -132,7 +137,6 @@ LIKE -> SELECT * FROM table WHERE email LIKE '%google.%'; '___a%' (has 3 caracte
 GROUP BY -> SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
 HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 40 ORDER BY..."
 	HAVING takes SQL Aggregating Functions
-
 
 
 [ERRORS] -----------------------------------------------------------------------------
