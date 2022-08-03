@@ -16,7 +16,7 @@ In this course, we learn how to use an interactive shell (psql) because the tuto
 - Database constraints (assure there is no garbage data)
 - Primary keys
 ________________________________________________________________________________
-SQL Shell (psql)
+> SQL Shell (psql)
 \! command		Invoke command from current console (cmd.exe)
 \?			Help
 \l			List all database we have
@@ -25,22 +25,32 @@ SQL Shell (psql)
 \d table_name		describes table
 \dt			only shows tables
 \i FILE			executes commands from file
-CREATE DATABASE name;	Creates a database
-DROP DATABASE name;	Deletes a database
-DROP TABLE name;
 
-OPERATORS:
- AND
- OR
- >
- <
- <=
- >=
- =
- <>			differs
+> LOGICAL OPERATORS:
+ AND, OR, >, >=, <, <=, =, <>
  
- KEY WORDS:
- 
+> KEY WORDS:
+ CREATE DATABASE name;		Creates a database
+ DROP DATABASE/TABLE name;	Deletes a database/table
+
+ SELECT				grabs column
+ SELECT DISTINCT		grabs unique
+ FROM
+ WHERE condition
+ ORDER BY
+ OFFSET int			ignores the first int
+ LIMIT int			does not print more than int
+   	Example
+	 SELECT * FROM table WHERE gender = 'Male' AND (country = 'Poland' or country = 'China'); 
+	 SELECT * FROM person WHERE gender in ('Bigender', 'Male') ORDER BY gender ASC/DESC OFFSET 5 LIMIT 3;
+	 LIMIT 3 = FETCH FIRST 3 ROW ONLY (Standard)
+
+ IN
+ BETWEEN -> WHERE col1 BETWEEN min AND max;
+ LIKE -> SELECT * FROM table WHERE email LIKE '%google.%'; '___a%' (has 3 caracteres and then any other thing)
+ GROUP BY -> SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
+ HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 40 ORDER BY..."
+	HAVING takes SQL Aggregating Functions
 ________________________________________________________________________________
 FEW CONCEPTS:
 Database = store, manipulate, retrieve (typically stored inside a computer server) 
@@ -118,25 +128,6 @@ VALUES ('Anne', 'Smith', 'FEMALE', DATE '1988-01-31');
 On Windows, the path must have "/" instead of "\"
 
 \i 'C:/juliano/sapotec/Memoria/2022 08 01/SQL (Thomas)/Dados_brutos/SQL_commands.sql'
---------------------------------------------------------------------------------
-SELECT * FROM table_name ORDER BY col1, col2, col3 ASC/DESC;
-
-[To select unique]
-SELECT DISTINCT col1 FROM table_name ORDER BY col1 ASC/DESC;
-
-[WHERE]
-SELECT * FROM table WHERE gender = 'Male' AND (country = 'Poland' or country = 'China');
-
-[KEYWORDS]
-LIMIT int (does not print more than int)
-OFFSET int (ignore the first int)
-LIMIT+OFFSET is not a SQL standrd -> OFFSET 5 FETCH FIRST 3 ROW ONLY; (this is the standard)
-IN
-BETWEEN -> WHERE col1 BETWEEN min AND max;
-LIKE -> SELECT * FROM table WHERE email LIKE '%google.%'; '___a%' (has 3 caracteres and then any other thing)
-GROUP BY -> SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
-HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 40 ORDER BY..."
-	HAVING takes SQL Aggregating Functions
 
 
 [ERRORS] -----------------------------------------------------------------------------
