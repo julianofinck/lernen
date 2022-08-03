@@ -1,5 +1,7 @@
 Source: https://youtu.be/qw--VYLpxG4
 timestamp: 1h43m57s
+Documentation: https://www.postgresql.org/docs/current/tutorial.html
+Data types: https://www.postgresql.org/docs/current/datatype.html
 
 In this course, we learn how to use an interactive shell (psql) because the tutor believes that by using an UI (User Interface) – ie clicking, adding and draging – students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
 
@@ -24,6 +26,7 @@ ________________________________________________________________________________
 \d			describes all tables
 \d table_name		describes table
 \dt			only shows tables
+\x 			expanded display
 \i FILE			executes commands from file
 
 > LOGICAL OPERATORS:
@@ -52,9 +55,48 @@ ________________________________________________________________________________
               _ is a place holder, % is a wildcard
  ILIKE 					LIKE but not-case sensititive
 > STATISTICS
- GROUP BY 				SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
- HAVING -> used before ORDER BY to constraint the output "... HAVING COUNT(*) > 40 ORDER BY..."
+ GROUP BY 			SELECT country_of_brith, COUNT(*) FROM person GROUP BY country_of_birth
+ HAVING 			after GROUP BZ to constraint the output "... HAVING COUNT(*) > 40 ..."
 	HAVING takes SQL Aggregating Functions
+> AGGREGGATION FUNCTIONS
+ MIN	SELECT MIN(price) FROM car;
+ MAX	SELECT MAX(price) FROM car; 
+ AVG	SELECT ROUND(AVG(price)) FROM car;
+ SUM	SELECT make, SUM(price) FROM car GROUP BY make;
+> ARITHMETIC OPERATORS
+ +, -, *, /, !, %
+> 
+ COALESCE	substitute if not found
+               SELECT COALESCE(email, 'not provided') FROM person;
+> TIME DATE
+ SELECT NOW()				Date and time
+ SELECT NOW()::Date			Casts answer to date
+ SELECT NOW() + INTERVAL '1 YEAR' 	Adds 1 year to date
+ SELECT EXTRACT(MONTH FROM NOW())	Extract only the month from date
+ AGE(NOW(), date_of_birth)		calculates the age between date1 date2
+ 
+> MODIFYING TABLE
+ ALTER TABLE person ...
+   DROP CONSTRAINT person_pkey;					removes the primary key constraint
+   RENAME people;						renames table
+   ADD PRIMARY KEY (id);					adds primary key
+   ADD CONSTRAINT ...
+     constraint_name UNIQUE (email);				makes email unique
+     constraint_name CHECK (gender IN ('Male', 'Female'));	creates a check constraint
+ DELETE FROM table;						deletes all in the table
+ DELETE FROM table WHERE condition;				deletes all where condition evaluates true
+ 
+> UPDATE COMMAND
+ UPDATE table SET email = 'omar@gmail.com' WHERE condition;	updates where condition evaluates true
+> ON CONFLICT - useful for insert a new register, or update if exists
+ statement...
+    ON CONFLICT (id) DO NOTHING;				if hindered by a constraing involving id, do nothing
+    ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;	user tries to register again with other e-mail. conflict happens. email updated
+> JOINS
+ INNER JOIN: matching fields are found in both tables
+ LEFT JOIN:  matching fields plus those of left table without matches
+> EXPORT A QUERY TO CSV
+\copy (SELECT * FROM person LEFT JOIN car ON car.id = person.car_id) TO 'path' DELIMITER ',' CSV HEADER;
 ________________________________________________________________________________
 FEW CONCEPTS:
 Database = store, manipulate, retrieve (typically stored inside a computer server) 
