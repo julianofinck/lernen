@@ -1,5 +1,5 @@
 Source: https://youtu.be/qw--VYLpxG4
-timestamp: 1h00m20s
+timestamp: 1h43m57s
 
 In this course, we learn how to use an interactive shell (psql) because the tutor believes that by using an UI (User Interface) – ie clicking, adding and draging – students don't really learn the logic of databases. Also, SSH-ing into a remote server means you will need to use shell.
 
