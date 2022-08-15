@@ -175,6 +175,10 @@ On Windows, the path must have "/" instead of "\"
 
 \i 'C:/juliano/sapotec/Memoria/2022 08 01/SQL (Thomas)/Dados_brutos/SQL_commands.sql'
 
+> DATA TYPE CONVERSION IN STATEMENT
+    cast('5' as numeric) > 4;
+or, alternatively
+    '5'::numeric > 4
 
 [ERRORS] -----------------------------------------------------------------------------
 > pgadmin4 : postgresql application server could not be contacted. [pgAdmin4 err]
