@@ -143,3 +143,88 @@ Autodesk Desktop App Service
 Autodesk Desktop Licensing Service
 FlexNet Licensing Service
 
+
+
+
+
+
+
+
+
+
+
+
+## AutoCAD: commercial computer-aided design and drafting software application.
+released in 1982.
+
+## After installation, Autodesk Genuine Service
+Autodesk Genuine Service.rar, run it, click on "remove". Done!
+Source: https://youtu.be/xqEnDpikZdw
+
+## Create a house project (https://youtu.be/-7hrElZrul4)
+2D drawing and 3D model
+Awais Mirza
+
+- Lines, Circles, Rectangles
+- Hatching
+- Dimensioning
+- Annotation
+- Attributes
+- Tables
+- External references
+- Layouts
+- Create output
+
+
+## Format extensions: DWT and DWG
+Practically the same, but DWT is used to set a standard to projects
+"Template files provide users a place to start.  Not only do they give a starting point, but they also force your team to be a team.  A properly executed template file, or series of template files, will instill standardization increase efficiency. " Source: https://www.augi.com/articles/detail/tipniques-why-you-should-use-a-template#:~:text=The%20most%20obvious%20difference%20between,just%20like%20a%20standard%20file.
+
+
+## 3d Drawing
+set DEFAULTGIZMO to 0
+
+shift+rightClick -> snap options
+
+# Show lineweight
+LWDISPLAY 1
+
+# To manipulate polygon vectors as in QGIS way, transforms bound-polygons to regions (Home > Draw > Region) and the operations can be used
+- UNION, INTERSECT, DIFFERENCE (boolean operations)
+
+# Divide line in # equal blocks:
+DIVIDE, select object, set #   [DDTP to change the point appearance, otherwise the divisions cannot be seen]
+
+# Status bar
+"Restric cursor to specified angles" <- nice feature
+
+# Text
+First, create style -> STYLE
+Create new, choose Font Name, width factor 0.8 looks cool
+TEXT, height is the FontSize 
+
+# At the end, to draw dimension,
+Home > Dimensions > New Dimension Style 
+(it makes easier to add several dimensions)
+
+# Match Property works like Excel Format Brush
+
+# Good Practice: Create layers at the start of your drawing
+Wall, Interior, Doors, Windows, ...
+(Layer walk hepls at the end of project to check if every object is sound in the right layer)
+(Layer state presets on/off combinations. Usefull to change fast between layer groups: floor plan, 1st floor plan, ...etc)
+
+# Blocks
+Blocks are used to create pattern objects and recreate them several times. If the block drawing (double click on it) is changed, all the blocks change equally
+>> Inside the block drawing, it is possible to add "dynamic movements" to the block. Door example with flip, rotate and scale. Easier to reproduce several.
+
+# Design Center (ctrl+2)
+
+# Content Explorer is Design Center but online with a lot of Blocks
+
+# Tables can be created as well to keep dimensions summarized
+
+# to Print
+Output > Page Setup Manager
+MVIEW > click to delimit it where to plot on the Layout tab
+
