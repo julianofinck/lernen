@@ -2,6 +2,8 @@
 OOP is a paradigm. A `Class` is a blueprint/template from which **objects**, the realization of the class, can get instantiated/created.
 
 ## Motivation
+_Each tool has a set of parameters (state) it uses to execute an operation (method)_
+
 My old codes would use dictionaries to store data; its keys being names and values list/tuple of in a certain order.
 OOP is a paradigm that can make code easier to read and maintain. Instead of
 ```python
