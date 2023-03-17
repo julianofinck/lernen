@@ -1,42 +1,45 @@
 # Git - File versioning tool
-* [Download Git for Windows](https://git-scm.com/download/win) 
-(On installation, always select the default)
-* Set the main settings
-
-### Main Settings - Who are you?
-```
-# Add Your Name and Email
-	git config --global user.name "My Name"
-	git config --global user.email "myemail@example.com"
-```
-
-### Introduction - brzrkr's analogy:
-While **stage** puts stuff in a box, **commit** closes the box and stick a label on it. 
+### Introduction:
+> Git is a popular version control tool used globally, often accessed through **git-bash**.
+It helps to keep track of changes in a project and to keep licensing (LICENSE) and 
+documentation (README.md). Git-bash is a linux-like terminal and works with git commands.
+The analogy below with commands in bold and figurative boxes and warehouse explains git.  
+> 
+> `brzrkr's analogy:`
+> while **stage** puts stuff in a box, **commit** closes the box and stick a label on it. 
 Further, **push** sends all the closed boxes off to the warehouse (remote), 
 there they're out of your control. **pull** asks the warehouse to bring the new boxes to an existing location; 
 **clone** makes a copy of the entire warehouse and bring it to a new location. 
+> 
+> Let's get it!
 
+1) [Download Git-bash for Windows](https://git-scm.com/download/win) 
+(On installation, always select the default)
+2) ... and then "Who are you?"; set the main settings:
+```
+# Add your Name and Email
+	git config --global user.name "My Name"
+	git config --global user.email "myemail@example.com"
+```
+---
 ## Glossary
 | Concept           | Description                              |
 |-------------------|------------------------------------------|
- | remote repository | online (like a warehouse)                |
- | local repository  | local (like a storage room)              |
- | branch            | when main bifurcates to a new line       |
- | fork              | a replica of someone else's project/repo | 
+ | remote repository | Online (like a warehouse)                |
+ | local repository  | Local (like a storage room)              |
+ | branch            | When main bifurcates to a new line       |
+ | fork              | A replica of someone else's project/repo | 
+
+---
 
 ## Recurrent tasks
-#### **When local already exists**
-```
-# "PULL the box back from the warehouse to the storage room" 
-	git pull origin main
 
-# "PUSH the box from the storage room into the warehouse (remote)"
-# .gitignore is used to ignore certain dev files
-	git add .gitignore
-	git add .
-	git commit -m "<summarizing commit name>"
-	git push origin main
-```
+#### **Points to be tackled in a README.md**
+* What is the project about? What does this do?
+* What are the dependencies and environment requirements?
+* How does it work? (Does it operate continuously, or at specific hours?)
+* Any additional documentation?
+* Any guideline to set it from staging to production?
 
 #### **When local does not exist**
 ```
@@ -77,7 +80,7 @@ Copy remote repository URL field
 
 # 9) In the Command prompt, add the URL for the remote repository where your local repository will be pushed.
    	# Sets a remote called origin via its URL
-	git remote add origin  REMOTE_URL
+	git remote add origin REMOTE_URL
 
 	# Verifies the remotes	
 	git remote -v
@@ -86,6 +89,18 @@ Copy remote repository URL field
 	git push origin main
 ```
 
+#### **When local already exists**
+```
+# "PULL the box back from the warehouse to the storage room" 
+	git pull origin main
+
+# "PUSH the box from the storage room into the warehouse (remote)"
+# .gitignore is used to ignore certain dev files
+	git add .gitignore
+	git add .
+	git commit -m "<summarizing commit name>"
+	git push origin main
+```
 
 #### **Change commit messages**
 ```
@@ -95,19 +110,24 @@ Copy remote repository URL field
 # Change your text editor (example with atom and wait git until editor closes)
 	git config --global core.editor "atom --wait"
 ```
-
-
+---
 ## Sheetcode - Fundamentals
 
-| Command                      | Description                                                         |
-|------------------------------|---------------------------------------------------------------------|
-| clear                        | clear the terminal                                                  | 
-| git status                   | presents git actual state                                           | 
-| git branch -M "name"         | renames the actual branch to name                                   | 
-| checkout -b "name"           | creates and ch to a new branch one is about to start working with   | 
-| pull request                 | when I make a change and want to suggest the owner                  | 
-| merge "branchname"           | merges the branch to the connected one                              | 
-| git rm --cache -r <file/dir> | removes the file/dir from cache (from the boxes) but not from local | 
+| Command                             | Description                                                         |
+|-------------------------------------|---------------------------------------------------------------------|
+| clear                               | Clear the terminal                                                  |
+| git --help                          | Your best friend                                                    |
+| git add                             | Stage files                                                         |
+| git commit                          | Commits staged files                                                |
+| git push                            | Pushes commit to remote                                             |
+| git pull                            | Pulls Pushes commit to remote                                       |
+| git remote add <tag> <remote_url>   | Adds a remote by a tag (eg. origin)                                 |
+| git status                          | Presents git actual state                                           | 
+| git branch -M "name"                | Renames the actual branch to name                                   | 
+| checkout -b "name"                  | Creates and ch to a new branch one is about to start working with   | 
+| pull request                        | When I make a change and want to suggest the owner                  | 
+| merge "branchname"                  | Merges the branch to the connected one                              | 
+| git rm --cache -r <file/dir>        | Removes the file/dir from cache (from the boxes) but not from local | 
 
 ### Known Errors
 | Warning                     | Fix                                     | Source                                                                                                                    |
@@ -116,14 +136,7 @@ Copy remote repository URL field
 
 
 ### File history
-| Action    | Date              |
-| :--       | :--               |
-| Creation  | August 12th, 2022 |
-| Modified  | March 17th, 2023  |
-
-
-| Column 1 | Column 2 | Column 3 |
-| :--      | :--      | :--      |
-| Data 1   | Data 2   | Data 3   |
-| Data 4   | Data 5   | Data 6   |
-
+| Action   | Date              |
+|----------|-------------------|
+| Creation | August 12th, 2022 |
+| Modified | March 17th, 2023  |
