@@ -90,7 +90,7 @@ class Circle(Geometry):    # CHILD
         """Calculate volume of cylinder with circle as base"""
         return self.area * height
 
-    @classmethod        # not bound to one specific instance; often used as factory methods that create specific instance of the class
+    @classmethod        # Returns a class! not bound to one specific instance; often used as factory methods that create specific instance of the class
     def unit_circle(cls):
         """Factory method creating a circle with radius 1"""
         return cls(1)
