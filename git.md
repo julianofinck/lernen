@@ -2,7 +2,7 @@
 ### Introduction:
 > Git is a popular version control tool used globally, often accessed through **git-bash**.
 It helps to keep track of changes in a project and to keep licensing (LICENSE) and 
-documentation (README.md). Git-bash is a linux-like terminal and it works with git commands.
+documentation (README.md). Git-bash is a linux-like terminal and works with git commands.
 The analogy below with commands in bold and figurative boxes and warehouse explains git.  
 > 
 > `brzrkr's analogy:`
@@ -20,21 +20,24 @@ there they're out of your control. **pull** asks the warehouse to bring the new 
 # Add your Name and Email
 	git config --global user.name "My Name"
 	git config --global user.email "myemail@example.com"
+# Check your Name and Email
+	git config --global user.name
+	git config --global user.email
 ```
 ---
 ## Glossary
-| Concept           | Description                              |
-|-------------------|------------------------------------------|
- | remote repository | Online (like a warehouse)                |
- | local repository  | Local (like a storage room)              |
- | branch            | When main bifurcates to a new line       |
- | fork              | A replica of someone else's project/repo | 
+| Concept           | Description                                               |
+|-------------------|-----------------------------------------------------------|
+ | remote repository | Online (like a warehouse)                                 |
+ | local repository  | Local (like a storage room)                               |
+ | branch            | When main bifurcates to a new line in same repo           |
+ | clone             | A replica of someone else's project/repo stored in local  |
+| fork              | A replica of someone else's project/repo stored in remote |
 
 ---
 
 ## Recurrent tasks
-
-#### **Points to be tackled in a README.md**
+#### **Points that may be tackled in a README.md**
 * What is the project about? What does this do?
 * What are the dependencies and environment requirements?
 * How does it work? (Does it operate continuously, or at specific hours?)
@@ -56,7 +59,7 @@ project has been pushed to GitHub
 
 # 2) Open Git Bash
 
-# 3) Change the current working directory to your local project
+# 3) Change the current working directory to your  local project
 
 # 4) Initialize the local directory as a Git repository with main branch named 'main'
 	git init -b main
