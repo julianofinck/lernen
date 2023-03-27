@@ -2,7 +2,7 @@
 ### Introduction:
 > Git is a popular version control tool used globally, often accessed through **git-bash**.
 It helps to keep track of changes in a project and to keep licensing (LICENSE) and 
-documentation (README.md). Git-bash is a linux-like terminal and works with git commands.
+documentation (README.md). Git-bash is a linux-like terminal and it works with git commands.
 The analogy below with commands in bold and figurative boxes and warehouse explains git.  
 > 
 > `brzrkr's analogy:`
