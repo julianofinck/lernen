@@ -252,3 +252,7 @@ if __name__ == '__main__':
 
 ```
 
+
+### Generators
+
+Have you ever had to work with a dataset so large that it overwhelmed your machine’s memory? Or maybe you have a complex function that needs to maintain an internal state every time it’s called, but the function is too small to justify creating its own class. In these cases and more, generators and the Python yield statement are here to help.
