@@ -6,6 +6,7 @@ pip uninstall -r requirements.txt -y
 ```
 
 ### Decorators
+teste 2
 ```python
 """
 Decorators are functions extend the behaviour of another function/methods/classes.
