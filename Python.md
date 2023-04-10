@@ -5,6 +5,8 @@ pip freeze > requirements.txt
 pip uninstall -r requirements.txt -y
 ```
 
+teste 1
+
 ### Decorators
 teste 2
 ```python
