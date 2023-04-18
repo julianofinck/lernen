@@ -1,3 +1,12 @@
+### Terminology
+| Term      | Meaning                                                      |
+|-----------|--------------------------------------------------------------|
+| Module    | Bunch of related code saved in a file with the extension .py |
+| Package   | A directory of a collection of modules with __init__.py      |
+| Library   | Umbrella term referring to a reusable chunk of code          |
+| Framework | Contain the basic flow and architecture of an application    |
+>"It's often assumed a library is a collection of packages, which are a colle of modules"
+
 ### Dependencies - Libraries
 ```bash
 # uninstall all libraries:
@@ -5,10 +14,7 @@ pip freeze > requirements.txt
 pip uninstall -r requirements.txt -y
 ```
 
-teste 1
-
 ### Decorators
-teste 2
 ```python
 """
 Decorators are functions extend the behaviour of another function/methods/classes.
