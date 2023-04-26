@@ -7,6 +7,18 @@
 | Framework | Contain the basic flow and architecture of an application    |
 >"It's often assumed a library is a collection of packages, which are a colle of modules"
 
+### Libraries
+| Lib                    | Use                                                         |
+|------------------------|-------------------------------------------------------------|
+| numpy                  | arrays                                                      |
+| pandas                 | tabular                                                     |
+| xarray                 | multidimensional arrays                                     |
+| dask                   | parallelisation for xarray                                  |
+| pangeo-stack           | packages and project, very cloud-oriented                   |
+| zarr                   | cloud-friendly format, well integrated with xarray and dask |
+| CliMetLab              | domain specific, make use of all these packages             |
+| PyTorch and Tensorflow | most popular python packages for ML                         |
+
 ### Dependencies - Libraries
 ```bash
 # uninstall all libraries:
