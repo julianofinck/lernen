@@ -1,11 +1,10 @@
-Although Python is not primarily a functional language, it's good to be familiar with lambda , map() , filter() , and reduce() because they can help you write concise, high-level, parallelizable code. You'll also see them in code that others have written.
+Although Python is not primarily a functional language, it's good to be familiar with lambda, map(), filter(), and reduce() because they can help you write more expressive, concise, high-level, parallelizable code. You'll also see them in code that others have written.
 
+Functional programming (FP) emphasizes the use of functions to perform computations. Functions are treated as first-class objects, i.e. they can be passed as arguments to other functions, returned as values from functions, and assigned to variables.
 
-Functional programming is a programming paradigm that emphasizes the use of functions to perform computations. In functional programming, functions are treated as first-class objects, which means that they can be passed as arguments to other functions, returned as values from functions, and assigned to variables.
+FP also emphasizes immutability and avoiding side effects, which means that functions should not modify their arguments or have any other effects beyond returning a value.
 
-Functional programming also emphasizes immutability and avoiding side effects, which means that functions should not modify their arguments or have any other effects beyond returning a value.
-
-In Python, you can use functional programming concepts to write more expressive and concise code. Here are some tips for using functional programming in Python:
+Tips for using FP in Python:
 
 1. Use lambda functions: Lambda functions are anonymous functions that can be defined inline. They can be useful for writing short, one-off functions that don't need to be named or reused.
 
