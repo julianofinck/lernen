@@ -10,21 +10,17 @@
 - Pollutants like chlorinated organics sink fast until reaching the water head. 
 From there on, part remains as LNAPL (light non-aqueous phase liquid). 
 
-in outbreaks treat with thermal <- does not pay to do in large areas
-in others less oxireduction
 
 Biofiltro com casca de árvore sendo aplicado no CITEL, acolmatação e umidifcação (Paola)
 Pollution & Biofiltration na biblioteca da SAPOTEC
 
-contaminantes - organo clorado
+#### Contaminantes organoclorados,
+Thermal treatment for focal points and on other areas use oxyreduction techniques
+(otherwise it gets too costly);
 
-nos focos tratar com térmico <- não se paga fazer em grandes áreas
-nos outros menos oxiredução 
-
-
-Procurar no google (técnicas de investigação):
-mip
-oip
-hpp
+Técnicas de investigação para pesquisar no Google:
+- mip
+- oip
+- hpp
 
 hpgaptol 1

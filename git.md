@@ -1,4 +1,8 @@
 # Git - File versioning tool
+<div align="center">
+<img src="./images/git.svg">
+</div>
+
 ### Introduction:
 > Git is a popular version control tool used globally, often accessed through **git-bash**.
 It helps to keep track of changes in a project and to keep licensing (LICENSE) and 

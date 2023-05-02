@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="93mm"
+   height="58mm"
+   viewBox="0 0 93 58"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
@@ -26,11 +26,11 @@
      showgrid="false"
      showguides="true"
      inkscape:zoom="2.1089995"
-     inkscape:cx="248.22196"
-     inkscape:cy="140.35091"
+     inkscape:cx="206.97018"
+     inkscape:cy="146.98913"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="1912"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
@@ -42,182 +42,182 @@
      id="layer1">
     <path
        style="fill:#fc8800;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="M 49.743024,35.21099 H 61.703873"
+       d="M 42.334687,27.273485 H 54.295536"
        id="path1347"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.412;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="M 49.216049,56.552408 V 30.190835"
+       d="M 41.807712,48.614903 V 22.25333"
        id="path245"
        sodipodi:nodetypes="cc" />
     <circle
        style="fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="path1017"
-       cx="49.216053"
-       cy="45.984699"
+       cx="41.807713"
+       cy="38.047192"
        r="1.0645161" />
     <circle
-       style="fill:#f4f4f4;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       style="fill:#f4f4f4;fill-opacity:1;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="circle1127"
-       cx="49.216053"
-       cy="56.758408"
+       cx="41.807713"
+       cy="48.8209"
        r="1.0645161" />
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="46.140179"
-       y="55.828228"
+       x="38.731838"
+       y="47.89072"
        id="text1183"><tspan
          sodipodi:role="line"
          id="tspan1181"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.140179"
-         y="55.828228">First commit¹</tspan><tspan
+         x="38.731838"
+         y="47.89072">First commit¹</tspan><tspan
          sodipodi:role="line"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.140179"
-         y="59.356014"
+         x="38.731838"
+         y="51.418507"
          id="tspan1235">02/03/2023 às 17:30:00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="46.247665"
-       y="45.05452"
+       x="38.839325"
+       y="37.117012"
        id="text1241"><tspan
          sodipodi:role="line"
          id="tspan1237"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.247665"
-         y="45.05452">Conexão ajustada</tspan><tspan
+         x="38.839325"
+         y="37.117012">Conexão ajustada</tspan><tspan
          sodipodi:role="line"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.247665"
-         y="48.582306"
+         x="38.839325"
+         y="40.644798"
          id="tspan1239">03/03/2023 às 18:17:00</tspan></text>
     <circle
        style="fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="circle1243"
-       cx="49.216053"
-       cy="35.210991"
+       cx="41.807713"
+       cy="27.273483"
        r="1.0645161" />
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="46.247665"
-       y="34.280811"
+       x="38.839325"
+       y="26.343304"
        id="text1249"><tspan
          sodipodi:role="line"
          id="tspan1245"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.247665"
-         y="34.280811">Busca rápida addicionada</tspan><tspan
+         x="38.839325"
+         y="26.343304">Busca rápida addicionada</tspan><tspan
          sodipodi:role="line"
          style="text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
-         x="46.247665"
-         y="37.808598"
+         x="38.839325"
+         y="29.871092"
          id="tspan1247">04/03/2023 às 18:02:00</tspan></text>
     <circle
        style="fill:#fc8800;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="circle1664"
-       cx="-61.909882"
-       cy="35.210991"
+       cx="-54.501541"
+       cy="27.273483"
        r="1.0645161"
        transform="scale(-1,1)" />
     <text
        xml:space="preserve"
        style="font-size:3.52778px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="10.614942"
-       y="8.908287"
+       x="3.2066097"
+       y="4.6749539"
        id="text2638"><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52778px;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';stroke:none;stroke-width:0.412"
-         x="10.614942"
-         y="8.908287"
+         x="3.2066097"
+         y="4.6749539"
          id="tspan2636">Git - ferramenta de versionamento de arquivos </tspan><tspan
          sodipodi:role="line"
          style="font-size:3.52778px;stroke:none;stroke-width:0.412"
-         x="10.614942"
-         y="13.318012"
+         x="3.2066097"
+         y="9.0846786"
          id="tspan2744"> GitHub: repositórios globais</tspan><tspan
          sodipodi:role="line"
          style="font-size:3.52778px;stroke:none;stroke-width:0.412"
-         x="10.614942"
-         y="17.727737"
+         x="3.2066097"
+         y="13.494404"
          id="tspan2746"> GitLab: repositórios do lab (nossos)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="47.500305"
-       y="62.716927"
+       x="40.091965"
+       y="54.779419"
        id="text2754"><tspan
          sodipodi:role="line"
          style="text-align:end;text-anchor:end;fill:#727272;fill-opacity:1;stroke:none;stroke-width:0.412"
-         x="47.500305"
-         y="62.716927"
+         x="40.091965"
+         y="54.779419"
          id="tspan2758">¹é o 1º comprometimento</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:start;text-anchor:start;fill:#fc8800;fill-opacity:1;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="64.878265"
-       y="34.280811"
+       x="57.469925"
+       y="26.343304"
        id="text2868"><tspan
          style="text-align:start;text-anchor:start;fill:#fc8800;fill-opacity:1;stroke:none;stroke-width:0.412"
-         x="64.878265"
-         y="34.280811"
+         x="57.469925"
+         y="26.343304"
          id="tspan2866"
          sodipodi:role="line">Revisitando</tspan><tspan
          style="text-align:start;text-anchor:start;fill:#fc8800;fill-opacity:1;stroke:none;stroke-width:0.412"
-         x="64.878265"
-         y="37.808598"
+         x="57.469925"
+         y="29.871092"
          sodipodi:role="line"
          id="tspan5245">21/07/2024 às 18:02:00</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="49.263596"
-       y="25.706638"
+       x="41.855255"
+       y="17.769131"
        id="text2874"><tspan
          sodipodi:role="line"
          style="text-align:center;text-anchor:middle;stroke:none;stroke-width:0.412"
-         x="49.263596"
-         y="25.706638"
+         x="41.855255"
+         y="17.769131"
          id="tspan2872">master</tspan><tspan
          sodipodi:role="line"
          style="text-align:center;text-anchor:middle;stroke:none;stroke-width:0.412"
-         x="49.263596"
-         y="29.234426"
+         x="41.855255"
+         y="21.296919"
          id="tspan5127">main</tspan></text>
     <path
        style="fill:#fc8800;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="M 61.932051,35.00499 V 30.190835"
+       d="M 54.523714,27.067485 V 22.25333"
        id="path2878"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#fc8800;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
-       x="61.979595"
-       y="28.352474"
+       style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#fc8800;fill-opacity:1;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="54.571255"
+       y="20.414967"
        id="text2882"><tspan
          sodipodi:role="line"
-         style="text-align:center;text-anchor:middle;stroke:none;stroke-width:0.412;fill:#fc8800;fill-opacity:1"
-         x="61.979595"
-         y="28.352474"
+         style="text-align:center;text-anchor:middle;fill:#fc8800;fill-opacity:1;stroke:none;stroke-width:0.412"
+         x="54.571255"
+         y="20.414967"
          id="tspan2880">branch1</tspan></text>
     <path
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="m 49.216053,30.156107 -1.496968,1.49697"
+       d="m 41.807716,22.218602 -1.496968,1.49697"
        id="path5129" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="m 49.21605,30.156107 1.496968,1.49697"
+       d="m 41.807713,22.218602 1.496968,1.49697"
        id="path5131" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="m 61.932054,30.156107 -1.496968,1.49697"
+       d="m 54.523717,22.218602 -1.496968,1.49697"
        id="path5133" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="m 61.932051,30.156107 1.496968,1.49697"
+       d="m 54.523714,22.218602 1.496968,1.49697"
        id="path5135" />
   </g>
 </svg>
