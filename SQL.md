@@ -24,4 +24,3 @@ SELECT version();
 # Prints PostGIS version (must be in a db with postgis)
 SELECT PostGIS_full_version();
 ```
-
