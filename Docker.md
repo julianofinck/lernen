@@ -19,6 +19,10 @@ docker container ls -a                          # List containers
 docker rm <container_name/container_id>         # Remove container by name/id
 docker container stop <container_name>          # Stops container
 ```
+---
+To share docker between Windows and WSL, one must go to Docker Desktop's Settings and...
+- General > Check "Use the WSL 2 based engine"
+- Resources > WSL Integration > Enable integration with additional distro > Enable
 
  --- 
  Use a "docker-compose.yml" when apps scale up; run it with a single command: "docker-compose up"
@@ -155,11 +159,15 @@ Where's my docker running at?
 `docker info 2> nul | findstr /C:"Operating System" /C:"OS"`
 
 # Known errors:
-failed to solve with frontend dockerfile.v0: failed to create LLB definition: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+_Failed to solve with frontend dockerfile.v0: failed to create LLB definition: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed_
 
-First, make sure there the image name is correct "name:tag", and check its existence in hub.docker.com
+OR **the timeout error**
 
-If it is, try to relog:
+_Docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)._
+
+
+After guaranting the submitted image name "name:tag" is truly in hub.docker.com,
+try to relog:
 ```bash
 docker logout
 docker login

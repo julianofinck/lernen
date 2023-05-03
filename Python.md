@@ -8,16 +8,19 @@
 >"It's often assumed a library is a collection of packages, which are a colle of modules"
 
 ### Libraries
-| Lib                    | Use                                                         |
-|------------------------|-------------------------------------------------------------|
-| numpy                  | arrays                                                      |
-| pandas                 | tabular                                                     |
-| xarray                 | multidimensional arrays                                     |
-| dask                   | parallelisation for xarray                                  |
-| pangeo-stack           | packages and project, very cloud-oriented                   |
-| zarr                   | cloud-friendly format, well integrated with xarray and dask |
-| CliMetLab              | domain specific, make use of all these packages             |
-| PyTorch and Tensorflow | most popular python packages for ML                         |
+| Lib                                                      | Use                                                         |
+|--------------------------------------------------------- |-------------------------------------------------------------|
+| [python-dotenv](https://pypi.org/project/python-dotenv/) | keep sensible data in a .env file                           |
+| numpy                                                    | arrays                                                      |
+| pandas                                                   | tabular                                                     |
+| xarray                                                   | multidimensional arrays                                     |
+| dask                                                     | parallelisation for xarray                                  |
+| pangeo-stack                                             | packages and project, very cloud-oriented                   |
+| zarr                                                     | cloud-friendly format, well integrated with xarray and dask |
+| CliMetLab                                                | domain specific, make use of all these packages             |
+| PyTorch and Tensorflow                                   | most popular python packages for ML                         |
+
+
 
 ### Dependencies - Libraries
 ```bash
@@ -25,6 +28,10 @@
 pip freeze > requirements.txt
 pip uninstall -r requirements.txt -y
 ```
+
+### Generators
+Ever worked with a dataset so large that it overwhelmed your machine’s memory? Or maybe you have a complex function that needs to maintain an internal state every time it’s called, but the function is too small to justify creating its own class. In these cases and more, generators and the Python yield statement are here to help.
+
 
 ### Decorators
 ```python
@@ -274,6 +281,3 @@ if __name__ == '__main__':
 ```
 
 
-### Generators
-
-Have you ever had to work with a dataset so large that it overwhelmed your machine’s memory? Or maybe you have a complex function that needs to maintain an internal state every time it’s called, but the function is too small to justify creating its own class. In these cases and more, generators and the Python yield statement are here to help.
