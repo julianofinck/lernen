@@ -1,58 +1,49 @@
 FullStack GIS Job Example
 
 <b>Tasks</b>
--Fazer análise de dados espaciais
--Utilizar boas práticas de desenvolvimento;
--Interface com clientes;
--Participar e colaborar com os Squads Ágeis em seus rituais;
--Definir soluções de forma propositiva, apresentar as suas recomendações e ideias;
--Desenvolver ferramentas customizadas utilizando ArcPy
--Desenvolver, implementar e realizar manutenções em soluções GIS
--Desenvolver códigos reutilizáveis, testáveis e eficientes
--Elaborar documentação técnica
+- Fazer análise de dados espaciais
+- Utilizar boas práticas de desenvolvimento;
+- Interface com clientes;
+- Participar e colaborar com os Squads Ágeis em seus rituais;
+- Definir soluções de forma propositiva, apresentar as suas recomendações e ideias;
+- Desenvolver ferramentas customizadas utilizando ArcPy
+- Desenvolver, implementar e realizar manutenções em soluções GIS
+- Desenvolver códigos reutilizáveis, testáveis e eficientes
+- Elaborar documentação técnica
 
 <b>Requirements</b>
--Grande proficiência com JavaScript;
--Conhecimento intermediário de HTML5 e CSS3;
--Conhecimento em banco de dados Postgres, SQL ou Oracle;
--Compreender a natureza da programação assíncrona e suas peculiaridades e soluções alternativas (JQuery);
--Conhecimento em ArcGIS Web AppBuilder, ArcObjects, ArcGIS Server, ArcGIS Desktop, Portal for ArcGIS,
+- Grande proficiência com JavaScript;
+- Conhecimento intermediário de HTML5 e CSS3;
+- Conhecimento em banco de dados Postgres, SQL ou Oracle;
+- Compreender a natureza da programação assíncrona e suas peculiaridades e soluções alternativas (JQuery);
+- Conhecimento em ArcGIS Web AppBuilder, ArcObjects, ArcGIS Server, ArcGIS Desktop, Portal for ArcGIS,
 ArcGIS API JS
 
--Boa vivência com ferramentas ESRI
--Integração de múltiplas fontes de dados e bancos de dados em um sistema;
--Compreender os princípios fundamentais de design por trás de um aplicativo escalonável; (Arquitetura de Projeto, Design Pattern);
--Conhecimento em JWT e sua integração com API’s.
--Grande proficiência em Phyton,
--Conhecimento em C#, .Net Core e/ou .Net 5.0;
--Conhecimento em TypeScript e React
--Compreensão proficiente de ferramentas de controle de versão de código como Git;
+- Boa vivência com ferramentas ESRI
+- Integração de múltiplas fontes de dados e bancos de dados em um sistema;
+- Compreender os princípios fundamentais de design por trás de um aplicativo escalonável; (Arquitetura de Projeto, Design Pattern);
+- Conhecimento em JWT e sua integração com API’s.
+- Grande proficiência em Phyton,
+- Conhecimento em C#, .Net Core e/ou .Net 5.0;
+- Conhecimento em TypeScript e React
+- Compreensão proficiente de ferramentas de controle de versão de código como Git;
 
 <b>We are surprised if you have...</b>
--Conhecimento em mapas e tecnologias de geoprocessamento (ArcGis, OpenLayers, MapBox, LeFlat)
--Conhecimento básico em cartografia
--Experiência com processo de ETL
--Implementação de plataformas de testes automatizadas e teste de unidade (TDD – AnyTest, Any Unit, JUnity)
--Certificações de Developer ESRI
--Autenticação e autorização do usuário entre vários sistemas, servidores e ambientes (OAuth2.0)
+- Conhecimento em mapas e tecnologias de geoprocessamento (ArcGis, OpenLayers, MapBox, LeFlat)
+- Conhecimento básico em cartografia
+- Experiência com processo de ETL
+- Implementação de plataformas de testes automatizadas e teste de unidade (TDD – AnyTest, Any Unit, JUnity)
+- Certificações de Developer ESRI
+- Autenticação e autorização do usuário entre vários sistemas, servidores e ambientes (OAuth2.0)
 
 Disponibilidade Imediata
 Na ZUKK acreditamos no respeito, na diversidade e na busca por inclusão. Contamos com um ambiente descontraído, informal e inclusivo com um leque de benefícios como day off no dia do aniversário, aulas de inglês, descanso remunerado (apesar da contratação ser PJ), entre outros.
 
 ---
+## [JavaScript in 100 Seconds](https://youtu.be/DHjqpvDnNGE)
+<i>28.09.2022</i>
 
-28.09.2022
-JavaScript in 100 Seconds
-https://youtu.be/DHjqpvDnNGE
-
-High level
-Single threaded
-Garage colected
-Interpreted || Jit compiled (convert to machine code at run time)
-Prototyped based
-Multi-paradigm
-Dynamic language
-Non-blocking event loop (excellent at handling io intensive jobs)
+Keywords: `High level`, `Single threaded`, `Garage colected`, `Interpreted`, `JIT-compiled` (converted to machine code at runtime), `Prototyped based`, `Multi-paradigm`, `Dynamic language`, `Non-blocking event loop` (excellent at handling IO-intensive jobs)
 
 Created in 1995 in one week by Brendan Eich
 
@@ -60,11 +51,11 @@ Most well known for building front-end web applications because it's natively su
 
 
 
-
-◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
-12.10.2022
+---
 How I would learn to code (If I could start over) - Jason Goodison
 https://youtu.be/9s29LKfEFjQ
+
+<i>12.10.2022</i>
 
 He suggests to learn how to code useful but not hard things right off the bat.
 These are languages and respective frameworks he finds worth learning
