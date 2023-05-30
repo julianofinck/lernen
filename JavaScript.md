@@ -43,14 +43,72 @@ Na ZUKK acreditamos no respeito, na diversidade e na busca por inclusão. Contam
 ## [JavaScript in 100 Seconds](https://youtu.be/DHjqpvDnNGE)
 <i>28.09.2022</i>
 
-Keywords: `High level`, `Single threaded`, `Garage colected`, `Interpreted`, `JIT-compiled` (converted to machine code at runtime), `Prototyped based`, `Multi-paradigm`, `Dynamic language`, `Non-blocking event loop` (excellent at handling IO-intensive jobs)
+Keywords: `High level`, `Single threaded`, `Garbage colected`, `Interpreted and JIT-compiled` (converted to machine code at runtime), `Prototyped based`, `Multi-paradigm`, `Dynamic language`, `Non-blocking event loop` (excellent at handling IO-intensive jobs)
 
-Created in 1995 in one week by Brendan Eich
+Created in 1995 in one week by Brendan Eich to the Netscape Browser. Originally named Mocha, but then changed to the then hyped name **Java**script.
 
-Most well known for building front-end web applications because it's natively supported in browsers
+> JavaScript evolution:  
+> Mocha > ES3 > ES5 > ES6 > TypeScript
 
+JS work on a single thread, the Event Loop. Asynchronous requests are listened by the Event Loop and are registered in the Callback Stack.. When the task is completed in the background, the callback returns to the Event Loop. This prevents the main thread of being blocked, permiting IO intensive tasks to run and the webpages still be responsive to the user.
 
+Most well known for building front-end web applications because it's the only (bar WebAssembly) natively supported language in browsers. Notwithstanding, Atwood's Law states 
+> if something can be built with JS, it sooner or later will
 
+JS is also used in server-side applications (node.js), mobile applications (react native, ionic), desktop applications (electron).
+
+On a Website, JS is often used to grab an element from the DOM (the html document): 
+```javascript
+// VARIABLE DECLARATION
+// var     original flavour, avoid
+// let     can be reassigned
+// const   cannot be reassigned
+const btn = document.querySelector('button');
+
+// Make the btn interactive by adding an Event Listener
+// The Event Loop will execute it always when someone clicks on it.
+btn.onclick = function() {
+  alert('you clicked me 😄!')
+}
+
+// (...) arrow syntax
+btn.onclick = () => {
+  alert('you clicked me 😄!')
+}
+```
+Functions are first-class objects and support FP. Nevertheless, JS also supports OOP:
+```javascript
+class Hummanoid {
+  constructor()  {
+    this.dna = '🧬'
+  }
+
+  walk() {
+    console.log('going for a walk...')
+  }
+}
+```
+Even though it is single-threaded, it can do work  asynchronously with the Promise API, which also supports the async way syntax
+```javascript
+const  wait = new Promise ((resolve, reject)) => {
+  setTimeout(() => {
+    resolve('thank you for waiting ⏰');
+  }, 1000);
+}
+
+wait.then(doSomething).catch(handleErr)
+
+// async syntax
+async function pausableFun() {
+  await longRunningJob();
+}
+```
+JavaScript can also run in the server thanks to the node.js runtime. Instead of the buttons on a webpage, it can
+ ```javascript
+import { readFile } from 'fs/promises';
+
+readFile('.')
+```
 ---
 How I would learn to code (If I could start over) - Jason Goodison
 https://youtu.be/9s29LKfEFjQ
@@ -63,8 +121,10 @@ These are languages and respective frameworks he finds worth learning
     JavaScript - express.js (simplified node.js for backend); react.js (front end)
     Database - mongodb
 
-◘◘◘◘ Curso em vídeo (Gustavo Guanabara) ◘◘◘◘
-https://youtu.be/Ptbk2af68e8
+---
+
+## [Curso em vídeo - Gustavo Guanabara](https://youtu.be/Ptbk2af68e8)
+
 1. Chrome
 2. VSCode
 3. nodejs
@@ -80,15 +140,51 @@ JavaScript - BIBLIOGRAFIA RECOMENDADA
 
 
 
-CSS 	(Cascading Style Sheets)	<- linguagem de estilos
-HTML 	(Hypertext Markup Language)	<- linguagem de marcação
-JS 	(JavaScript)			<- linguagem de programação
+---
+
+## Aula #01 - O que JavaScript faz?
+- Client vs Server:  
+The Client (computer browser or mobile) requests the Server via the internet infrastructure (cloud). The Server looks for the html and sents a copy of it back.  
+![client_vs_server](./images/client_vs_server.png)  
+- HTML (Hypertext Markup Language)  
+Linguagem de Marcação, mantém o conteúdo
+- CSS (Cascading Style Sheets)  
+Linguagem de Estilos, mantém o design
+- JS (JavaScript)  
+Linguagem de Programação, mantém a lógica
+
 node.JS (RTE and library used for running applications outside the client's browser)
   Why was node JS created?
   provide devs w the power to use JS for server-side scripiting and unifying
   web application development around a single programming language
 
-◘◘◘◘ Curso em vídeo JavaScript #03 ◘◘◘◘
+---
+
+## Aula #02 - Evolução do JavaScript
+1970 - Arpanet by Darpa, Dwight Eisenhower (precessor of the internet -- USA fearing getting their military bases destroyed by the Russian Satellite Sputnik, and consequentely losing all military data)
+
+1993 - WWW by Tim Berners-Lee (CERN) and, consequently, also HTML and the protocol HTTP; Mosaic (1st browser) by Mark Anderson
+
+1994 - Mozilla by Netscape (Mark Anderson & Jim Clark)
+
+1995 - <s>Mocha? Livescript?</s> No! **JavaScript** by Netscape (Brandon Nike)
+
+1997 - ECMAScript (Netscape decides to standardize their JavaScript because Microsoft was trying to release their version of the language, called JScript)
+
+2002 - Netscape vs Microsoft battle ends with Microsoft incorporating Internet Explorer to Windows, which leads Netscape to bankrupcy. Netscape closes and opens the Mozilla Foundation
+
+2008 - Google Chrome by Google.
+
+2009 - V8 by Google, a JavaScript open engine that comes with the Chrome and generate JIT-code
+
+2010 - node.js by some developers who derived it from V8
+
+### ECMA
+
+
+---
+
+## Aula #03
 1. Chrome <--- RODAR O CÓDIGO
 2. VSCode <--- ESCREVER O CÓDIGO (ótima integração com 1 e 3)
 3. nodejs <--- FACILITAR  O APRENDIZADO
