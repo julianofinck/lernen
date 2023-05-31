@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mein erstes Programm in HTML5</title>
+    <!-- CSS hier unten in <style>-->
+    <style> 
+        /* This is a single-line comment 
+        asdas */
+        body{
+            color: aliceblue;
+            background-color: rgb(205, 227, 186);
+            font: normal 25pt Georgia;
+        }
+        h1{
+            color: white;
+            font: normal Georgia;
+        }
+        p{
+            color: white; 
+            background-color: rgb(80, 175, 49);
+            padding: 1%;
+            font: normal Georgia;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>porto<br>alegre</p>
+    <p color="black">PREFEITURA</p>
+    <!--JS hier unten in <script>-->
+    <script>
+        // one-line comment
+        /* 
+            block comment
+        */
+        window.alert('Meine erste Warnung [alert box]')
+        const answer = window.confirm("Sieht die Seite akzeptable aus?")
+        console.info(answer)
+        if (answer == true) {
+            console.info(answer)
+            const name = window.prompt("Dein Name, bitte:")
+            console.info(name)
+        } else {
+            window.close()
+        }
+    </script>
+</body>
+</html>

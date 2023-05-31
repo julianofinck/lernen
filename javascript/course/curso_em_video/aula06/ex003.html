@@ -1,0 +1,50 @@
+<!--
+    Como converter tipos de variáveis
+    Number.parseInt(n)
+    Number.parseFloat(n)
+    Number(n)
+    String(s)
+    s.toString()
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mein erstes Programm in HTML5</title>
+        <!-- CSS hier unten in <style>-->
+        <style> 
+            body{
+                color: aliceblue;
+                background-color: rgb(205, 227, 186);
+                font: normal 25pt Georgia;
+            }
+            h1{
+                color: white;
+                font: normal Georgia;
+            }
+            p{
+                color: white; 
+                background-color: rgb(80, 175, 49);
+                padding: 1%;
+                font: normal Georgia;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <p>porto<br>alegre</p>
+        <p color="black">PREFEITURA</p>
+        <!--JS hier unten in <script>-->
+        <script>
+            var name = window.prompt("Dein Name, bitte:")
+            window.alert('Ich grüße dich, ' + name)
+
+            var n1 = Number.parseFloat(window.prompt("1. Nummer:"))
+            var n2 = Number.parseFloat(window.prompt("2. Nummer:"))
+            var s = n1 + n2
+            window.alert('Die Summe ist ' + s)
+        </script>
+    </body>
+</html>

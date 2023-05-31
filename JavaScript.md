@@ -1,45 +1,11 @@
-FullStack GIS Job Example
+<style>
+  h2 {
+    color: green;
+    font-style: bold;
+    text-decoration-line: underline;
+  }
+</style>
 
-<b>Tasks</b>
-- Fazer análise de dados espaciais
-- Utilizar boas práticas de desenvolvimento;
-- Interface com clientes;
-- Participar e colaborar com os Squads Ágeis em seus rituais;
-- Definir soluções de forma propositiva, apresentar as suas recomendações e ideias;
-- Desenvolver ferramentas customizadas utilizando ArcPy
-- Desenvolver, implementar e realizar manutenções em soluções GIS
-- Desenvolver códigos reutilizáveis, testáveis e eficientes
-- Elaborar documentação técnica
-
-<b>Requirements</b>
-- Grande proficiência com JavaScript;
-- Conhecimento intermediário de HTML5 e CSS3;
-- Conhecimento em banco de dados Postgres, SQL ou Oracle;
-- Compreender a natureza da programação assíncrona e suas peculiaridades e soluções alternativas (JQuery);
-- Conhecimento em ArcGIS Web AppBuilder, ArcObjects, ArcGIS Server, ArcGIS Desktop, Portal for ArcGIS,
-ArcGIS API JS
-
-- Boa vivência com ferramentas ESRI
-- Integração de múltiplas fontes de dados e bancos de dados em um sistema;
-- Compreender os princípios fundamentais de design por trás de um aplicativo escalonável; (Arquitetura de Projeto, Design Pattern);
-- Conhecimento em JWT e sua integração com API’s.
-- Grande proficiência em Phyton,
-- Conhecimento em C#, .Net Core e/ou .Net 5.0;
-- Conhecimento em TypeScript e React
-- Compreensão proficiente de ferramentas de controle de versão de código como Git;
-
-<b>We are surprised if you have...</b>
-- Conhecimento em mapas e tecnologias de geoprocessamento (ArcGis, OpenLayers, MapBox, LeFlat)
-- Conhecimento básico em cartografia
-- Experiência com processo de ETL
-- Implementação de plataformas de testes automatizadas e teste de unidade (TDD – AnyTest, Any Unit, JUnity)
-- Certificações de Developer ESRI
-- Autenticação e autorização do usuário entre vários sistemas, servidores e ambientes (OAuth2.0)
-
-Disponibilidade Imediata
-Na ZUKK acreditamos no respeito, na diversidade e na busca por inclusão. Contamos com um ambiente descontraído, informal e inclusivo com um leque de benefícios como day off no dia do aniversário, aulas de inglês, descanso remunerado (apesar da contratação ser PJ), entre outros.
-
----
 ## [JavaScript in 100 Seconds](https://youtu.be/DHjqpvDnNGE)
 <i>28.09.2022</i>
 
@@ -125,33 +91,18 @@ These are languages and respective frameworks he finds worth learning
 
 ## [Curso em vídeo - Gustavo Guanabara](https://youtu.be/Ptbk2af68e8)
 
-1. Chrome
-2. VSCode
-3. nodejs
-
-JavaScript - BIBLIOGRAFIA RECOMENDADA
-  LIVROS
-    JS o guia definitivo - David Flanegam, O'Riley El
-    JS: guia do programador - Mario Jor, Mauricio Sami Silva
-  GUIAS ONLINE
-    Mozila (developer mozilla org) -> referência de JS, html, CSS
-    ECMA (Standard) ecma international org [ECMA-262] < Referência
-  (no curso trabalharemos com ECMA5 e ECMA6)
-
-
-
----
-
 ## Aula #01 - O que JavaScript faz?
-- Client vs Server:  
+### **Client vs Server**
 The Client (computer browser or mobile) requests the Server via the internet infrastructure (cloud). The Server looks for the html and sents a copy of it back.  
-![client_vs_server](./images/client_vs_server.png)  
-- HTML (Hypertext Markup Language)  
-Linguagem de Marcação, mantém o conteúdo
-- CSS (Cascading Style Sheets)  
-Linguagem de Estilos, mantém o design
-- JS (JavaScript)  
-Linguagem de Programação, mantém a lógica
+![client_vs_server](./images/client_vs_server.svg)  
+
+### **The three agents**
+1. HTML (Hypertext Markup Language): 
+Linguagem de Marcação, como um jornalista mantém o conteúdo
+2. CSS (Cascading Style Sheets): 
+Linguagem de Estilos, como um designer mantém o design, a arte
+3. JS (JavaScript): 
+Linguagem de Programação, como um programador mantém a lógica, a interação e a integração
 
 node.JS (RTE and library used for running applications outside the client's browser)
   Why was node JS created?
@@ -161,37 +112,64 @@ node.JS (RTE and library used for running applications outside the client's brow
 ---
 
 ## Aula #02 - Evolução do JavaScript
-1970 - Arpanet by Darpa, Dwight Eisenhower (precessor of the internet -- USA fearing getting their military bases destroyed by the Russian Satellite Sputnik, and consequentely losing all military data)
+### **Abridged History of JavaScript**
+|Year | Description |
+|---|---|
+|1970 |Arpanet by Darpa, Dwight Eisenhower (precessor of the internet -- USA fearing getting their military bases destroyed by the Russian Satellite Sputnik, and consequentely losing all military data)|
+|1993 |WWW by Tim Berners-Lee (CERN) and, consequently, also HTML and the protocol HTTP; Mosaic (1st browser) by Mark Anderson|
+|1994 |Mozilla by Netscape (Mark Anderson & Jim Clark)|
+|1995 |<s>Mocha? Livescript?</s> No! **JavaScript** by Netscape (Brandon Nike)|
+|1997 |ECMAScript (Netscape decides to standardize their JavaScript because Microsoft was trying to release their version of the language, called JScript)|
+|2002 |Netscape vs Microsoft battle ends with Microsoft incorporating Internet Explorer to Windows, which leads Netscape to bankrupcy. Netscape closes and opens the Mozilla Foundation|
+|2008 |Google Chrome by Google.|
+|2009 |V8 by Google, a JavaScript open engine that comes with the Chrome and generate JIT-code|
+|2010 |node.js by some developers who derived it from V8|
 
-1993 - WWW by Tim Berners-Lee (CERN) and, consequently, also HTML and the protocol HTTP; Mosaic (1st browser) by Mark Anderson
+### **Abridged History of ECMA**
+| Year | ECMA version| Description |
+|------|-------------|-------------|
+|1997|1.0||
+|1998|2.0||
+|1999|3.0|Regular expression, try-catch block (that Java and C already had) |
+|???|4.0|Promised too much, but never saw/came to light|
+|2009|5.0|compatible with almost any current browser, works with JSON, methods to deal with arrays|
+|2015|6.0|let, const, template strings|
+|2016|ES2016|some funcitonalities like the power operator|
+|2017|ES2017|some funcitonalities like compatibility with asynchronous functions|
+|2018|ES2018|some functionalities like regex and promises|
 
-1994 - Mozilla by Netscape (Mark Anderson & Jim Clark)
 
-1995 - <s>Mocha? Livescript?</s> No! **JavaScript** by Netscape (Brandon Nike)
-
-1997 - ECMAScript (Netscape decides to standardize their JavaScript because Microsoft was trying to release their version of the language, called JScript)
-
-2002 - Netscape vs Microsoft battle ends with Microsoft incorporating Internet Explorer to Windows, which leads Netscape to bankrupcy. Netscape closes and opens the Mozilla Foundation
-
-2008 - Google Chrome by Google.
-
-2009 - V8 by Google, a JavaScript open engine that comes with the Chrome and generate JIT-code
-
-2010 - node.js by some developers who derived it from V8
-
-### ECMA
-
+### **On some common, related technologies**
+|Technology|Description|
+|---|---|
+|JQuery| called framework, but it is a set of libraries, famous for many years but recently lost a bit of ground, created by people from Mozilla, made it easier to use interactive in JavaScript|
+|Angular| by Google, facilitate creating web apps, less imperative but more declarative, there's a beef between vanilla version users and more contemporary ones|
+|React|by Facebook, like Angular but more flexible|
+|Vue|2014, ex-employee from Google made a better version||
+|Electron|maintained by GitHub, made for building GUI (eg VS code, WhatsApp desktop, Discord, Slack)|
+|Ionic|sdk to make mobile apps|
+|Cordova|other to make mobile apps|
 
 ---
 
 ## Aula #03
-1. Chrome <--- RODAR O CÓDIGO
-2. VSCode <--- ESCREVER O CÓDIGO (ótima integração com 1 e 3)
-3. nodejs <--- FACILITAR  O APRENDIZADO
-    * adicionar ao PATH
-    * adicionar package manager NPM
+### Recommended Bibliography:
+- **Books**  
+  JS o guia definitivo - David Flanegam, O'Riley El  
+  JS: guia do programador - Mario Jor, Mauricio Sami Silva
+- **Online Documentation**  
+  Mozilla (developer mozilla org) -> referência de JS, html, CSS  
+  ECMA (Standard) ecma international org [ECMA-262] < Referência *(no curso trabalharemos com ECMA5 e ECMA6)*
 
-◘◘◘◘ Curso em vídeo JavaScript #04 ◘◘◘◘
+We're gonna use **Google Chrome** (to run our code); **VS Code** (write code – great integration with 1 and 3); **nodejs** (facilitates learning). When installing nodejs, add it to PATH and add the package manager (NPM)
+
+---
+## Aula #04
+```docker
+docker pull node:lts
+sudo docker run -it --rm -v /home/julianofinck/javascript:/workspace --name nodejs_env node:lts
+```
+
 Quando criar um arquivo html no VSC,
 ao digitar ,,html'' o intelisense da IDE
 sugerirá ,,html:5". Clicando nele será 
@@ -223,3 +201,47 @@ typeof variavel
 "string"
 'string'
 `string`
+
+
+
+
+FullStack GIS Job Example
+
+<b>Tasks</b>
+- Fazer análise de dados espaciais
+- Utilizar boas práticas de desenvolvimento;
+- Interface com clientes;
+- Participar e colaborar com os Squads Ágeis em seus rituais;
+- Definir soluções de forma propositiva, apresentar as suas recomendações e ideias;
+- Desenvolver ferramentas customizadas utilizando ArcPy
+- Desenvolver, implementar e realizar manutenções em soluções GIS
+- Desenvolver códigos reutilizáveis, testáveis e eficientes
+- Elaborar documentação técnica
+
+<b>Requirements</b>
+- Grande proficiência com JavaScript;
+- Conhecimento intermediário de HTML5 e CSS3;
+- Conhecimento em banco de dados Postgres, SQL ou Oracle;
+- Compreender a natureza da programação assíncrona e suas peculiaridades e soluções alternativas (JQuery);
+- Conhecimento em ArcGIS Web AppBuilder, ArcObjects, ArcGIS Server, ArcGIS Desktop, Portal for ArcGIS,
+ArcGIS API JS
+
+- Boa vivência com ferramentas ESRI
+- Integração de múltiplas fontes de dados e bancos de dados em um sistema;
+- Compreender os princípios fundamentais de design por trás de um aplicativo escalonável; (Arquitetura de Projeto, Design Pattern);
+- Conhecimento em JWT e sua integração com API’s.
+- Grande proficiência em Phyton,
+- Conhecimento em C#, .Net Core e/ou .Net 5.0;
+- Conhecimento em TypeScript e React
+- Compreensão proficiente de ferramentas de controle de versão de código como Git;
+
+<b>We are surprised if you have...</b>
+- Conhecimento em mapas e tecnologias de geoprocessamento (ArcGis, OpenLayers, MapBox, LeFlat)
+- Conhecimento básico em cartografia
+- Experiência com processo de ETL
+- Implementação de plataformas de testes automatizadas e teste de unidade (TDD – AnyTest, Any Unit, JUnity)
+- Certificações de Developer ESRI
+- Autenticação e autorização do usuário entre vários sistemas, servidores e ambientes (OAuth2.0)
+
+Disponibilidade Imediata
+Na ZUKK acreditamos no respeito, na diversidade e na busca por inclusão. Contamos com um ambiente descontraído, informal e inclusivo com um leque de benefícios como day off no dia do aniversário, aulas de inglês, descanso remunerado (apesar da contratação ser PJ), entre outros.

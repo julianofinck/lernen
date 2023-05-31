@@ -1,0 +1,67 @@
+<!--
+    Como armazenar dados, variáveis
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mein erstes Programm in HTML5</title>
+        <!-- CSS hier unten in <style>-->
+        <style> 
+            body{
+                color: aliceblue;
+                background-color: rgb(205, 227, 186);
+                font: normal 25pt Georgia;
+            }
+            h1{
+                color: white;
+                font: normal Georgia;
+            }
+            p{
+                color: white; 
+                background-color: rgb(80, 175, 49);
+                padding: 1%;
+                font: normal Georgia;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <p>porto<br>alegre</p>
+        <p color="black">PREFEITURA</p>
+        <!--JS hier unten in <script>-->
+        <script>
+            // one-line comment
+            /* 
+                block comment
+            */
+            /*
+            PRIMAL PRIMITIVE VARIABLE TYPES
+              The function "typeof" returns the type
+              number, string, boolean, null, undefined, object, function
+
+              They are declared with let, const or, old style, tvar
+            */
+            // boolean
+            const booleana_t = true
+            const booleana_f = false
+
+            // string
+            const s1 = 'a'
+            const s2 = "a"
+            const s3 = `a`
+
+            // number
+            const n1 = 5
+            const n2 = -12
+            const n3 = 3.14
+
+
+            window.alert('Meine erste Warnung [alert box]')
+            window.confirm("Sieht die Seite akzeptable aus?")
+            window.prompt("Dein Name, bitte:")
+        </script>
+    </body>
+</html>
