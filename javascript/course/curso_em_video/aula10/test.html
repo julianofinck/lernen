@@ -1,0 +1,63 @@
+<!--
+    I wanted to make a html that automatically adds hoverning meaning window to certain words.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                padding: 15pt;
+                font: normal 15pt Consolas;
+            }
+            .tooltip {
+                position: relative;
+                display: inline;
+                color: rgb(18, 72, 221);
+                font: bold 15pt Consolas;
+            }
+            .tooltip:hover::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                left: 100%;
+                top: 0;
+                padding: 5px;
+                background-color: #f1f1f1;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                white-space: nowrap;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="dictionary-paragraph">
+            The <strong>word</strong> "ab" can be translated to English in different ways
+            depending on the context. <br> Here are a few possible translations. <br>
+            Now I may keep writing a few more lines just in case.
+        </p>
+        <script>
+            // Define your dictionary data with words and their meanings
+            var dictionary = {
+                "English": "Most spoken language in the world",
+                "few": "the opposite of many",
+                };
+
+            // Get the paragraph element by its ID
+            var paragraph = document.getElementById("dictionary-paragraph");
+
+            // Get the paragraph text content
+            var paragraphText = paragraph.innerHTML;
+
+            // Iterate through each word in the dictionary
+            Object.keys(dictionary).forEach(function(word) {
+                // Create a regular expression to match the word globally in the paragraph
+                var regex = new RegExp("\\b" + word + "\\b", "g");
+
+                // Replace each occurrence of the word in the paragraph with the tooltip-enabled span
+                paragraphText = paragraphText.replace(regex, '<span class="tooltip" data-tooltip="' + dictionary[word] + '">' + word + '</span>');
+                });
+
+            // Set the modified paragraph HTML with the replaced words
+            paragraph.innerHTML = paragraphText;
+        </script>
+    </body>
+</html>

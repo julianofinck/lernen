@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* # stands for id */
+            div#area {
+                font: normal 15pt Consolas;
+                background: rgb(49, 49, 49);
+                color: white;
+                width: 200px;
+                height: 200px;
+                line-height: 200px;
+                text-align: center;
+                cursor: pointer; /* Set cursor to pointer */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="area">
+            Interaja...
+        </div>
+        <script>
+            var a = window.document.getElementById('area')
+            a.addEventListener('click', clicar)
+            a.addEventListener('mouseenter', entrar)
+            a.addEventListener('mouseout', sair)
+            a.addEventListener('mousewheel', rodar)
+            function clicar() {
+                a.innerText = 'Clicou!'
+                a.style.background = "rgb(0, 200, 0)";
+            }
+            function entrar() {
+                a.innerText = 'Entrou!'
+                a.style.color = "black";
+                a.style.background = "rgb(255, 255, 0)";
+            }
+            function sair() {
+                a.innerText = 'Saiu!'
+                a.style.color = "white";
+                a.style.background = "red";
+            }
+            function rodar() {
+                a.innerText = 'Rolou!'
+                a.style.color = "white";
+                a.style.background = "purple";
+            }
+        </script>
+    </body>
+</html>

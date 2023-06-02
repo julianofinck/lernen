@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+</head>
+<body>
+    <h1>Ausländerbestätiger</h1>
+    Heimatland lautet <input type="text" name="land" id="land">
+    <input type="button" value="Überprüfen" onclick="berechnen()">
+    <div id="res">
+
+    </div>
+    <script>
+        function berechnen() {
+            /* Zusammengesetzte Bedingunge */
+            var land = window.document.querySelector('input#land')
+            var res = window.document.querySelector('div#res')
+            var landtxt = land.value
+            res.innerHTML = `<p>Sie kommen aus <strong>${landtxt}</strong></p>`
+
+            if (landtxt != 'Deutschland') {
+                res.innerHTML += 'Sie kommen aus dem Ausland; Sie sind ein Ausländer.'
+            } else {
+                res.innerHTML += 'Sie sind Deutscher!'
+            }
+
+        }
+    </script>
+</body>
+</html>

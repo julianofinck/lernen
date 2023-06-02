@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgb(140, 60, 210);
+            color: white;
+            font: normal 14pt Consolas;
+        }
+    </style>
+</head>
+<body>
+    <h1>Erste Schritte in DOM</h1>
+    <p>1st <strong>P</strong>aragraph</p>
+    <p>2nd Paragraph</p>
+    <script>
+        var p = window.document.getElementsByTagName('p')
+        var p1 = window.document.getElementsByTagName('h1')
+        window.document.write('Das was geschrieben ' + p1.innerText + '<br>')
+        window.document.write(p[0])
+    </script>
+</body>
+</html>
