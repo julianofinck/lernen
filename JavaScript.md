@@ -300,13 +300,14 @@ function clicar() {
 }
 ```
 There are several types of input elements to add to a html page. I used `<input type:number></input>`
-## Module D
+## Module D - Bedingungen in JS
 - Einfache Bedingungen (if)
-- Zusammengesetzte Bedingungen (if-else)
-- Verschachtelte Bedingungen (elseif)
+- Zusammengesetzte Bedingungen (if-else) composta
+- Verschachtelte Bedingungen (elseif) aninhada
 - Mehrere Bedingungen (Switch-Case)
 
 ### [11/32] Condições em JavaScript
+Instead of getting the extension "node exec", use a docker container with node.  
 Press CTRL+P (windows), type ">shortcuts json", hit enter.
 Insert:
 ```json
@@ -322,8 +323,92 @@ Insert:
   }
 ]
 ```
+Beim "ex012.js" wurde es beigebracht, wie man Information um die Zeit holt.
+```javascript
+var now = new Date()
+var day = now.getDay()
+```
+> der Webseitestil nach der Stunde ändern 
 
+## Module E - Wiederholungen (_Schleife_) in JS
+Hier wird es Kontrollstrukturen besprochen:
+- while (Prüfung am Beginn)
+- do-while (Prüfung am Ende)
+- for (mit Kontroll)
+### [13/32] Wiederholungen in JS Teil 1
 
+```javascript
+// while - Erstens überprüfes, dann machs
+var count = 1
+while (count <=3) {
+  console.log(`count ${count}`)
+  c++
+}
+// do while - Erstens machs, dann überprüfes
+do {
+  console.log(`count ${count}`)
+  c++
+} while (count <= 3)
+```
+
+### [13/32] Wiederholungen in JS Teil 2
+Wiederholungsstruktur mit Kontrollvariabel werden mit einem Hexagon representiert.
+```javascript
+// for
+for (var c=1; c <= 10; c++) {
+  //code
+}
+```
+
+VS Code's Debugging-Modus (F5 - depuração).
+
+Breakpoints can be added, and F10 steps over. One can also set variables to Watch.
+
+## Module F - Avançando estudos em JS
+Hier wird es Kontrollstrukturen besprochen:
+- variaveis compostas (arrays)
+- funcao, metodo, evento
+- passagem de parametros
+- exercicios 
+- proximos passos
+### [15/32] Wiederholungen in JS
+In allen anderen Klassen wurden lediglich einfache Variabeln berücksichtigt. Nun kommen die zusammengesetzten Variabeln voran. So deklariert man Arrays (in JS sind sie heterogeneous):
+```javascript
+let num = [5, 8, 4]
+num[1] = 21 // wie in Python
+num.push(6) // appends 6
+num.length
+num.sort()
+num.indexOf(4) // .index in Python
+```
+### [16/32] Funktionen in JS
+JavaScript ist nach dem funktionellen Paradigm orientiert.
+```javascript
+function func1(param_formal=0) {
+  return res
+}
+func1(param_real)
+```
+
+### [17/32] Näschte Schritte in JS
+JavaScript ist nach dem funktionellen Paradigm orientiert.
+
+- Der Kurs von HTML5 & CSS
+- Functions - arrow functions, callback, anonymous functions, iife
+- Objects - 
+- Modularização - codigos separados em arquivos separados, reutilizar códigos
+- RegEx - expressões regulares
+- JSON - 
+- AJAX
+- NodeJS
+
+Objects: they are useful when we want to name our variables in a compost variable. With arrays, we are restricted to use sequential numbers as keys. In objects, we can set attributes.
+```javascript
+let amigo = {
+  nome: 'José',
+  idade: '31',
+}
+```
 ---
 FullStack GIS Job Example
 
