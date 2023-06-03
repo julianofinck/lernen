@@ -1,0 +1,19 @@
+h1 {
+    color: white;
+}
+h2 {
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+}
+body {
+    font: bold 15pt Georgia;
+    text-align: center;
+    background: rgb(200, 184, 137);
+}
+div#container{
+    background: white;
+    height: 300pt;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 5%;
+}

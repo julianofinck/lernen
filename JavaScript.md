@@ -2,7 +2,6 @@
   h2 {
     color: white;
     font-style: bold;
-    text-decoration-line: underline;
     text-align: center;
     background-color: rgb(55,39,102);
     padding: 5px;
@@ -16,25 +15,24 @@
   }
 </style>
 
-## [JavaScript in 100 Seconds](https://youtu.be/DHjqpvDnNGE)
-<i>28.09.2022</i>
+## [JavaScript in 100 Seconds](https://youtu.be/DHjqpvDnNGE) <i>28.09.2022</i>
 
 Keywords: `High level`, `Single threaded`, `Garbage colected`, `Interpreted and JIT-compiled` (converted to machine code at runtime), `Prototyped based`, `Multi-paradigm`, `Dynamic language`, `Non-blocking event loop` (excellent at handling IO-intensive jobs)
 
-Created in 1995 in one week by Brendan Eich to the Netscape Browser. Originally named Mocha, but then changed to the then hyped name **Java**script.
+Created in 1995 in one week by Brendan Eich to the Netscape Browser. Originally named Mocha, but changed to the then hyped name **Java**script.
 
 > JavaScript evolution:  
 > Mocha > ES3 > ES5 > ES6 > TypeScript
 
-JS work on a single thread, the Event Loop. Asynchronous requests are listened by the Event Loop and are registered in the Callback Stack.. When the task is completed in the background, the callback returns to the Event Loop. This prevents the main thread of being blocked, permiting IO intensive tasks to run and the webpages still be responsive to the user.
+JS works on a single thread, the Event Loop. Asynchronous requests are listened by the Event Loop and are registered in the Callback Stack.. When the task is completed in the background, the callback returns to the Event Loop. This prevents the main thread of being blocked, permiting IO intensive tasks to run and the webpages still be responsive to the user.
 
-Most well known for building front-end web applications because it's the only (bar WebAssembly) natively supported language in browsers. Notwithstanding, Atwood's Law states 
+Most well known for building front-end web applications because it's the only (bar WebAssembly) natively supported language in browsers. Still, Atwood's Law goes 
 > if something can be built with JS, it sooner or later will
 
 JS is also used in server-side applications (node.js), mobile applications (react native, ionic), desktop applications (electron).
 
 On a Website, JS is often used to grab an element from the DOM (the html document): 
-```javascript
+```JavaScript
 // VARIABLE DECLARATION
 // var     original flavour, avoid
 // let     can be reassigned
@@ -53,7 +51,7 @@ btn.onclick = () => {
 }
 ```
 Functions are first-class objects and support FP. Nevertheless, JS also supports OOP:
-```javascript
+```JavaScript
 class Hummanoid {
   constructor()  {
     this.dna = '🧬'
@@ -65,7 +63,7 @@ class Hummanoid {
 }
 ```
 Even though it is single-threaded, it can do work  asynchronously with the Promise API, which also supports the async way syntax
-```javascript
+```JavaScript
 const  wait = new Promise ((resolve, reject)) => {
   setTimeout(() => {
     resolve('thank you for waiting ⏰');
@@ -80,7 +78,7 @@ async function pausableFun() {
 }
 ```
 JavaScript can also run in the server thanks to the node.js runtime. Instead of the buttons on a webpage, it can
- ```javascript
+ ```JavaScript
 import { readFile } from 'fs/promises';
 
 readFile('.')
@@ -99,29 +97,29 @@ These are languages and respective frameworks he finds worth learning
 
 ---
 
-# [Curso em vídeo - Gustavo Guanabara](https://youtu.be/Ptbk2af68e8)
-## Modul A - JavaScript kennenlernen
-### [01/32] Was macht JavaScript aus?
+# [Curso em vídeo - Gustavo Guanabara](https://www.youtube.com/watch?v=1-w1RfGIov4&list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1&index=1)
+## Module A - Getting to know JavaScript 
+### [04/33] What is JavaScript?
 #### **Client vs Server**
-The Client (computer browser or mobile) requests the Server via the internet infrastructure (cloud). The Server looks for the html and sents a copy of it back.  
+The Client (computer browser or mobile) requests the Server via the internet infrastructure (Cloud). The Server looks for the HTML and sents a copy of it back.  
 ![client_vs_server](./images/client_vs_server.svg)  
 
 #### **The three agents**
-1. HTML (Hypertext Markup Language): 
-Linguagem de Marcação, como um jornalista mantém o conteúdo
-2. CSS (Cascading Style Sheets): 
-Linguagem de Estilos, como um designer mantém o design, a arte
-3. JS (JavaScript): 
-Linguagem de Programação, como um programador mantém a lógica, a interação e a integração
+1. HTML (Hypertext Markup Language):  
+Markup language, as a journalist who maintains the content
+2. CSS (Cascading Style Sheets):  
+Style language, as a designer who maintains the art/style
+3. JS (JavaScript):  
+Programming language, as a programmer who maintains the logic, interaction and integration
 
-node.JS (RTE and library used for running applications outside the client's browser)
-  Why was node JS created?
-  provide devs w the power to use JS for server-side scripiting and unifying
+node.JS (RTE and library for running applications outside the client's browser)  
+  **Why was node JS created?**  
+  To provide devs w the power to use JS for server-side scripiting and unifying
   web application development around a single programming language
 
 ---
 
-### Aula #02 - Die Evolution von JavaScript
+### [05/33] The evolution of JavaScript
 #### **Abridged History of JavaScript**
 |Year | Description |
 |---|---|
@@ -162,7 +160,7 @@ node.JS (RTE and library used for running applications outside the client's brow
 
 ---
 
-### Aula #03
+### [06/33] First Steps
 #### Recommended Bibliography:
 - **Books**  
   JS o guia definitivo - David Flanegam, O'Riley El  
@@ -171,25 +169,20 @@ node.JS (RTE and library used for running applications outside the client's brow
   Mozilla (developer mozilla org) -> referência de JS, html, CSS  
   ECMA (Standard) ecma international org [ECMA-262] < Referência *(no curso trabalharemos com ECMA5 e ECMA6)*
 
-We're gonna use **Google Chrome** (to run our code); **VS Code** (write code – great integration with 1 and 3); **nodejs** (facilitates learning). When installing nodejs, add it to PATH and add the package manager (NPM)
+We're gonna use **Google Chrome** (to run our code); **VS Code** (write code – great integration with 1 and 3); **nodejs** (facilitates learning). When installing nodejs, add it to PATH and add the package manager (NPM).
+
+I used a docker container with node.js
 
 ```docker
 # node.js via Docker Desktop on Ubuntu 22.04, WSL2
 docker pull node:lts
 sudo docker run -it --rm -v /home/julianofinck/javascript:/workspace --name nodejs_env node:lts
 ```
+### [07/33] First Script
 
----
-## Module B
-### Aula #04
+In VS Code, when a HTML file is created, one can simply type "html" and the IDE's Intelisense will suggest "html:5"? By hitting enter, a basic code will be generated.
 
-Quando criar um arquivo html no VSC,
-ao digitar ,,html'' o intelisense da IDE
-sugerirá ,,html:5". Clicando nele será 
-apresentado um código. 
-Pelo file explorer, abrir o html em
-meia tela no Chrome. Atualizando a
-página, posso ver os avanços.
+Opening this HTML in a Browser, I can watch that changes by refreshing the page.
 
 ```html
 <!DOCTYPE html>
@@ -198,26 +191,29 @@ página, posso ver os avanços.
       <meta charset="UTF-8">
       <meta name="viewport" content="width-device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie-edge">
-      <title> Meu primeiro programa... </title>
+      <title>My first program... </title>
   </head>
   <body>
-        <h1>Olá, mundo!</h1>
-        <p>Já me livrei da maldição</p>
+        <h1>Hello World!</h1>
   </body>
 </html>
 ```
+JS is usually kept at the end of `<body>`, after the base code got generated.
 
-JavaScript fica geralmente escrito no final de /body, depois que já foi carregado o código base.
+---
+## Module B
+- How to store data
+- How to process data
 
-### 5ª Aula - Tratamento de Dados  13/10/2022
-Variable is got by `typeof variavel`;  
+### [09/33] Processing Data <i>13/10/2022</i>
+Variable is got by `typeof variable`;  
 Single-line comment use `//`;  
 Block comment uses `/* block-comment */`.
 
 Variables are declared with `let` (mutable), `const` (constant), or `var` (either and does not limit scope). The main primitive variables types in JS are **number, string, boolean, null, undefined, object, function**.
 
-Numbers can be made into stylized strings:
-```javascript
+Numbers can be converted into stylized strings:
+```JavaScript
 var n = 1545.5
 n1.toFixed(2).replace('.', ',')
 n1.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
@@ -225,7 +221,7 @@ n1.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
 
 Strings are declared with ", ', or `.
 String templates in JS is declared with crasis and ${variable}:
-```javascript
+```JavaScript
 const name = window.prompt('what is your name?')
 console.log(`Hi, ${name}.`)
 ```
@@ -234,21 +230,21 @@ Strings can be parsed to number by `number.parseFloat(a_string)`
 
 Write something in html: `document.write('some text')` (discouraged, use DOM methods instead).
 
-### 7ª Aula - Operadores pt.1  31/05/2023
+### [11/33] Operators pt.1 <i>31/05/2023 </i>
 
 JS has several operator families: arithmetic, attributive, relational, logical, ternary and others. The arithmetic operatores are the same as in Python: `+`, `-`, `*`, `/`, `%`, `**`.  
 The attributive operator is `=`. Moreover, JS also accepts the incremental attributive operators:
-```javascript
+```JavaScript
 var n = 10
 n++ //post-increment; oder, bzw ++n post-decrement
 n-- //post-decrement; oder, bzw --n pre-decrement
 ```
 
-### 8ª Aula - Operadores pt.2  31/05/2023
+### [12/33] Operators pt.2 <i>31/05/2023 </i>
 
 The relational operators are the same as in Python: `>`, `<`, `>=`, `<=`, `==`, `!=`.  
 Moreover, JS also has the strict equality operator `===`
-```javascript
+```JavaScript
 5 == '5'  // true  (dont test types)
 5 === '5' // false (test on types)
 ```
@@ -256,13 +252,16 @@ Moreover, JS also has the strict equality operator `===`
 Logical operators are unary: `!` (negation); and binary: `&&` (conjunction), `||` (disjunction).
 
 Last but not least, JS has the ternary operator:
-```javascript
+```JavaScript
 // Wenn der Durchschnitt mehr als 7 ist, dann wurde es bestanden; wenn nicht, durchgefallen.
 durchschnitt >= 7.0 ? 'bestanden' : 'durchgefallen'
 ```
 
 ## Module C
-### [9/32] Understanding DOM
+- What is Document Object Model?
+- DOM Tree
+- Manipulate DOM
+### [14/33] Understanding DOM
 The Document Object Model (DOM) is the main object used in the web to handle visual components. We will learn how to create and manipulate a DOM from whichever website we are dealing with.
 
 This class uses the VS Code Extensions "Watch in Chrome", that does not exist in 2023. Instead, one should get "Live Server". One installed, restart VS Code, go to any .html file, and click on "Go Live" on the bottom right of VS Code window. The whole project will be exposed at `localhost:5500`.
@@ -270,7 +269,7 @@ This class uses the VS Code Extensions "Watch in Chrome", that does not exist in
 The DOM Hierarchical Tree start from the root, which in JS is an object called `window`. Inside `window`, there are several objects like `location` (what is the URL, current page, previous page), `document` (current document), `history` (facilitates the navigation inside the website). Moreover, `document` has `html`, that has `head` and `body`.
 
 Elements can be selected via: Tag, Id, Name, Class, Selector.
-```javascript
+```JavaScript
 // These methods return an object HTMLCollection with each HTML object
 // HTML objects comprise attributes such as innerText and innerHTML
 window.document.getElementsByTagName()
@@ -280,18 +279,18 @@ window.document.getElementsByClass()
 window.document.querySelector() // >=ECMAScript5 - accesses via CSS elements
 ```
 The style of selected elements can be changed. Example of selector ():
-```javascript
+```JavaScript
 // while "#" represents ids, "." represents classes
 var d = window.document.querySelector('div.class_name') // Available in recent ECMAs
 d.style.background = 'black'
 ```
 
-### [10/32] DOM Events
+### [15/33] DOM Events
 _ex006, ex007_
 Event is everything that could happen to an element ([MDN (Mozilla) Web Docs](https://developer.mozilla.org/en-US/docs/Web/Events)). A common type of event is mouse events: mouseenter, mousemove, mousedown, mouseup, click, mouseout.
 
 Events can be declared either in HTML or in JavaScript (ex006). When declared in HTML, the code might get too fuzzy. It remains cleaner if added in JavaScript by (1) selecting the respective node; (2) storing its reference to a variable; and (3) adding the listener:
-```javascript
+```JavaScript
 var a = window.document.getElementById('area')
 a.addEventListener('click', clicar)
 function clicar() {
@@ -300,13 +299,13 @@ function clicar() {
 }
 ```
 There are several types of input elements to add to a html page. I used `<input type:number></input>`
-## Module D - Bedingungen in JS
-- Einfache Bedingungen (if)
-- Zusammengesetzte Bedingungen (if-else) composta
-- Verschachtelte Bedingungen (elseif) aninhada
-- Mehrere Bedingungen (Switch-Case)
+## Module D - Conditions in JS
+- Simple conditions (if)
+- Compound conditions (if-else) 
+- Nested conditions (elseif) 
+- Multiple conditions (Switch-Case)
 
-### [11/32] Condições em JavaScript
+### [17-18/33] Conditions in JavaScript
 Instead of getting the extension "node exec", use a docker container with node.  
 Press CTRL+P (windows), type ">shortcuts json", hit enter.
 Insert:
@@ -323,37 +322,36 @@ Insert:
   }
 ]
 ```
-Beim "ex012.js" wurde es beigebracht, wie man Information um die Zeit holt.
-```javascript
+How to get information on Datetime
+```JavaScript
 var now = new Date()
 var day = now.getDay()
 ```
-> der Webseitestil nach der Stunde ändern 
 
-## Module E - Wiederholungen (_Schleife_) in JS
-Hier wird es Kontrollstrukturen besprochen:
-- while (Prüfung am Beginn)
-- do-while (Prüfung am Ende)
-- for (mit Kontroll)
-### [13/32] Wiederholungen in JS Teil 1
+## Module E - Repetitions (_Laces_) in JS
+Control structures
+- while (check beforewards)
+- do-while (check afterwards)
+- for (with control)
+### [23/33] Repetiions in JS pt 1
 
-```javascript
-// while - Erstens überprüfes, dann machs
+```JavaScript
+// while - check first, then do it
 var count = 1
 while (count <=3) {
   console.log(`count ${count}`)
   c++
 }
-// do while - Erstens machs, dann überprüfes
+// do while - do first, then check it
 do {
   console.log(`count ${count}`)
   c++
 } while (count <= 3)
 ```
 
-### [13/32] Wiederholungen in JS Teil 2
+### [24/33] Repetiions in JS pt 2
 Wiederholungsstruktur mit Kontrollvariabel werden mit einem Hexagon representiert.
-```javascript
+```JavaScript
 // for
 for (var c=1; c <= 10; c++) {
   //code
@@ -365,15 +363,15 @@ VS Code's Debugging-Modus (F5 - depuração).
 Breakpoints can be added, and F10 steps over. One can also set variables to Watch.
 
 ## Module F - Avançando estudos em JS
-Hier wird es Kontrollstrukturen besprochen:
-- variaveis compostas (arrays)
+Structures of control are discussed here:
+- compound variables (arrays)
 - funcao, metodo, evento
 - passagem de parametros
 - exercicios 
 - proximos passos
-### [15/32] Wiederholungen in JS
+### [29/33] Compound variables in JS
 In allen anderen Klassen wurden lediglich einfache Variabeln berücksichtigt. Nun kommen die zusammengesetzten Variabeln voran. So deklariert man Arrays (in JS sind sie heterogeneous):
-```javascript
+```JavaScript
 let num = [5, 8, 4]
 num[1] = 21 // wie in Python
 num.push(6) // appends 6
@@ -381,16 +379,16 @@ num.length
 num.sort()
 num.indexOf(4) // .index in Python
 ```
-### [16/32] Funktionen in JS
+### [30/33] Functions in JS
 JavaScript ist nach dem funktionellen Paradigm orientiert.
-```javascript
+```JavaScript
 function func1(param_formal=0) {
   return res
 }
 func1(param_real)
 ```
 
-### [17/32] Näschte Schritte in JS
+### [33/33] Next steps in JS
 JavaScript ist nach dem funktionellen Paradigm orientiert.
 
 - Der Kurs von HTML5 & CSS
@@ -403,7 +401,7 @@ JavaScript ist nach dem funktionellen Paradigm orientiert.
 - NodeJS
 
 Objects: they are useful when we want to name our variables in a compost variable. With arrays, we are restricted to use sequential numbers as keys. In objects, we can set attributes.
-```javascript
+```JavaScript
 let amigo = {
   nome: 'José',
   idade: '31',
