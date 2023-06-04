@@ -264,7 +264,8 @@ durchschnitt >= 7.0 ? 'bestanden' : 'durchgefallen'
 ### [14/33] Understanding DOM
 The Document Object Model (DOM) is the main object used in the web to handle visual components. We will learn how to create and manipulate a DOM from whichever website we are dealing with.
 
-This class uses the VS Code Extensions "Watch in Chrome", that does not exist in 2023. Instead, one should get "Live Server". One installed, restart VS Code, go to any .html file, and click on "Go Live" on the bottom right of VS Code window. The whole project will be exposed at `localhost:5500`.
+In this class, the extension o VS Code called "Watch in Chrome" is suggested to automatically update the HTML file under development. The extension does not long exit. The current alternative is "Live Server". Once installed, restart VS Code, go to any HTML file, and click on "Go Live" on the bottom right of VS Code window. The whole project will be exposed at `localhost:5500`. _If WSL is used, one can edit the JSON of the extension settings and add `"liveServer.settings.AdvanceCustomBrowserCmdLine": "/mnt/c/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe",`_
+
 
 The DOM Hierarchical Tree start from the root, which in JS is an object called `window`. Inside `window`, there are several objects like `location` (what is the URL, current page, previous page), `document` (current document), `history` (facilitates the navigation inside the website). Moreover, `document` has `html`, that has `head` and `body`.
 

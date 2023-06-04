@@ -7,17 +7,20 @@
         <title>Document</title>
         <link rel="stylesheet" href="clock_page.css">
     </head>
-    <body>
-        <h1>Time of day</h1>
-        <div id="container">
-            <h2 id="clock_text"><i>clock_text</i></h2>
-            <!--
-
-            -->
-        </div>
-        <p id="signature">jsf-tree</p>
-        <!--
+    <body onload="load()">
+        <header>
+            <h1>Time of day</h1>
+        </header>
+        <h2 id="clock_text"><i>clock_text</i></h2>
+        <section>
+            <div id="time_msg">
+            </div>
+            <div class="image-container">
+            </div>
+        </section>
+        <footer>
+            <p id="signature">&copy;  jsf-tree</p>            
+        </footer>
         <script src="clock_page.js" type="text/javascript">console.log('hi')</script>
-        -->
     </body>
 </html>
