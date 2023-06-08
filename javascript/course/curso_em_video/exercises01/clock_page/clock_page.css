@@ -1,0 +1,102 @@
+body {
+    color: rgb(255, 255, 255);
+    font: bold 2vh Arial;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body.morning {
+    color: rgb(66, 20, 20);
+    background: rgb(255, 253, 116);
+}
+body.lunch {
+    color: rgb(150, 0, 0);
+    background: rgb(255, 238, 0);
+}
+body.afternoon {
+    color: rgb(255, 255, 255);
+    background: rgb(255, 162, 0);
+}
+body.sunset {
+    color: rgb(255, 255, 255);
+    background: rgb(255, 34, 0);
+}
+body.night {
+    color: rgb(255, 255, 255);
+    background: rgb(22, 0, 31);
+}
+section {
+    background: white;
+    width:  80vw;
+    height: 80vw;
+    max-height: 70vh;
+    max-width: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*vertical*/
+    justify-content: center; /*horizontal*/
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px rgb(57, 57, 57);
+    padding: 10px;
+}
+div {
+    color: rgb(0, 0, 0);
+    align-items: center; /*vertical*/
+    justify-content: center; /*horizontal*/
+    border: 0px solid black; /* Optional: Just for visualization */
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.small {
+    height: 10%;
+}
+div.large {
+    height: 65%;
+    margin: 5%;
+}
+div.large img {
+    height: 100%; /* Set the height of the image to be 100% of its parent */
+    width: auto; /* Maintain the aspect ratio of the image */
+}
+p#signature {
+    margin: 5pt auto;
+    width: 80vw;
+}
+div.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    transition: opacity 1.5s, visibility 1.5s;
+}
+.loader-hidden{
+    opacity: 50;
+    visibility: hidden;
+}
+.loader::after{
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #cfcfcfdd;
+    border-top-color: #1274b6;
+    border-radius: 50%;
+    animation: loading 1.5s ease infinite; /*each 1.5s, it will do animation*/
+}
+
+@keyframes loading {
+    from{
+        transform: rotate(0turn);
+    } to {
+        transform: rotate(1turn);
+    }
+}

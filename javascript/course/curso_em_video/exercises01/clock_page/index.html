@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="clock_page.css">
+
+        <!-- No Cache-->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+    </head>
+    <body onload="load()">
+        <header>
+            <h1>Time of day</h1>
+            <h2 id="clock_text"><i>clock_text</i></h2>
+        </header>
+        <div class="loader"></div>
+        <section>
+            <div class="small" id="time_msg">
+            </div>
+            <div class="large">
+                <img src="img/all.svg" alt="default">
+            </div>
+            <div class="small" id="time_wrong_msg">
+                <p>Not quite? You can set another time:</p>
+            </div>
+            <div class="small" id="correct_time">
+                <input type="time" name="wrong_lock" id="wrong_clock">
+            </div>
+        </section>
+        <footer>
+            <a href="https://github.com/jsf-tree">
+                <p id="signature">&copy;  jsf-tree</p>
+            </a>                     
+        </footer>
+        <script src="clock_page.js" type="text/javascript">console.log('hi')</script>
+    </body>
+</html>
