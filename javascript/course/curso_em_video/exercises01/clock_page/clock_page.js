@@ -74,7 +74,7 @@ function updateTimeStyle () {
 
 }
 
-function load() {
+function update() {
     updateClock();
     updateTimeStyle();
     // listen_new_time(); listen to new time, if it is changed, get it and substitute to the update clock
@@ -86,8 +86,8 @@ window.addEventListener("load", () => {
     loader.classList.add("loader-hidden")
 
     loader.addEventListener("transitionend", () => {
-        document.body.removeChild("loader");
+        document.body.removeChild(loader);
     })
 })
 
-setInterval(load, 1000);
+setInterval(update, 1000);

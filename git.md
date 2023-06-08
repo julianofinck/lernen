@@ -41,6 +41,51 @@ there they're out of your control. **pull** asks the warehouse to bring the new 
 ---
 
 ## Recurrent tasks
+#### **SSH connections**
+WSL2 requires `git clone` over SSH instead of HTTPS. To accomplish it, go to the current WSL home directory and type  
+```bash
+# Make SSH dir
+mkdir .ssh
+cd .ssh
+
+# Create key-pair w algorithm ed25519 OR rsa
+ssh-keygen -t ed25519 -C "user@email"
+
+# Create config file
+touch config
+nano config
+
+# Might be necessary to activate the Agent 
+eval "$(ssh-agent -s)"
+
+# # Default GitHub
+# Host github.com
+#     HostName github.com
+#     PreferredAuthentications publickey
+#     IdentityFile ~/.ssh/<a_name>
+
+# Check is ssh is registered:
+ssh-add -l
+
+# If not:
+ssh-add <algorithm used> 
+
+# Test:
+ssh -T git@github.com
+# Test passed if 
+# "Hi <name>! You've successfully authenticated, but GitHub does not provide shell access."
+```
+
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/<a_name>
+cat id_ed25519.pub
+# Copy the content, and register it as Authentication Key in GitHub
+# This is in GitHub > Settings > SSH and GPG keys
+# Now go to the repository and copy not the HTTPS but SSH to git clone
+```
+
+
 #### **Points that may be tackled in a README.md**
 * What is the project about? What does this do?
 * What are the dependencies and environment requirements?
@@ -146,4 +191,4 @@ Copy remote repository URL field
 | Action   | Date              |
 |----------|-------------------|
 | Creation | August 12th, 2022 |
-| Modified | March 17th, 2023  |
+| Modified | May 4th, 2023     |
