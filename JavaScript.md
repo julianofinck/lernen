@@ -299,17 +299,37 @@ d.style.background = 'black'
 ```
 
 ### [15/33] DOM Events
-_ex006, ex007_
+_Aula10 - ex006, ex007_
+
 Event is everything that could happen to an element ([MDN (Mozilla) Web Docs](https://developer.mozilla.org/en-US/docs/Web/Events)). A common type of event is mouse events: mouseenter, mousemove, mousedown, mouseup, click, mouseout.
 
-Events can be declared either in HTML or in JavaScript (ex006). When declared in HTML, the code might get too fuzzy. It remains cleaner if added in JavaScript by (1) selecting the respective node; (2) storing its reference to a variable; and (3) adding the listener:
+Events can be declared either in HTML or in JavaScript (ex006). Better to declare in JavaScript, to keep HTML clean and maintainable:
+- on JavaScript
 ```JavaScript
-var a = window.document.getElementById('area')
-a.addEventListener('click', clicar)
+// Get element reference
+const triggerButton = window.document.getElementById('trigger_button')
+
+// Add Listener
+triggerButton.addEventListener('click', clicar)
+
+// Declare  function
 function clicar() {
     a.innerText = 'Clicou!'
     a.style.background = "rgb(0, 200, 0)";
 }
+```
+The [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener?retiredLocale=de) accepts a long list o events. Here is the documentation for the [mouse events](https://developer.mozilla.org/en-US/docs/Web/API/Element#mouse_events) for instance.
+
+- on HTML (not recommended)
+```html
+<div 
+  id="area"
+  onclick="clicar()"
+  onmouseenter="entrar()" 
+  onmouseout="sair()"
+  onmousewheel="rodar()">
+  Interaja...
+</div>
 ```
 There are several types of input elements to add to a html page. I used `<input type:number></input>`
 ## Module D - Conditions in JS
@@ -435,13 +455,12 @@ FullStack GIS Job Example
 - Elaborar documentação técnica
 
 <b>Requirements</b>  
-- Grande proficiência com JavaScript;  
-- Conhecimento intermediário de HTML5 e CSS3;
+- Grande proficiência com JavaScript;
+- Conhecimento intermediário de HTML5 e CSS3;  
 - Conhecimento em banco de dados Postgres, SQL ou Oracle;
 - Compreender a natureza da programação assíncrona e suas peculiaridades e soluções alternativas (JQuery);
 - Conhecimento em ArcGIS Web AppBuilder, ArcObjects, ArcGIS Server, ArcGIS Desktop, Portal for ArcGIS,
 ArcGIS API JS
-
 - Boa vivência com ferramentas ESRI
 - Integração de múltiplas fontes de dados e bancos de dados em um sistema;
 - Compreender os princípios fundamentais de design por trás de um aplicativo escalonável; (Arquitetura de Projeto, Design Pattern);

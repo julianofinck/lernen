@@ -13,7 +13,9 @@ section {
     background-color: white;
     height: fit-content;
     width: 80vw;
-    
+    max-width: 350pt;
+    max-height: 60vh;
+    display: flex;
     flex-direction: column;
     align-items: center; /*vertical*/
     justify-content: left; /*horizontal*/
@@ -23,6 +25,10 @@ section {
     border: 1px solid rgb(60, 59, 59);
 }
 div {
-    padding: 2vw;
+    padding: 1%;
     border: 0pt solid black;
+}
+img  {
+    width: fit-content;
+    max-width: 30vh;
 }
