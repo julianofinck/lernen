@@ -1,10 +1,7 @@
 # AutoCAD 
-It is a commercial computer-aided design and drafting software application released in 1982.
+> AutoCAD is a commercial Computer-Aided Design and drafting software application released in 1982.
 
-After installation, add [Autodesk Genuine Service](https://youtu.be/xqEnDpikZdw) by
-extracting `Autodesk Genuine Service.rar`, run it, click on "remove". Done!
-
-### 2d 3d Tutorial _Create a house project_ with Awais Mirza
+### "Create a house project" Tutorial with Awais Mirza
 Content of the [video](https://youtu.be/-7hrElZrul4):
 - Lines, Circles, Rectangles
 - Hatching
@@ -15,7 +12,6 @@ Content of the [video](https://youtu.be/-7hrElZrul4):
 - External references
 - Layouts
 - Create output
-
 - 3d Drawing
 ```
 set DEFAULTGIZMO to 0
