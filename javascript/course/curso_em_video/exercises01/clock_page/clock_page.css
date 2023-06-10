@@ -1,5 +1,6 @@
 body {
     color: rgb(255, 255, 255);
+    height: 200vh;
     font: bold 2vh Arial;
     text-align: center;
     background: rgb(255, 255, 255);
@@ -9,23 +10,23 @@ body {
 }
 body.morning {
     color: rgb(66, 20, 20);
-    background: rgb(255, 253, 116);
+    background: radial-gradient(circle at left, #ffffff 10%, #f2ff00 11%, #93c2b6 50%);
 }
 body.lunch {
     color: rgb(150, 0, 0);
-    background: rgb(255, 238, 0);
+    background: radial-gradient(circle at top, #ffffff 5%, #f2ff00 6%, #93c2b6 9%);
 }
 body.afternoon {
     color: rgb(255, 255, 255);
-    background: rgb(255, 162, 0);
+    background: radial-gradient(circle at top right, #ffffff 5%, #f2ff00 6%, #ffa109 9%);
 }
 body.sunset {
     color: rgb(255, 255, 255);
-    background: radial-gradient(circle at bottom right, #ffffff 10%, #f2ff00 11%, #fe7803 20%, rgb(146, 7, 139) 45%, rgb(49, 10, 66) 60%, rgb(21, 2, 30) 95%);
+    background: radial-gradient(circle at right, #ffffff 10%, #f2ff00 11%, #fe7803 20%, rgb(146, 7, 139) 45%, rgb(49, 10, 66) 60%, rgb(21, 2, 30) 95%);
 }
 body.night {
     color: rgb(255, 255, 255);
-    background: radial-gradient(circle at top, #333, #333 50%, #eee 75%, #33333300 75%), radial-gradient(circle at bottom, #00d5ff, #333 50%, #eee 75%, #333 75%);;
+    background: radial-gradient(circle at 15vw 14vw, #fefefe 4%, #6b6b6b 4.4%, #333 6%,#000000 15%);;
 }
 section {
     background: white;
@@ -40,6 +41,7 @@ section {
     border-radius: 10%;
     box-shadow: 5px 5px 10px rgb(57, 57, 57);
     padding: 10px;
+    border: 1px solid rgb(60, 59, 59);
 }
 div {
     color: rgb(0, 0, 0);

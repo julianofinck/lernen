@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Age Verifier</h1>
+    </header>
+    <section>
+        <div class="small"> Year of Birth: 
+            <input type="number" id='txtyear' name="textyear">
+        </div>
+        <div class="small"> Sex: 
+            <!-- The name must be the same so that only one can be checked-->
+            <input type="radio" name="radsex" id="male" checked>
+            <label for="male">Male</label>
+            <input type="radio" name="radsex" id="female">
+            <label for="male">Female</label>
+        </div>
+        <div class="btn">
+            <input type="button" id="verify-btn" value="Verify">
+        </div>
+        <div id="res">
+            Fill it to get info
+        </div>
+    </section>
+    <footer>
+        <a href="https://github.com/jsf-tree">
+            <p id="signature">github/jsf-tree</p>
+        </a>
+    </footer>
+    <script src='script.js'></script>
+</body>
+</html>
