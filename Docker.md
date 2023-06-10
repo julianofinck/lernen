@@ -1,9 +1,7 @@
 # [Docker](https://www.docker.com/)
 
 Facilitates setting up dependencies and settings via **virtual containers** into which applications and dependencies are packaged. 
-**Containers** are portable to any system with Docker installed. On Windows, Docker Desktop requires WSL2.
-
-Here's a good start: [Tutorial](https://docs.docker.com/get-started/)
+**Containers** are portable to any system with Docker installed. On Windows, Docker Desktop requires WSL2. [Tutorial](https://docs.docker.com/get-started/)
 
   --------------------------------------------------------------------------------
 ### Glossary 
@@ -20,13 +18,15 @@ docker rm <container_name/container_id>         # Remove container by name/id
 docker container stop <container_name>          # Stops container
 ```
 ---
-To share docker between Windows and WSL, one must go to Docker Desktop's Settings and...
-- General > Check "Use the WSL 2 based engine"
-- Resources > WSL Integration > Enable integration with additional distro > Enable
+Enable docker between Windows and WSL in Docker Desktop Settings:  
+`General > Check "Use the WSL 2 based engine"`  
+`Resources > WSL Integration > Enable integration with my default WSL distro`
 
  --- 
- Use a "docker-compose.yml" when apps scale up; run it with a single command: "docker-compose up"
-```docker-compose
+Run "docker-compose up" when apps scale up; 
+ 
+```Docker
+# Boilerplate of a "docker-compose.yml"
 version: '3'
 services:
   web:
@@ -58,17 +58,17 @@ docker run -dp 8081:8080 --name tomcat_geonetwork --network geonetwork --network
 
  --------------------------------------------------------------------------------
 ### Sheetcode
-#### From DockerHub, find an image tag, extend it using a Dockerfile
+Extend an image
 ```Dockerfile
-FROM mysql
-ENV MYSQL_ROOT_PASSWORD secr3t_password
+FROM mysql # An image tag in local or from Docker Hub
+ENV MYSQL_ROOT_PASSWORD secr3t_password # set any additional Environment Variable
 ```
 #### Build image (Dockerfile to image) ¹Use dot for working dir
 ```
 docker build -t <tag_name> -f <dockerfile_path> <dir_in_which_to_build¹>
 ```
 #### Make a container
-```
+```shell
 docker run -d --rm --name <container_name> <image_tag_name>
 # -d (detach)	execute in background (shell does not freeze)
 # --rm		se o container ja existir, ele será removido para que um novo seja criado
@@ -152,29 +152,12 @@ docker push julianofinck/docker101tutorial
 
 
 ## Pesquisar como deletar Container e Imagens mortas
-
-
 Where's my docker running at?
 
 `docker info 2> nul | findstr /C:"Operating System" /C:"OS"`
 
-# Known errors:
-_Failed to solve with frontend dockerfile.v0: failed to create LLB definition: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed_
-
-OR **the timeout error**
-
-_Docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)._
-
-
-After guaranting the submitted image name "name:tag" is truly in hub.docker.com,
-try to relog:
-```bash
-docker logout
-docker login
-#insert your Username and Password to DockerHub
- ```
-
-Cleaning up Docker
+## -- Cleaning up Docker --
+```shell
 # Clear all Docker unused objects (images, containers, networks, local volumes)
 docker system prune 
 # Or, one can prune specific objetcs like: 
@@ -182,26 +165,47 @@ docker image prune
 docker container prune
 docker network prune
 docker volume prune
+```
  
-# Persist data
-By default containers don't keep changes when restarted, they always start from their image, but there are two ways to persist data.
-## Volume mount
-Volume is fully managed by Docker, including where it is stored on disk. User only must only remeber the name of the volume.
-```
+## Volumes to Persist data
+Containers don't keep changes by default when restarted, they start from image. Nevertheless, data can be persisted via volumes. A volume is a dedicated file system managed by Docker that lives on the host file system. Volumes are used to persist data even if the container is deleted or recreated, and they can be shared between containers. 
+
+There are two ways to persist data: 
+- either a **Volume Mount**  
+_Docker manages it fully, including where to store on disk. User only must only remeber the name of the volume._
+
+```shell
+# -- Create volume mount --
 docker volume create <volume-name>
-# add "--mount type=volume,src=<volume-name>,target=<absolute-path-of-to-persist-dir>" 
-docker volume inspect <volume-name>
-# Mountpoint is where it is on disk
-# \\wsl$\docker-desktop-data\data\docker\volumes
-Bind Mount: This allows you to mount a directory from the host file system into a container. The data in the bind-mounted directory is stored on the host file system and changes to the data are reflected in both the host and container.
+# docker run <flogs> --mount type=volume,src=<volume-name>,target=<container-dir> <image>
 
-Volume: This is a dedicated file system managed by Docker that lives on the host file system. Volumes are used to persist data even if the container is deleted or recreated, and they can be shared between containers.
+# -- Where is the volume mountpoint in the Hyper-V? --
+docker volume inspect <volume-name>
+# in a WSL running in Windows it is in "\\wsl$\docker-desktop-data\data\docker\volumes"
+```
+- or a **Bind Mount** (mount a directory from the host file system into a container. The data in the bind-mounted directory is stored on the host file system and changes to the data are reflected in both the host and container):
+```shell
+docker run <flags> --mount type=bind,src="$(pwd)",target=/src
 ```
 
-# Vmmem consuming too much ram
-Create a file named ".wslconfig" in your %userprofile% with the following to limit to 2gb RAM.
+
+## -- Known errors --
+
+- **the timeout error**  
+_Failed to solve with frontend dockerfile.v0: failed to create LLB definition: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed_  
+_Docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)._  
+```bash
+# Make sure the submitted image name "name:tag" exists in hub.docker.com or local
+# If it does, relog:
+docker logout
+docker login --username <your_dockerhub_username>
+# Remember to insert the Username (and not the E-Mail) and Password to DockerHub
+ ```
+
+- **Vmmem consuming too much ram**  
+cd to %userprofile%, create a file named ".wslconfig" with the following:  
+[source](https://www.koskila.net/how-to-solve-vmmem-consuming-ungodly-amounts-of-ram-when-running-docker-on-wsl/)
 ```
 [wsl2]
 memory=2GB
 ```
-[source](https://www.koskila.net/how-to-solve-vmmem-consuming-ungodly-amounts-of-ram-when-running-docker-on-wsl/)

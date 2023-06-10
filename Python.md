@@ -25,7 +25,7 @@
 ### Dependencies - Libraries
 ```bash
 # uninstall all libraries:
-pip freeze > requirements.txt
+pip freeze > requirements.txt # or for Python 3: pip3 freeze (...)
 pip uninstall -r requirements.txt -y
 ```
 

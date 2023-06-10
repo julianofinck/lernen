@@ -210,7 +210,19 @@ Variable is got by `typeof variable`;
 Single-line comment use `//`;  
 Block comment uses `/* block-comment */`.
 
-Variables are declared with `let` (mutable), `const` (constant), or `var` (either and does not limit scope). The main primitive variables types in JS are **number, string, boolean, null, undefined, object, function**.
+Variables are declared with `let` (mutable), `const` (constant), or `var` (either and does not limit scope).
+```JavaScript
+// setTimeout schedules a callback function after a delay.
+// if var (global) is used, all the callback will get 3 bc the for-loop is long through.
+// if let (local) is used, the callback will get the i at the moment it was triggered.
+for(var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 100);
+}
+```
+
+The main primitive variables types in JS are **number, string, boolean, null, undefined, object, function**.
 
 Numbers can be converted into stylized strings:
 ```JavaScript
