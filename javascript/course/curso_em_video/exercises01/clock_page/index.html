@@ -1,41 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        
         <link rel="stylesheet" href="clock_page.css">
+        <meta name="author" content="Juliano Santos Finck">
+        
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
 
-        <!-- No Cache-->
+        <!-- Search Engine Optimization - This description will come up on a Google Search -->
+        <title>Clock</title>
+        <meta name="description" 
+            content="In this first HTML exercise I want to make a responsive page that changes according to the clock."/>
+        
+        <!-- No Cache -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Expires" content="0">
+
+        <!-- When shared in Facebook-->
+        <meta property="og:image"
+        content="https://raw.githubusercontent.com/jsf-tree/jsf-tree.github.io/main/img/share_og.png" />
+        <!-- https://github.com/jsf-tree/jsf-tree.github.io/blob/main/img/share_og.png?raw=true -->
+        <meta property="og:description"
+        content="Learning responsiveness JavaScript, HTML5 and CSS 3." />
+        <meta property="og:title" content="Clock by Juliano Santos Finck" />
+
+        <!-- JavaScript-->
+        <script src="clock_page.js" type="text/javascript">console.log('hi')</script>
     </head>
-    <body onload="load()">
+    <body onload="update()">
         <header>
             <h1>Time of day</h1>
             <h2 id="clock_text"><i>clock_text</i></h2>
         </header>
         <div class="loader"></div>
         <section>
-            <div class="small" id="time_msg">
+            <div class="period-msg" id="time_msg">
             </div>
             <div class="large">
                 <img src="img/all.svg" alt="default">
             </div>
-            <div class="small" id="time_wrong_msg">
+            <div class="wrong-time" id="time_wrong_msg">
                 <p>Not quite? You can set another time:</p>
             </div>
-            <div class="small" id="correct_time">
+            <div class="wrong-time" id="correct_time">
                 <input type="time" name="wrong_lock" id="wrong_clock">
             </div>
         </section>
         <footer>
             <a href="https://github.com/jsf-tree">
-                <p id="signature">&copy;  jsf-tree</p>
+                <p id="signature">github/jsf-tree</p>
             </a>                     
         </footer>
-        <script src="clock_page.js" type="text/javascript">console.log('hi')</script>
     </body>
 </html>
