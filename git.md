@@ -51,12 +51,36 @@ cd .ssh
 # Create key-pair w algorithm ed25519 OR rsa
 ssh-keygen -t ed25519 -C "user@email"
 
+# >> Generating public/private ed25519 key pair.
+# >> Enter file in which to save the key (/home/<USERNAME>/.ssh/id_ed25519):
+# >> Enter passphrase (empty for no passphrase):
+# >> Enter same passphrase again:
+# >> Your identification has been saved in /home/<USERNAME>/.ssh/id_ed25519
+# >> Your public key has been saved in /home/<USERNAME>/.ssh/id_ed25519.pub
+# >> The key fingerprint is:
+# >> SHA256:Me9ZrTY7hjD1h11fnrQPoDIM6IZtaomXRVclTPPERlo juliano.finck@gmail.com
+# >> The key's randomart image is:
+# >> +--[ED25519 256]--+
+# >> |       o++E      |
+# >> |        oBo      |
+# >> |     . .+..      |
+# >> |    o o  +. .. .o|
+# >> |   = . oS..o.+oo=|
+# >> |  . *   *..oo.+oo|
+# >> | . B     =o.+. ..|
+# >> |. *       ..oo  .|
+# >> | o         ...   |
+# >> +----[SHA256]-----+
+
+# Copy the content of the public key
+cat id_ed25519.pub
+# >> ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA use@email
+
+# Go to GitHub, Settings, SSH and GPG keys, New SSH key, git it a Title, Key type is "Authentication Key" and paste Key.
+
 # Create config file
 touch config
 nano config
-
-# Might be necessary to activate the Agent 
-eval "$(ssh-agent -s)"
 
 # # Default GitHub
 # Host github.com
@@ -64,25 +88,19 @@ eval "$(ssh-agent -s)"
 #     PreferredAuthentications publickey
 #     IdentityFile ~/.ssh/<a_name>
 
+# Might be necessary to activate the Agent 
+eval "$(ssh-agent -s)"
+
 # Check is ssh is registered:
 ssh-add -l
 
 # If not:
-ssh-add <algorithm used> 
+ssh-add id_ed25519
 
 # Test:
 ssh -T git@github.com
 # Test passed if 
 # "Hi <name>! You've successfully authenticated, but GitHub does not provide shell access."
-```
-
-```
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/<a_name>
-cat id_ed25519.pub
-# Copy the content, and register it as Authentication Key in GitHub
-# This is in GitHub > Settings > SSH and GPG keys
-# Now go to the repository and copy not the HTTPS but SSH to git clone
 ```
 
 
