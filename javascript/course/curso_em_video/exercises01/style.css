@@ -1,0 +1,97 @@
+:root {
+    --bg-color: rgb(20, 20, 20);
+    --card-color: rgb(23, 23, 23);
+}
+
+body {
+    align-items: center;
+    background-color: var(--bg-color);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0px;
+    overflow: hidden; /* What does it do? */
+    padding: 0px;
+}
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 952px; /* forces row of three */
+    width: calc(100% - 20px);
+}
+
+#cards:hover > .card > .card-border {
+    opacity: 1;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.02);
+    /*border: 2px solid rgba(255, 255, 255, 0.1);*/
+    border-radius: 10px;
+    cursor: pointer; /*Cursor changes to pointer when hovering*/
+    height: 260px;
+    position: relative;
+    width: 300px;
+}
+
+/*
+Adding the hover effect with the before sudo effect
+The glow effect is added by changing the gradient
+*/
+.card::before,
+.card > .card-border {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2; /* what for? */
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.card::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 200, 200, 0.2),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.card > .card-border {
+    background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.6),
+        transparent 40%
+    );
+    z-index: 1;
+}
+
+.card:hover::before,
+.card:hover > .card-border {
+    opacity: 1;
+}
+
+
+/*
+A way to highlight the neighboring borders
+
+Styling borders is pretty limited, but one
+can leverage a visual trick making the background
+of the card opaque and expose a tiny 1-pixel line
+area around the age of the content to simulate a border
+*/
+.card > .card-content {  /* what is this arrow symbol??*/
+    background-color: var(--card-color);
+    border-radius: inherit;
+    position: relative;
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    margin: 1px;
+    z-index: 2;
+}
