@@ -279,5 +279,57 @@ if __name__ == '__main__':
 
 
 ```
+# Applied Data Science with Python and Jupyter (2018) Alex Galea
+GitHub: https://github.com/TrainingByPackt/Applied-Deep-Learning-with-Python  
+Other:  https://github.com/PacktPublishing
 
+There are two primary types of Jupyter Notebooks:
+- Lab-style: analog to research journals, they keep all the work you've done to load, process, analyse, and model data, including approaches that didn't work.
+- Deliverable: presentable and contains aonly selected parts of the lab-style notebooks (eg. an interesting discovery to share with colleagues; in-depth report for a manager, or a summary of the key-findings)
+## Anaconda
+Visit https://www.anaconda.com/download/  
+Click on the installer for your OS, download and install it  
+Search for Anaconda Prompt, open it as administrator and type
+```conda
+# Update conda
+conda update conda
 
+# Install & update Jupyter
+conda install jupyter
+conda update jupyter
+
+# Install packages
+conda install numpy pandas statsmodels matplotlib seaborn
+```
+to open Jupyter Notebook from Anaconda Prompt:
+```conda
+jupyter notebook
+pip install -U scikit-learn
+```
+Jupyter notebooks support **Inspection** and **Code Completion**.  
+The docstring of any object can be accessed in any cell with `object?`  
+Code completion appear when `tab` gets pressed.
+
+---
+
+Start Jupyter opening the anaconda prompt, activating the env, navigating to the project folder and `jupyter notebook`
+
+After finishing a ipynb, it can be converted  
+- via GUI with the `File > Download as > Python` or 
+- via CLI `jupyter nbconvert --to=python myFirstNotebook.ipynb`.
+
+Getting requirements from all scripts in a folder with pipreqs
+```bash
+# If env does not have pipreqs yet
+pip install pipreqs
+
+# Export all external imports to folder/requirements.txt
+pipreqs folder/
+```
+
+## Django
+Django is a python framework for backend development (ie it works in the server-side). Other Server-side frameworks are Express (for JavaScript devs), ASP.NET Core (for C# devs). Client-side frameworks are React, Angular and Vue.
+
+The current webdev standard pushes the responsibility of generating html to the client, while enabling the server to handle more user connections. The server effectivelly becomes a gateway to the data.
+
+The server provides APIs to the clients. Django can be used to build APIs.
