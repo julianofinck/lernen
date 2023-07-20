@@ -17,7 +17,7 @@ Extending an image with a `Dockerfile`
 FROM mysql # An image tag in local or from Docker Hub
 ENV MYSQL_ROOT_PASSWORD secr3t_password # set any additional Environment Variable
 ```
-Commonly used shell commands for images:
+Commonly used shell commands for images (there are many more tags, check documentation):
 ```Shell
 # Build image (Dockerfile to image) ¹ . for current dir
 docker build -t <image_name:tag> -f <dockerfile_path> <dir_in_which_to_build¹>
@@ -79,11 +79,11 @@ docker volume inspect <volume-name>
 docker run <flags> --mount type=bind,src="$(pwd)",target=/src <image>
 ```
 
-## 4. Scale Up
-- Run "docker-compose up" when apps scale up; 
- 
+## 4. Scaling up with Docker Compose
+Docker compose orchestrate several containers (called services) via a single .yml file. Type `docker compose up -d` to read the docker-compose.yml the current dir in detached mode and create a group in Docker Desktop named after the current dir.
 ```Docker
 # Boilerplate of a "docker-compose.yml"
+# Notice how volumes is a top-lvel declaration and Network is created automatically.
 version: '3'
 services:
   web:
@@ -99,7 +99,10 @@ services:
   volumes:
     db-data
 ```
-- Furthermore, Kubernetes provides an even more advanced container orchestration platform.
+See the log of the group to inspect time-related issues with `docker compose logs -f`. Service-specific logs can be seen with
+`docker compose logs -f app`. To shutdown the group and delete their volume `docker compose down --volumes` (volumes arent automatically deleted).
+
+Furthermore, Kubernetes provides an even more advanced container orchestration platform.
 
 
 ## 5. Cleaning up Docker
@@ -164,8 +167,49 @@ docker run -d --name postgres_gnet --network geonetwork --network-alias postgres
 docker run -dp 8081:8080 --name tomcat_geonetwork --network geonetwork --network-alias geonetwork -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=gn tomcat_geonetwork:3.10.x
 ```
 ### 6.3 Multi-stage build
+In this Dockerfile, the first stage named `builder` build the Java application. The second and last stage is by convention the final image. It copies all in `tmp/core-geonetwork/geonetwork` from `builder` to Tomcat's expose folder `$CATALINA_HOME/webapps/geonetwork`
+```Dockerfile
+# BUILD - Maven + JDK8
+FROM maven:3-eclipse-temurin-8 AS builder
+ENV CORE_GEONET_PATH=/tmp/core-geonetwork
+WORKDIR $CORE_GEONET_PATH
+COPY 2copy/core-geonetwork .
+RUN mvn clean install -DskipTests --quiet
+# Unzip .war in folder geonetwork
+RUN mkdir geonetwork \
+    && cp web/target/geonetwork.war geonetwork/geonetwork.war \
+    && cd geonetwork && jar -xf geonetwork.war && rm geonetwork.war
+
+# DEPLOY - Tomcat 8.5 (final image)
+FROM tomcat:8.5-jre8
+# GEONETWORK - copy from builder
+RUN mkdir $CATALINA_HOME/webapps/geonetwork
+COPY --from=builder /tmp/core-geonetwork/geonetwork $CATALINA_HOME/webapps/geonetwork
+MAINTAINER Juliano Santos Finck <juliano.finck@codex.com.br>
+CMD ["catalina.sh", "run"]
+```
 
 ### 6.4 Store image in GitLab repository
+```Docker
+# ------------- PUSH -------------
+# Login to the GitLab Container Registry (use your GitLab credentials)
+# the gitlab-registry is often the gitlab domain
+docker login <gitlab-registry>
+
+# Tag the Docker image with the GitLab Container Registry URL and the image name
+docker tag example:v1 <gitlab-registry>/<group>/<project>/example:v1
+
+# Push the Docker image to GitLab Container Registry
+docker push <gitlab-registry>/<group>/<project>/example:v1
+
+# ------------- PULL -------------
+# Login to the GitLab Container Registry (use your GitLab credentials)
+docker login <gitlab-registry>
+
+# Pull the Docker image from GitLab Container Registry
+docker pull <gitlab-registry>/<group>/<project>/example:v1
+```
+
 
 ## 7. [Getting started Tutorial](https://docs.docker.com/get-started/)
 
