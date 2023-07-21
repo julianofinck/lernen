@@ -9,14 +9,27 @@ Download [Docker Desktop](https://www.docker.com/products/docker-desktop/), inst
 `General > Check "Use the WSL 2 based engine"`  
 `Resources > WSL Integration > Enable integration with my default WSL distro`
 
-## 2. Image and Container
-### 2.1 **Image**: 
-An Image is a template/model for containers that can be built from `Dockerfiles`;
-Extending an image with a `Dockerfile`
+## 2. Dockerfile (blueprint) -> Image (template) -> Container (running process)
+### 2.1 **Dockerfile**
+This is a blueprint. It is often extended from other images in DockerHub or GitLab registries.
 ```Dockerfile
-FROM mysql # An image tag in local or from Docker Hub
-ENV MYSQL_ROOT_PASSWORD secr3t_password # set any additional Environment Variable
+FROM node:12 # An image tag in local or from Docker Hub
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install  # Shell Form
+
+COPY . .     # files and directories in .dockerignore wont be copied
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]  # Exec Form - only one per Dockerfile (tells the container how to run the application)
 ```
+
+### 2.2 **Image**: 
+An Image is a template/model for containers that can be built from `Dockerfiles`;  
 Commonly used shell commands for images (there are many more tags, check documentation):
 ```Shell
 # Build image (Dockerfile to image) ¹ . for current dir
@@ -29,7 +42,7 @@ docker image ls
 docker rmi <image_name/image_id>                
 ```
 
-### 2.2 **Container**: OS, languages and libraries;
+### 2.3 **Container**: OS, languages and libraries;
 ```Shell
 # List containers
 docker container ls -a                          
@@ -45,6 +58,7 @@ docker run <flags> --name <container_name> <image_tag_name>
 # -d (detach)	execute in background (shell does not freeze)
 # --rm		    if container already exists, it gets substituted
 # -i            execute commands inside the container
+# -p <port_expose>:<port_in_container>
 
 # Execute a command inside a container
 docker exec -i <nome_container> <command_inside_container>
@@ -104,8 +118,10 @@ See the log of the group to inspect time-related issues with `docker compose log
 
 Furthermore, Kubernetes provides an even more advanced container orchestration platform.
 
+## 5. History of an Image
+Each layer of an image can be inspected with `docker image history [--no-trunc] <image>` to diagnose bottlenecks in large images. The `--no-trunc` flag will print out the whole info.
 
-## 5. Cleaning up Docker
+## 6. Cleaning up Docker
 To get rid of unused objects, one can use `docker prune` methods, or use the flag `-a` to list containers, images, volumes and so on, and manually remove them using their ids.
 ```shell
 # Clear all Docker unused objects (images, containers, networks, local volumes)
@@ -122,8 +138,8 @@ Where's my docker running at?
 
 
 
-## 6. Examples
-### 6.1 Run a PostgreSQL server container
+## 7. Examples
+### 7.1 Run a PostgreSQL server container
 ```Bash
 # Go to directory
 cd <dir>
@@ -149,7 +165,7 @@ docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" my_
 
 docker build -t geonetwork -f Dockerfile_postgres
 
-### 6.2 GeoNetwork: multi-cointainer App
+### 7.2 GeoNetwork: multi-cointainer App
 ```docker
 # Building PostgreSQL with PostGIS enabled
 docker build -t postgres_postgis:15.1 -f Dockerfile_pg .
@@ -166,7 +182,11 @@ docker run -d --name postgres_gnet --network geonetwork --network-alias postgres
 # Start GeoNetwork
 docker run -dp 8081:8080 --name tomcat_geonetwork --network geonetwork --network-alias geonetwork -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=gn tomcat_geonetwork:3.10.x
 ```
-### 6.3 Multi-stage build
+### 7.3 Multi-stage build
+Multi-stage advantages are:
+- Separate build-time dependencies from runtime dependencies
+- Reduce overall image size by shipping only what your app needs to run
+
 In this Dockerfile, the first stage named `builder` build the Java application. The second and last stage is by convention the final image. It copies all in `tmp/core-geonetwork/geonetwork` from `builder` to Tomcat's expose folder `$CATALINA_HOME/webapps/geonetwork`
 ```Dockerfile
 # BUILD - Maven + JDK8
@@ -189,7 +209,22 @@ MAINTAINER Juliano Santos Finck <juliano.finck@codex.com.br>
 CMD ["catalina.sh", "run"]
 ```
 
-### 6.4 Store image in GitLab repository
+A React multi-stage example:
+```Dockerfile
+# syntax=docker/dockerfile:1
+FROM node:18 AS build
+WORKDIR /app
+COPY package* yarn.lock ./
+RUN yarn install
+COPY public ./public
+COPY src ./src
+RUN yarn run build    # bulding all JSX files
+
+FROM nginx:alpine   # faster than keeping a node server in production
+COPY --from=build /app/build /usr/share/nginx/html
+```
+
+### 7.4 Store image in GitLab repository
 ```Docker
 # ------------- PUSH -------------
 # Login to the GitLab Container Registry (use your GitLab credentials)
@@ -211,7 +246,7 @@ docker pull <gitlab-registry>/<group>/<project>/example:v1
 ```
 
 
-## 7. [Getting started Tutorial](https://docs.docker.com/get-started/)
+## 8. [Getting started Tutorial](https://docs.docker.com/get-started/)
 
 ```Docker
 # Clone a repository
