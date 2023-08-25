@@ -167,7 +167,9 @@ node.JS (RTE and library for running applications outside the client's browser)
   Mozilla (developer mozilla org) -> referência de JS, html, CSS  
   ECMA (Standard) ecma international org [ECMA-262] < Referência *(no curso trabalharemos com ECMA5 e ECMA6)*
 
-We're gonna use **Google Chrome** (to run our code); **VS Code** (write code – great integration with 1 and 3); **nodejs** (facilitates learning). When installing nodejs, add it to PATH and add the package manager (NPM).
+**Google Chrome** to run our code;  
+**VS Code** to write code and has great integration;  
+**nodejs** facilitates learning. When installing nodejs, add it to PATH and add the package manager (NPM).
 
 I used a docker container with node.js
 
@@ -177,10 +179,9 @@ docker pull node:lts
 sudo docker run -it --rm -v /home/julianofinck/javascript:/workspace --name nodejs_env node:lts
 ```
 ### [07/33] First Script
+In VS Code, create a HTML file, type "html". At the IDE's Intelisense suggestion prompt "html:5", hit enter and a basic html code generates.
 
-In VS Code, when a HTML file is created, one can simply type "html" and the IDE's Intelisense will suggest "html:5"? By hitting enter, a basic code will be generated.
-
-Opening this HTML in a Browser, I can watch that changes by refreshing the page.
+Opening this HTML in a Browser, I can watch that changes by refreshing the page. JS is usually kept at the end of `<body>`, after the base code got generated.
 
 ```html
 <!DOCTYPE html>
@@ -196,7 +197,7 @@ Opening this HTML in a Browser, I can watch that changes by refreshing the page.
   </body>
 </html>
 ```
-JS is usually kept at the end of `<body>`, after the base code got generated.
+
 
 ---
 ## Module B
