@@ -95,20 +95,17 @@ These are languages and respective frameworks he finds worth learning
 
 ---
 
-# [Curso em vídeo - Gustavo Guanabara](https://www.youtube.com/watch?v=1-w1RfGIov4&list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1&index=1)
-## Module A - Getting to know JavaScript 
-### [04/33] What is JavaScript?
-#### **Client vs Server**
+## III. [Curso em vídeo](https://www.youtube.com/watch?v=1-w1RfGIov4&list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1&index=1) - Gustavo Guanabara
+### Module A - Getting to know JavaScript 
+#### [04/33] What is JavaScript?
+**Client vs Server**  
 The Client (computer browser or mobile) requests the Server via the internet infrastructure (Cloud). The Server looks for the HTML and sents a copy of it back.  
 ![client_vs_server](./images/client_vs_server.svg)  
 
-#### **The three agents**
-1. HTML (Hypertext Markup Language):  
-Markup language, as a journalist who maintains the content
-2. CSS (Cascading Style Sheets):  
-Style language, as a designer who maintains the art/style
-3. JS (JavaScript):  
-Programming language, as a programmer who maintains the logic, interaction and integration
+**The three agents**  
+• HTML (Hypertext Markup Language):  Markup language, as a journalist who maintains the content  
+• CSS (Cascading Style Sheets): Style language, as a designer who maintains the art/style  
+• JS (JavaScript): Programming language, as a programmer who maintains the logic, interaction and integration
 
 node.JS (RTE and library for running applications outside the client's browser)  
   **Why was node JS created?**  
@@ -117,8 +114,8 @@ node.JS (RTE and library for running applications outside the client's browser)
 
 ---
 
-### [05/33] The evolution of JavaScript
-#### **Abridged History of JavaScript**
+#### [05/33] The evolution of JavaScript
+**Abridged History of JavaScript**
 |Year | Description |
 |---|---|
 |1970 |Arpanet by Darpa, Dwight Eisenhower (precessor of the internet -- USA fearing getting their military bases destroyed by the Russian Satellite Sputnik, and consequentely losing all military data)|
@@ -158,27 +155,29 @@ node.JS (RTE and library for running applications outside the client's browser)
 
 ---
 
-### [06/33] First Steps
-#### Recommended Bibliography:
-- **Books**  
-  JS o guia definitivo - David Flanegam, O'Riley El  
-  JS: guia do programador - Mario Jor, Mauricio Sami Silva
-- **Online Documentation**  
-  Mozilla (developer mozilla org) -> referência de JS, html, CSS  
-  ECMA (Standard) ecma international org [ECMA-262] < Referência *(no curso trabalharemos com ECMA5 e ECMA6)*
-
+#### [06/33] First Steps
 **Google Chrome** to run our code;  
 **VS Code** to write code and has great integration;  
 **nodejs** facilitates learning. When installing nodejs, add it to PATH and add the package manager (NPM).
 
-I used a docker container with node.js
+Recommended Bibliography:
+- **Books**  
+  JS o guia definitivo - David Flanegam, O'Riley El  
+  JS: guia do programador - Mario Jor, Mauricio Sami Silva  
+
+- **Online Documentation**    
+  Mozilla (developer mozilla org) -> referência de JS, html, CSS  
+  ECMA (Standard) ecma international org [ECMA-262] < Referência *(no curso trabalharemos com ECMA5 e ECMA6)*
+
+
+Use a docker container with node.js
 
 ```docker
 # node.js via Docker Desktop on Ubuntu 22.04, WSL2
 docker pull node:lts
 sudo docker run -it --rm -v /home/julianofinck/javascript:/workspace --name nodejs_env node:lts
 ```
-### [07/33] First Script
+#### [07/33] First Script
 In VS Code, create a HTML file, type "html". At the IDE's Intelisense suggestion prompt "html:5", hit enter and a basic html code generates.
 
 Opening this HTML in a Browser, I can watch that changes by refreshing the page. JS is usually kept at the end of `<body>`, after the base code got generated.
@@ -200,11 +199,11 @@ Opening this HTML in a Browser, I can watch that changes by refreshing the page.
 
 
 ---
-## Module B
+### Module B
 - How to store data
 - How to process data
 
-### [09/33] Processing Data <i>13/10/2022</i>
+#### [09/33] Processing Data <i>13/10/2022</i>
 Variable is got by `typeof variable`;  
 Single-line comment use `//`;  
 Block comment uses `/* block-comment */`.
@@ -241,7 +240,7 @@ Strings can be parsed to number by `number.parseFloat(a_string)`
 
 Write something in html: `document.write('some text')` (discouraged, use DOM methods instead).
 
-### [11/33] Operators pt.1 <i>31/05/2023 </i>
+#### [11/33] Operators pt.1 <i>31/05/2023 </i>
 
 JS has several operator families: arithmetic, attributive, relational, logical, ternary and others. The arithmetic operatores are the same as in Python: `+`, `-`, `*`, `/`, `%`, `**`.  
 The attributive operator is `=`. Moreover, JS also accepts the incremental attributive operators:
@@ -251,7 +250,7 @@ n++ //post-increment; oder, bzw ++n post-decrement
 n-- //post-decrement; oder, bzw --n pre-decrement
 ```
 
-### [12/33] Operators pt.2 <i>31/05/2023 </i>
+#### [12/33] Operators pt.2 <i>31/05/2023 </i>
 
 The relational operators are the same as in Python: `>`, `<`, `>=`, `<=`, `==`, `!=`.  
 Moreover, JS also has the strict equality operator `===`
@@ -268,11 +267,11 @@ Last but not least, JS has the ternary operator:
 durchschnitt >= 7.0 ? 'bestanden' : 'durchgefallen'
 ```
 
-## Module C
+### Module C
 - What is Document Object Model?
 - DOM Tree
 - Manipulate DOM
-### [14/33] Understanding DOM
+#### [14/33] Understanding DOM
 The Document Object Model (DOM) is the main object used in the web to handle visual components. We will learn how to create and manipulate a DOM from whichever website we are dealing with.
 
 In this class, the extension o VS Code called "Watch in Chrome" is suggested to automatically update the HTML file under development. The extension does not long exit. The current alternative is "Live Server". Once installed, restart VS Code, go to any HTML file, and click on "Go Live" on the bottom right of VS Code window. The whole project will be exposed at `localhost:5500`. _If WSL is used, one can edit the JSON of the extension settings and add `"liveServer.settings.AdvanceCustomBrowserCmdLine": "/mnt/c/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe",`_
@@ -297,7 +296,7 @@ var d = window.document.querySelector('div.class_name') // Available in recent E
 d.style.background = 'black'
 ```
 
-### [15/33] DOM Events
+#### [15/33] DOM Events
 _Aula10 - ex006, ex007_
 
 Event is everything that could happen to an element ([MDN (Mozilla) Web Docs](https://developer.mozilla.org/en-US/docs/Web/Events)). A common type of event is mouse events: mouseenter, mousemove, mousedown, mouseup, click, mouseout.
@@ -331,13 +330,13 @@ The [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTar
 </div>
 ```
 There are several types of input elements to add to a html page. I used `<input type:number></input>`
-## Module D - Conditions in JS
+### Module D - Conditions in JS
 - Simple conditions (if)
 - Compound conditions (if-else) 
 - Nested conditions (elseif) 
 - Multiple conditions (Switch-Case)
 
-### [17-18/33] Conditions in JavaScript
+#### [17-18/33] Conditions in JavaScript
 Instead of getting the extension "node exec", use a docker container with node.  
 Press CTRL+P (windows), type ">shortcuts json", hit enter.
 Insert:
@@ -360,12 +359,12 @@ var now = new Date()
 var day = now.getDay()
 ```
 
-## Module E - Repetitions (_Laces_) in JS
+### Module E - Repetitions (_Laces_) in JS
 Control structures
 - while (check beforewards)
 - do-while (check afterwards)
 - for (with control)
-### [23/33] Repetiions in JS pt 1
+#### [23/33] Repetiions in JS pt 1
 
 ```JavaScript
 // while - check first, then do it
@@ -381,7 +380,7 @@ do {
 } while (count <= 3)
 ```
 
-### [24/33] Repetiions in JS pt 2
+#### [24/33] Repetiions in JS pt 2
 Wiederholungsstruktur mit Kontrollvariabel werden mit einem Hexagon representiert.
 ```JavaScript
 // for
@@ -394,14 +393,14 @@ VS Code's Debugging-Modus (F5 - depuração).
 
 Breakpoints can be added, and F10 steps over. One can also set variables to Watch.
 
-## Module F - Avançando estudos em JS
+### Module F - Avançando estudos em JS
 Structures of control are discussed here:
 - compound variables (arrays)
 - funcao, metodo, evento
 - passagem de parametros
 - exercicios 
 - proximos passos
-### [29/33] Compound variables in JS
+#### [29/33] Compound variables in JS
 In allen anderen Klassen wurden lediglich einfache Variabeln berücksichtigt. Nun kommen die zusammengesetzten Variabeln voran. So deklariert man Arrays (in JS sind sie heterogeneous):
 ```JavaScript
 let num = [5, 8, 4]
@@ -411,7 +410,7 @@ num.length
 num.sort()
 num.indexOf(4) // .index in Python
 ```
-### [30/33] Functions in JS
+#### [30/33] Functions in JS
 JavaScript ist nach dem funktionellen Paradigm orientiert.
 ```JavaScript
 function func1(param_formal=0) {
@@ -420,7 +419,7 @@ function func1(param_formal=0) {
 func1(param_real)
 ```
 
-### [33/33] Next steps in JS
+#### [33/33] Next steps in JS
 JavaScript ist nach dem funktionellen Paradigm orientiert.
 
 - Der Kurs von HTML5 & CSS

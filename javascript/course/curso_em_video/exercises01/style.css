@@ -12,6 +12,7 @@ body {
     margin: 0px;
     overflow: hidden; /* What does it do? */
     padding: 0px;
+
 }
 
 #cards {
@@ -20,6 +21,8 @@ body {
     gap: 8px;
     max-width: 952px; /* forces row of three */
     width: calc(100% - 20px);
+    font: normal 25pt Georgia;
+    color: rgb(210,210,210);
 }
 
 #cards:hover > .card > .card-border {
