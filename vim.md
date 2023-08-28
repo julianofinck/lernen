@@ -40,6 +40,10 @@ Scroll down to installation section, find your OS, perform the steps.
 Restart VSCode for changes to take effect: `>reload`  
 Caret should be wider.  
 
-- Remap CAPSLOCK to ESC while in Vim  
-:unmap <CapsLock> (removes the mapping)
-:map <CapsLock> <Esc>
+- Remap "jh" to "ESC"  
+```vim
+" Add a recursive mapping "jh" only to Insert Mode
+:inoremap jh <Esc>
+" Remove the recursive mapping "jh"
+:iunmap jh      
+```
