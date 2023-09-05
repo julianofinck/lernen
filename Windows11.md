@@ -19,7 +19,7 @@ wsl --set-version <NAME> 2
 wsl --set-default-version 2
 ```
 
-## WSL in Windows VS Code
+## WSL in Windows VS Code - [Tutorial](https://code.visualstudio.com/docs/remote/wsl-tutorial)
 To allow WSL Terminal in VS Code, add the VS Code extension "WSL".
 Click then on the bottom left, select "Connect to WSL using distro...".
 Moreover, VS Code installation adds itself into PATH, permiting `cd` to a give 
