@@ -94,13 +94,14 @@ Host gitlab.company.com.br
 #--------------------------------------------#
 
 # Might be necessary to activate the Agent 
+# On Windows, activate with git-bash using "eval $(ssh-agent)"
 eval "$(ssh-agent -s)"
 
 # Check if ssh is registered:
 ssh-add -l
 
-# If not:
-ssh-add id_ed25519
+# If it is  not, add the private file (not the .pub):
+ssh-add <FILENAME> 
 
 # ACCESS THE HOST AND ADD THE SSH KEY
 # On GitHub: Settings > SSH and GPG keys > New SSH key
