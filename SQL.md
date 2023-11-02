@@ -25,6 +25,11 @@ SELECT version();
 SELECT PostGIS_full_version();
 ```
 
+On Linux
+
+ALTER USER postgres PASSWORD 'new_password';
+
+
 Create a database with PostGIS
 ```SQL
 CREATE DATABASE db_w_postgis;

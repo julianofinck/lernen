@@ -128,6 +128,22 @@ ssh -T git@<Host>
 	git clone <LINK>
 ```
 
+#### Identify diff and merge
+```bash
+# Gets the remote branch
+git fetch 
+
+# Identify the differences
+git diff <local-branch> <remote-branch>
+## `git branch` returns the local branch name
+
+# Changes to the branch that will receive the merge
+git checkout <branch-name>
+
+# Merges the <remote-branch> to the current branch
+git merge <remote-branch>
+```
+
 #### **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
 ```
 # 1) Create a new repository on GitHub.com. To avoid errors, 
