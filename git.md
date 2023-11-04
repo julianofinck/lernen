@@ -1,6 +1,6 @@
 # Git - File versioning tool
 <div align="center">
-<img src="./images/git.svg">
+  <img src="./images/git.svg" style='background-color: white'>
 </div>
 
 ### Introduction:
@@ -38,10 +38,28 @@ there they're out of your control. **pull** asks the warehouse to bring the new 
  | clone             | A replica of someone else's project/repo stored in local  |
 | fork              | A replica of someone else's project/repo stored in remote |
 
----
+## Sheetcode - Fundamentals
+
+| Command                             | Description                                                         |
+|-------------------------------------|---------------------------------------------------------------------|
+| clear                               | Clear the terminal                                                  |
+| git --help                          | Your best friend                                                    |
+| git add .                           | Stage all files                                                     |
+| git commit                          | Commits staged files                                                |
+| git commit -am "<msg"               | Stage all files and commit                                          |
+| git revert <commit-hash>            | Reverts to that commit (`git log --oneline` shows commits hashes)   |
+| git push                            | Pushes commit to remote                                             |
+| git pull                            | Pulls Pushes commit to remote                                       |
+| git remote add <tag> <remote_url>   | Adds a remote by a tag (eg. origin)                                 |
+| git status                          | Presents git actual state                                           | 
+| git branch -M "name"                | Renames the actual branch to name                                   | 
+| checkout -b "name"                  | Creates and ch to a new branch one is about to start working with   | 
+| pull request                        | When I make a change and want to suggest the owner                  | 
+| merge "branchname"                  | Merges the branch to the connected one                              | 
+| git rm --cache -r <file/dir>        | Removes the file/dir from cache (from the boxes) but not from local | 
 
 ## Recurrent tasks
-#### **SSH connections**
+1. **SSH connections**  
 WSL2 requires `git clone` over SSH instead of HTTPS. To accomplish it, go to the current WSL home directory and type  
 ```bash
 # Make SSH dir
@@ -115,20 +133,19 @@ ssh -T git@<Host>
 ```
 
 
-#### **Points that may be tackled in a README.md**
+2. **Points that may be tackled in a README.md**  
 * What is the project about? What does this do?
 * What are the dependencies and environment requirements?
 * How does it work? (Does it operate continuously, or at specific hours?)
 * Any additional documentation?
 * Any guideline to set it from staging to production?
 
-#### **When local does not exist**
-```
-# "PULL the box from the warehouse (remote) to a brand new storage room"
-	git clone <LINK>
-```
+3. **When local does not exist**  
+"PULL the box from the warehouse (remote) to a brand new storage room"  
+`git clone <LINK>`
 
-#### Identify diff and merge
+
+4. **Identify diff and merge**
 ```bash
 # Gets the remote branch
 git fetch 
@@ -144,7 +161,7 @@ git checkout <branch-name>
 git merge <remote-branch>
 ```
 
-#### **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
+5. **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
 ```
 # 1) Create a new repository on GitHub.com. To avoid errors, 
 do not initialize the new repository with README, license, 
@@ -208,23 +225,7 @@ Copy remote repository URL field
 	git config --global core.editor "atom --wait"
 ```
 ---
-## Sheetcode - Fundamentals
 
-| Command                             | Description                                                         |
-|-------------------------------------|---------------------------------------------------------------------|
-| clear                               | Clear the terminal                                                  |
-| git --help                          | Your best friend                                                    |
-| git add                             | Stage files                                                         |
-| git commit                          | Commits staged files                                                |
-| git push                            | Pushes commit to remote                                             |
-| git pull                            | Pulls Pushes commit to remote                                       |
-| git remote add <tag> <remote_url>   | Adds a remote by a tag (eg. origin)                                 |
-| git status                          | Presents git actual state                                           | 
-| git branch -M "name"                | Renames the actual branch to name                                   | 
-| checkout -b "name"                  | Creates and ch to a new branch one is about to start working with   | 
-| pull request                        | When I make a change and want to suggest the owner                  | 
-| merge "branchname"                  | Merges the branch to the connected one                              | 
-| git rm --cache -r <file/dir>        | Removes the file/dir from cache (from the boxes) but not from local | 
 
 ### Known Errors
 | Warning                     | Fix                                     | Source                                                                                                                    |
@@ -236,4 +237,4 @@ Copy remote repository URL field
 | Action   | Date              |
 |----------|-------------------|
 | Creation | August 12th, 2022 |
-| Modified | May 4th, 2023     |
+| Modified | Nov 11th, 2023     |
