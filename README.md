@@ -1,3 +1,10 @@
+**Points that may be tackled in a README.md**  
+* What is the project about? What does this do?
+* What are the dependencies and environment requirements?
+* How does it work? (Does it operate continuously, or at specific hours?)
+* Any additional documentation?
+* Any guideline to set it from staging to production?
+
 This repo is to keep track and share snippets what I study
 ----
 Ongoing tracks: 

@@ -24,10 +24,22 @@
 
 ### Dependencies - Libraries
 ```bash
-# uninstall all libraries:
-pip freeze > requirements.txt # or for Python 3: pip3 freeze (...)
+# Create a virtual environment
+python -m venv myenv
+
+# Activate it
+myenv\Scripts\activate     # Windows
+source myenv/bin/activate  # Linux
+
+# Install libraries
+pip install package_name
+pip install -r requirements.txt
+
+# Uninstall libraries
+pip freeze > requirements.txt
 pip uninstall -r requirements.txt -y
 ```
+> Other OSs use pip3 or python3
 
 ### Generators
 Ever worked with a dataset so large that it overwhelmed your machine’s memory? Or maybe you have a complex function that needs to maintain an internal state every time it’s called, but the function is too small to justify creating its own class. In these cases and more, generators and the Python yield statement are here to help.

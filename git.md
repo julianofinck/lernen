@@ -59,109 +59,57 @@ there they're out of your control. **pull** asks the warehouse to bring the new 
 | git rm --cache -r <file/dir>        | Removes the file/dir from cache (from the boxes) but not from local | 
 
 ## Recurrent tasks
+1. **Difference & merge**  
+`git fetch`  *get remote branch*  
+`git diff <local-branch> <remote-branch>` *compare*   
+`git branch` *return local branch name*  
+`git checkout <branch-name>` *Changes to the branch that will receive the merge*  
+`git merge <remote-branch>` *Merges the <remote-branch> to the current branch*  
+
 1. **SSH connections**  
 WSL2 requires `git clone` over SSH instead of HTTPS. To accomplish it, go to the current WSL home directory and type  
-```bash
-# Make SSH dir
-mkdir .ssh
-cd .ssh
-
-# Create key-pair w algorithm ed25519 OR rsa
-ssh-keygen -t ed25519 -C "user@email"
-
-# >> Generating public/private ed25519 key pair.
-# >> Enter file in which to save the key (/home/<USERNAME>/.ssh/id_ed25519):
-<TYPE_FILENAME or enter for default>
-# >> Enter passphrase (empty for no passphrase):
-# >> Enter same passphrase again:
-# >> Your identification has been saved in /home/<USERNAME>/.ssh/id_ed25519
-# >> Your public key has been saved in /home/<USERNAME>/.ssh/id_ed25519.pub
-# >> The key fingerprint is:
-# >> SHA256:Me9ZrTY7hjD1h11fnrQPoDIM6IZtaomXRVclTPPERlo juliano.finck@gmail.com
-# >> The key's randomart image is:
-# >> +--[ED25519 256]--+
-# >> |       o++E      |
-# >> |        oBo      |
-# >> |     . .+..      |
-# >> |    o o  +. .. .o|
-# >> |   = . oS..o.+oo=|
-# >> |  . *   *..oo.+oo|
-# >> | . B     =o.+. ..|
-# >> |. *       ..oo  .|
-# >> | o         ...   |
-# >> +----[SHA256]-----+
-
-# Copy the content of the public key
-cat <FILENAME>.pub
-# >> ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA use@email
-
-# Create config file
-touch config
-nano config
-
-#--------------------------------------------#
-# GitHub
-Host github.com
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/<a_name>
-
-# GitLab - Other domain
-Host gitlab.company.com.br
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/<a_name>
-#--------------------------------------------#
-
-# Might be necessary to activate the Agent 
-# On Windows, activate with git-bash using "eval $(ssh-agent)"
-eval "$(ssh-agent -s)"
-
-# Check if ssh is registered:
-ssh-add -l
-
-# If it is  not, add the private file (not the .pub):
-ssh-add <FILENAME> 
-
-# ACCESS THE HOST AND ADD THE SSH KEY
-# On GitHub: Settings > SSH and GPG keys > New SSH key
-# Give it a Title, Key type is "Authentication Key" and paste Key.
-
-# TEST - Is it working?
-ssh -T git@<Host>
-# Test passed if
-# (Sometimes a Warning of a new fingerprint is fired. User is prompted to accept it)
-# "Hi <name>! You've successfully authenticated, but GitHub does not provide shell access."
-```
-
-
-2. **Points that may be tackled in a README.md**  
-* What is the project about? What does this do?
-* What are the dependencies and environment requirements?
-* How does it work? (Does it operate continuously, or at specific hours?)
-* Any additional documentation?
-* Any guideline to set it from staging to production?
+`mkdir .ssh`  
+`cd .ssh`  
+*Create key-pair w algorithm ed25519 OR rsa*  
+`ssh-keygen -t ed25519 -C "user@email"`   
+*Type a FILENAME & hit enter*  
+*Set a passphrase for security*  
+*2 files are created: id and pub key*  
+*Copy the content of the public key*  
+`cat FILENAME.pub`   
+*ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA user@email*  
+*Create config file (optional)*  
+`touch config`  
+`nano config`  
+`#--------------------------------------------#`  
+`# GitHub`  
+`Host github.com`  
+`    PreferredAuthentications publickey`  
+`    IdentityFile ~/.ssh/<a_name>`  
+` `  
+`# GitLab - Other domain`  
+`Host gitlab.company.com.br`  
+`    PreferredAuthentications publickey`  
+`    IdentityFile ~/.ssh/<a_name>`  
+`#--------------------------------------------#`  
+*Might be necessary to activate the Agent*  
+`eval "$(ssh-agent -s)"` Linux  
+`eval $(ssh-agent)` Windows (git-bash)  
+ssh-add -l *Check if ssh is registered*  
+*If it is  not, add the private file (not the .pub):*  
+`ssh-add <FILENAME>`  
+*ACCESS THE HOST AND ADD THE SSH KEY*  
+*On GitHub: Settings > SSH and GPG keys > New SSH key*  
+*Give it a Title, Key type is "Authentication Key" and paste Key.*  
+**Test if it is working:**  
+`ssh -T git@<Host>`  
+(Sometimes a Warning of a new fingerprint is fired. User is prompted to accept it)  
+"Hi <name>! You've successfully authenticated, but GitHub does not provide shell access."
 
 3. **When local does not exist**  
 "PULL the box from the warehouse (remote) to a brand new storage room"  
 `git clone <LINK>`
-
-
-4. **Identify diff and merge**
-```bash
-# Gets the remote branch
-git fetch 
-
-# Identify the differences
-git diff <local-branch> <remote-branch>
-## `git branch` returns the local branch name
-
-# Changes to the branch that will receive the merge
-git checkout <branch-name>
-
-# Merges the <remote-branch> to the current branch
-git merge <remote-branch>
-```
-
-5. **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
+4. **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
 ```
 # 1) Create a new repository on GitHub.com. To avoid errors, 
 do not initialize the new repository with README, license, 
@@ -231,10 +179,3 @@ Copy remote repository URL field
 | Warning                     | Fix                                     | Source                                                                                                                    |
 |-----------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | LF will be replaced by CRLF | git config --global core.autocrlf false | https://stackoverflow.com/questions/17628305/windows-git-warning-lf-will-be-replaced-by-crlf-is-that-warning-tail-backwar |
-
-
-### File history
-| Action   | Date              |
-|----------|-------------------|
-| Creation | August 12th, 2022 |
-| Modified | Nov 11th, 2023     |
