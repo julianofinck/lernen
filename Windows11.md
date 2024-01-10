@@ -19,6 +19,12 @@ wsl --set-version <NAME> 2
 wsl --set-default-version 2
 ```
 
+If you try to open Ubuntu right off the bat without restarting your computador, you might get an error:
+> Installing, this may take a few minutes...  
+> WslRegisterDistribution failed with error: 0x8004032d  
+> Error: 0x8004032d (null)  
+> Press any key to continue...
+
 ## WSL in Windows VS Code - [Tutorial](https://code.visualstudio.com/docs/remote/wsl-tutorial)
 To allow WSL Terminal in VS Code, add the VS Code extension "WSL".
 Click then on the bottom left, select "Connect to WSL using distro...".
