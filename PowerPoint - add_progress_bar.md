@@ -11,13 +11,13 @@ Na rotina substituir pelo entre aspas duplas:
 Sub AddProgressBar()
     On Error Resume Next
     With ActivePresentation
-        X1 = 23
+        X1 = 192 ' 956 is the maximum
         Y1 = 5 '.PageSetup.SlideHeight - 534.5
-        W = 832 ' Width
+        W = 572 ' Width
         H = 20
         G = W * 0.005 ' Gap
-        F = 3 ' First Slide: 2 first ones are Cover and Summary
-        L = .Slides.Count - 1 ' Last Slide: last one is Thanks
+        F = 2 ' First Slide: 2 first ones are Cover and Summary
+        L = .Slides.Count ' Last Slide: last one is Thanks
         For X = F To L
             ' Add BackBar
             .Slides(X).Shapes("BackBar").Delete
@@ -31,8 +31,8 @@ Sub AddProgressBar()
             .Slides(X).Shapes("ActualBar").Delete
             Set s = .Slides(X).Shapes.AddShape(msoShapeRectangle, _
             X1 + G, Y1 + G, (W - 2.5 * G) * (X - 2) / (L - 2), H * 0.6)
-            s.Fill.ForeColor.RGB = RGB(240, 127, 9)
-            s.Line.ForeColor.RGB = RGB(240, 127, 9)
+            s.Fill.ForeColor.RGB = RGB(31, 175, 60)
+            s.Line.ForeColor.RGB = RGB(31, 175, 60)
             s.Name = "ActualBar"
             
             ' Add Text
