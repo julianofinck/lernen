@@ -28,7 +28,7 @@
 python -m venv myenv
 
 # Activate it
-myenv\Scripts\activate     # Windows
+myenv/Scripts/activate     # Windows
 source myenv/bin/activate  # Linux
 
 # Install libraries
@@ -345,3 +345,95 @@ Django is a python framework for backend development (ie it works in the server-
 The current webdev standard pushes the responsibility of generating html to the client, while enabling the server to handle more user connections. The server effectivelly becomes a gateway to the data.
 
 The server provides APIs to the clients. Django can be used to build APIs.
+
+---
+
+## Python knowledge Review: identify areas for improvement:
+
+1. **Structured Review:**  
+Go through your projects, scripts, or code snippets to recall what you've worked on. Identify areas where you feel confident and areas that seem less familiar.
+
+1. **Documentation and Tutorials:**  
+Review official Python documentation and tutorials on websites like Python.org or other reputable sources. This can help reinforce your understanding of key concepts.
+
+1. **Books and Courses:**  
+Consider reading advanced Python books or taking online courses that cover more in-depth topics. This can provide a structured learning path.
+
+1. **Coding Challenges:**  
+Engage in coding challenges on platforms like LeetCode, HackerRank, or CodeSignal. This will not only reinforce your knowledge but also expose you to new concepts.
+
+1. **Community Participation:**  
+Join Python communities, forums, or discussion platforms. Engaging with others can expose you to different perspectives and challenges that you may not have encountered on your own.
+
+1. **Version Updates:**  
+Stay updated on the latest Python versions and changes. Review new features and improvements to ensure your knowledge aligns with current best practices.
+
+1. **GitHub Repositories:**  
+Explore open-source Python projects on GitHub. Analyze the codebase, understand the design patterns, and learn from the community's coding style.
+
+1. **Code Reviews:**  
+Seek feedback on your own code. Code reviews, whether from colleagues or online communities, can provide valuable insights and highlight areas for improvement.
+
+1. **Documentation Skills:**  
+Enhance your ability to write clear and concise documentation. Documenting your code not only helps others understand it but also reinforces your own understanding.
+
+1. **Project Refactoring:**  
+Take one of your older projects and refactor it. This exercise can help you apply new knowledge, improve code structure, and identify areas where your understanding may be lacking.
+
+
+## Python Key Aspects Roadmap:
+
+1. **Basics:**  
+Variables and Data Types (int, float, str)
+Lists, Tuples, and Sets
+Dictionaries and Dictionary Methods
+Conditional Statements (if, elif, else)
+Loops (for, while)
+Functions and Scope
+1. **Advanced Data Types:**  
+List Comprehensions
+Lambda Functions
+Map, Filter, and Reduce
+Generators and Iterators
+1. **File Handling:**  
+Reading and Writing to Files
+Working with Different File Formats (e.g., CSV, JSON)
+1. **Modules and Packages:**  
+Importing Modules
+Creating and Using Packages
+Exploring Standard Library Modules (e.g., os, sys)
+1. **Error Handling:**  
+Exception Handling (try, except, finally)
+Custom Exceptions
+1. **Object-Oriented Programming (OOP):**  
+Classes and Objects
+Inheritance and Polymorphism
+Encapsulation and Abstraction
+1. **Functional Programming:**  
+First-class Functions
+Decorators
+Closures
+1. **Regular Expressions:**  
+Basic Patterns
+Using re Module
+1. **Testing:**  
+Unit Testing with unittest or pytest
+Test-driven Development (TDD)
+1. **Web Development:**  
+Basics of Web Frameworks (e.g., Flask, Django)
+1. **Data Science/Analysis:**  
+Importing and Using Libraries (e.g., Pandas, NumPy)
+Data Cleaning and Manipulation
+1. **Version Control:**  
+Basic Usage of Git
+Collaborative Workflows (Branching, Merging)
+1. **Concurrency and Parallelism:**  
+Threading and Multiprocessing
+1. **APIs and Web Services:**  
+Making API Requests (e.g., using requests library)
+Understanding RESTful APIs
+1. **Database Connectivity:**  
+Basics of Database Interaction (e.g., using SQLite or SQLAlchemy)
+1. **Deployment:**  
+Packaging and Distributing Python Applications
+Basic Deployment Strategies

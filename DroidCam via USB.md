@@ -1,6 +1,7 @@
 # DroidCam via USB
-## Enable Developer Mode and USB debugging
+Use your mobile phone's camera/microphone in your computer via USB-Tethering or Wi-Fi
 
+## Enable Developer Mode and USB debugging
 - Config -> Sobre o telefone -> Software infos -> click 7x times over "número de montagem" (NMF26X in mine) 
 
 - Config -> Developer options -> Activate "Depuração USB/USB debugging"

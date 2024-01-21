@@ -34,3 +34,8 @@ def inserir_linha_(numero_linha, df, novo_valor):
 
         # Retorna o DataFrame atualizado
         return df_result
+
+
+# How to assign value (avoid SettingWithCopyWarning)
+In general, you should use loc for label-based assignment, and iloc for integer/positional based assignment, as the spec guarantees that they always operate on the original. Additionally, for setting a single cell, you should use at and iat.
+(Source)[https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas]

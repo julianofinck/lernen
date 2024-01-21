@@ -110,10 +110,8 @@ ssh-add -l *Check if ssh is registered*
 "PULL the box from the warehouse (remote) to a brand new storage room"  
 `git clone <LINK>`
 4. **Create new local from scratch** - The steps below come from [this source](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
-```
-# 1) Create a new repository on GitHub.com. To avoid errors, 
-do not initialize the new repository with README, license, 
-or gitignore files. You can add these files after your 
+```bash
+# 1) Create a new repository on GitHub.com. To avoid errors, do not initialize the new repository with README, license, or gitignore files. You can add these files after your 
 project has been pushed to GitHub
 
 # 2) Open Git Bash
@@ -121,18 +119,18 @@ project has been pushed to GitHub
 # 3) Change the current working directory to your  local project
 
 # 4) Initialize the local directory as a Git repository with main branch named 'main'
-	git init -b main
+git init -b main
 
 # 5) Add .gitignore to signalize files that must not go to remote
-	git add .gitignore
+git add .gitignore
 
 # 6) Add the files to be sent to remote. This stages everything bar the ones in gitignore for the first commit 
-	git add .
+git add .
 
 # To unstage a file, use 'git reset HEAD <YOUR-FILE>'
 
 # 7) Commit the files that you've staged in your local repository.
-	git commit -m "<A name for your commit (typical names: first commit, fixed X, implemented Y)"
+git commit -m "<A name for your commit (typical names: first commit, fixed X, implemented Y)"
 
 # This commits the tracked changes and prepares them to be pushed to a remote repository.
 # To remove a commit and modify the file, use 'git reset --soft HEAD~1', and commit and add the file again.
@@ -141,11 +139,11 @@ project has been pushed to GitHub
 Copy remote repository URL field
 
 # 9) In the Command prompt, add the URL for the remote repository where your local repository will be pushed.
-   	# Sets a remote called origin via its URL
-	git remote add origin REMOTE_URL
+# Sets a remote called origin via its URL
+git remote add origin REMOTE_URL
 
-	# Verifies the remotes	
-	git remote -v
+# Verifies the remotes	
+git remote -v
 
 # 10) Push the changes in your local repository up to the remote repository you specified as "origin"
 	git push origin main
