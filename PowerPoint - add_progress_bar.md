@@ -7,7 +7,7 @@ Clicar em Create e... [Microsoft Visual Basic vai abrir]
 
 Na rotina substituir pelo entre aspas duplas:
 
-"
+```VB
 Sub AddProgressBar()
     On Error Resume Next
     With ActivePresentation
@@ -53,7 +53,7 @@ Sub AddProgressBar()
         Next X:
     End With
 End Sub
-"
+```
 
 Salvar, e Abrir em Macro e dar "Run"
 (F5 pode ser usado durante edições antes de salvar)
