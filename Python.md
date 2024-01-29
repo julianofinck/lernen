@@ -21,15 +21,45 @@
 | PyTorch and Tensorflow                                   | most popular python packages for ML                         |
 
 
+### Testing
+`unitest` and `pytest` are popular python libraries for testing.
+
+### dotenv
+dotenv is good for security, ease of use and to simplify configurations. When applicable, check if the software you are about to use do not have conventional env var names instead of comming up with names.
+
+Start by create an ".env" file in root.: 
+```env
+# Create a .env file with
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=myuser
+DB_PASSWORD=mypassword
+```
+In Python, load the env vars as if they were set in the environment
+```python
+from dotenv import load_dotenv  # pip install python-dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the env vars
+db_host = os.getenv("DB_HOST")
+db_port = os.getenv("DB_PORT")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+```
+
 
 ### Dependencies - Libraries
+Use a virtual environment to manage dependencies.
 ```bash
-# Create a virtual environment
-python -m venv myenv
+# Create a virtual environment (some OSs use "python3")
+python -m venv .venv
 
 # Activate it
-myenv/Scripts/activate     # Windows
-source myenv/bin/activate  # Linux
+.venv/Scripts/activate     # Windows
+source .venv/bin/activate  # Linux
 
 # Install libraries
 pip install package_name
@@ -39,7 +69,7 @@ pip install -r requirements.txt
 pip freeze > requirements.txt
 pip uninstall -r requirements.txt -y
 ```
-> Other OSs use pip3 or python3
+
 
 ### Generators
 Ever worked with a dataset so large that it overwhelmed your machine’s memory? Or maybe you have a complex function that needs to maintain an internal state every time it’s called, but the function is too small to justify creating its own class. In these cases and more, generators and the Python yield statement are here to help.

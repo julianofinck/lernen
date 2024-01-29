@@ -251,7 +251,14 @@ FROM
 WHERE
    column2 IS NOT NULL AND column2 NOT LIKE 'Po*';
 ```
-
+## pg_dump & pg_restore
+It basically involves two commands. AFter it, a data validation phase is recommended.
+```shell
+# Copy / make a backup
+pg_dump -U username -h source_host -d sourc_database > backup.sql
+# Restore
+pg_restore -U username -h target_host -d target_database < backup.sql
+```
 
 ## ![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
 Microsoft Access is part of Microsoft Office. It joins the Microsoft Jet Engine as RBDMS with IDE tools, which GUI is specially adequate for targetting DB user groups. MS Access supports (to a certain degree) SQL from version 2007 on. The system is for entry-level size databases. 
