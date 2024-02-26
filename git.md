@@ -55,9 +55,35 @@ there they're out of your control. **pull** asks the warehouse to bring the new 
 | merge "branchname"                  | Merges the branch to the connected one                              | 
 | git rm --cache -r <file/dir>        | Removes the file/dir from cache (from the boxes) but not from local | 
 ---
+## Development workflow in a git repository
+```bash
+# Identify whether you will work in a feature, bugfix or hotfix
+
+# Go to the dev working branch
+git checkout dev
+
+# Create a new branch from it to work on with the prefix/description
+git checkout -b "bugfix/fix-create-database"
+
+# Work on, finish and test it
+# If applicable, make a PR (Pull-Request)
+# If not applicable, merge to dev
+git checkout dev
+git merge "bugfix/fix-create-database"
+
+# Ensure the integration is seamless (run tests)
+# If all tests passed, delete the branch you created
+git branch -D "bugfix/fix-create-database"
+# Check if you created them is remote too
+git ls-remote --heads origin | awk '{print $2}' | sed 's/refs\/heads\///'
+
+# If they also were in remote, delete them there too
+git push origin -d "bugfix/fix-create-database"
+```
+
 ## Recurrent tasks
 1. **Difference & merge**  
-```git
+```bash
 git fetch  *get remote branch*  
 git diff <local-branch> <remote-branch> *compare*   
 git branch *return local branch name*  
