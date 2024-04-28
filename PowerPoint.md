@@ -1,11 +1,9 @@
-Para adicionar Barra de Progresso no Slides,
-View > Macro (em pt-br, Exibit > Macro)
-
-Nome da Macro: AddProgressBar
-Clicar em Create e... [Microsoft Visual Basic vai abrir]
-
-
-Na rotina substituir pelo entre aspas duplas:
+## Progress bar via VB Macro
+- Go to **View > Macro** (em pt-br, **Exibir > Macro**)
+- Name the macro: AddProgressBar
+- Click on **Create**  
+_(the Microsoft Visual Basic windows opens up)_
+- Copy-and-paste the following (edit as needed)
 
 ```VB
 Sub AddProgressBar()
@@ -54,6 +52,5 @@ Sub AddProgressBar()
     End With
 End Sub
 ```
-
-Salvar, e Abrir em Macro e dar "Run"
+- Save it, open the macros window and run it.  
 (F5 pode ser usado durante edições antes de salvar)

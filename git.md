@@ -90,14 +90,12 @@ git checkout <branch-name> *Changes to the branch that will receive the merge*
 git merge <remote-branch> *Merges the <remote-branch> to the current branch*  
 ```
 
-1. **SSH connections** ( WSL2 requires `git clone` over SSH instead of HTTPS )  
-```shell
+2. **SSH connections** ( WSL2 requires `git clone` over SSH instead of HTTPS )  
+```bash
 # 1. CREATE .ssh AT USER ROOT
 cd ~  
 mkdir .ssh  
 cd .ssh  
-
-
 
 # 2. CREATE KEY-PAIR WITH ALGORITHM ed25519 OR RSA
 ssh-keygen -t ed25519 -C "user@domain.com"   
@@ -105,20 +103,18 @@ ssh-keygen -t ed25519 -C "user@domain.com"
 ## > Set a passphrase for security  
 # 2 files are created: id and pub key  
 
-
-
 # 3. ADD THE SSH KEY TO THE HOST (eg GitLab, GitHub)
 # 3.1 Copy the content of the public key  
 cat FILENAME.pub    # Linux
 type FILENAME.pub   # Windows
-## >> ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA user@email  
-
+# Example:
+#  ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA user@email  
 # 3.2 Add SSH key
 #  Settings > SSH and GPG keys > New SSH key  
 #  Give it a Title, Key type is "Authentication Key" and paste Key.  
-
-
-
+```
+Additionally, you can set a config file so that git knows what username to use for each domain when using the SSH protocol:
+```bash
 # CREATE CONFIG FILE (optional)  
 touch config  
 nano config  
@@ -134,22 +130,21 @@ Host gitlab.company.com.br
     PreferredAuthentications publickey  
     IdentityFile ~/.ssh/<FILENAME_not_pub>  
 #--------------------------------------------#  
-
-
-# 4. ENSURE AN AGENT HAS THE SSH REGISTERED
-# 4.1 Activate the agent  
+```
+To test the connections and/or avoid writing the passphrase many times in the same session, you can set up an agent
+```bash
+# LET AN AGENT HOLD THE SSH KEY PASSPHRASE
+# Activate the agent  
 eval "$(ssh-agent -s)"  # Linux  
 eval $(ssh-agent)       # Windows (git-bash)  
 
-# 4.2 Check if SSH is registered  
+# Check if SSH is registered  
 ssh-add -l 
 
-# 4.3 If it is  not, add the private file (not the .pub):  
+# If it is  not, add the private file (not the .pub):  
 ssh-add <FILENAME_not_pub>  
 
-
-
-# 5. TEST CONNECTION
+# TEST CONNECTION
 ssh -T git@<DOMAIN>  
 # ( Sometimes a Warning of a new fingerprint is fired. User is prompted to accept it: 
 #   "Hi <name>! You've successfully authenticated, but GitHub does not provide shell access.")
