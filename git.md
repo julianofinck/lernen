@@ -1,30 +1,29 @@
-# Git - File versioning tool
-Popular version control tool used globally, often accessed through **git-bash**.
-It helps to keep track of changes in a project and to keep licensing (LICENSE) and 
-documentation (README.md). Git-bash is a linux-like terminal and works with git commands.
-The analogy below with commands in bold and figurative boxes and warehouse explains git.  
-> `brzrkr's analogy:`
-> while **stage** puts stuff in a box, **commit** closes the box and stick a label on it. 
-Further, **push** sends all the closed boxes off to the warehouse (remote), 
-there they're out of your control. **pull** asks the warehouse to bring the new boxes to an existing location; 
-**clone** makes a copy of the entire warehouse and bring it to a new location. 
+# [Git](https://en.wikipedia.org/wiki/Git) - File versioning tool
+It is a popular version control tool that helps to keep track of changes in a project, licensing (LICENSE) and documentation (README.md).
+
 <div align="center">
   <img src="./images/git.svg" style='background-color: rgb(250, 250, 250)'>
 </div>
 
-
+**Git-bash** is a linux-like terminal that supports git commands.
 
 1) [Download Git-bash for Windows](https://git-scm.com/download/win) 
-(On installation, always select the default)
+(I always select the default, except for the editor)
 2) ... and then "Who are you?"; set the main settings:
-```
+```bash
 # Add your Name and Email
-	git config --global user.name "My Name"
-	git config --global user.email "myemail@example.com"
+git config --global user.name "My Name"
+git config --global user.email "myemail@example.com"
 # Check your Name and Email
-	git config --global user.name
-	git config --global user.email
+git config --global user.name
+git config --global user.email
 ```
+The analogy below with commands in bold and figurative boxes and warehouse explains git.
+> `brzrkr's analogy:`
+ while **stage** puts stuff in a box, **commit** closes the box and stick a label on it. 
+Further, **push** sends all the closed boxes off to the warehouse (remote), 
+there they're out of your control. **pull** asks the warehouse to bring the new boxes to an existing location; 
+**clone** makes a copy of the entire warehouse and bring it to a new location. 
 ---
 ## Glossary
 | Concept           | Description                                               |
@@ -93,18 +92,34 @@ git merge <remote-branch> *Merges the <remote-branch> to the current branch*
 
 1. **SSH connections** ( WSL2 requires `git clone` over SSH instead of HTTPS )  
 ```shell
+# 1. CREATE .ssh AT USER ROOT
 cd ~  
 mkdir .ssh  
 cd .ssh  
-# Create key-pair w algorithm ed25519 OR rsa  
+
+
+
+# 2. CREATE KEY-PAIR WITH ALGORITHM ed25519 OR RSA
 ssh-keygen -t ed25519 -C "user@domain.com"   
-# Type a <FILENAME> & hit enter  
-Set a passphrase for security  
-2 files are created: id and pub key  
-Copy the content of the public key  
-copy the content of cat FILENAME.pub   
-ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA user@email  
-# Create config file (optional)  
+## > Type a <FILENAME> & hit enter  
+## > Set a passphrase for security  
+# 2 files are created: id and pub key  
+
+
+
+# 3. ADD THE SSH KEY TO THE HOST (eg GitLab, GitHub)
+# 3.1 Copy the content of the public key  
+cat FILENAME.pub    # Linux
+type FILENAME.pub   # Windows
+## >> ssh-ed25519 AAAAB3NzaC1lZDI1NTE5AAAAIA6TNgU7u8PHusSNKyPi1myBVCDuBs8ZYnMGgFVW/NfA user@email  
+
+# 3.2 Add SSH key
+#  Settings > SSH and GPG keys > New SSH key  
+#  Give it a Title, Key type is "Authentication Key" and paste Key.  
+
+
+
+# CREATE CONFIG FILE (optional)  
 touch config  
 nano config  
 
@@ -120,17 +135,21 @@ Host gitlab.company.com.br
     IdentityFile ~/.ssh/<FILENAME_not_pub>  
 #--------------------------------------------#  
 
-# Might be necessary to activate the Agent  
-eval "$(ssh-agent -s)" Linux  
-eval $(ssh-agent) Windows (git-bash)  
-# Check if ssh is registered  
+
+# 4. ENSURE AN AGENT HAS THE SSH REGISTERED
+# 4.1 Activate the agent  
+eval "$(ssh-agent -s)"  # Linux  
+eval $(ssh-agent)       # Windows (git-bash)  
+
+# 4.2 Check if SSH is registered  
 ssh-add -l 
-# If it is  not, add the private file (not the .pub):  
+
+# 4.3 If it is  not, add the private file (not the .pub):  
 ssh-add <FILENAME_not_pub>  
-# ACCESS THE HOST AND ADD THE SSH KEY  
-# On GitHub: Settings > SSH and GPG keys > New SSH key  
-# Give it a Title, Key type is "Authentication Key" and paste Key.  
-# Test if it is working:  
+
+
+
+# 5. TEST CONNECTION
 ssh -T git@<DOMAIN>  
 # ( Sometimes a Warning of a new fingerprint is fired. User is prompted to accept it: 
 #   "Hi <name>! You've successfully authenticated, but GitHub does not provide shell access.")

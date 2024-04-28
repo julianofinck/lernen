@@ -54,3 +54,38 @@ This split every line considering space as delimiter and prints the 3rd and 6th 
 |/proc      | illusionary filesystem that is created on memory on the fly by the kernel to keep track of running processes|
 
 All the binaries are mapped together with the `$PATH` env variable. Find out where a binary lives by `which curl`
+
+
+## [Arch Linux](https://archlinux.org/)
+A simple, lightweight distribution that tries to Keep It Simple. 
+
+[Installation Guide](https://wiki.archlinux.org/title/Installation_guide) & [NVIDIA Drivers Installation Guide](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide?tab=readme-ov-file)  
+
+It has official packages optimized for x86-64 architecture. 
+This gets complemented with AUR - Arch User Repository, a community-operated package repository.  
+
+[pacman](https://wiki.archlinux.org/title/Pacman) is Arch's package manager. Its aim is to easily manage packages, be it from official repositorties or user's own build. 
+
+```bash
+pacman -Syu           # pacman upgrade (Standard)
+pacman -Syyu          # pacman upgrade --force
+pacman -Su            # pacman system_upgrade
+pacman -S <package>   # pacman install
+pacman -R <package>   # pacman remove
+
+# Query (-i more info) 
+pacman -Qi [code]  # local package database
+pacman -Si         # sync package database
+```
+
+[AUR](https://wiki.archlinux.org/title/Arch_User_Repository) has packages descriptions (PKGBUILDs) that can be compiled from source with makepkg and installed via pacman. There are wrappers/helpers around **pacman** to handle packages from AUR. A prominent helper is [yay](https://aur.archlinux.org/packages/yay).
+
+```bash
+# Install yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# Use yay to update
+yay -Syu
+```
