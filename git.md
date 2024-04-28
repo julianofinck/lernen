@@ -9,7 +9,7 @@ Further, **push** sends all the closed boxes off to the warehouse (remote),
 there they're out of your control. **pull** asks the warehouse to bring the new boxes to an existing location; 
 **clone** makes a copy of the entire warehouse and bring it to a new location. 
 <div align="center">
-  <img src="./images/git.svg" style='background-color: white'>
+  <img src="./images/git.svg" style='background-color: rgb(250, 250, 250)'>
 </div>
 
 
