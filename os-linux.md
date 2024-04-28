@@ -78,7 +78,7 @@ pacman -Qi [code]  # local package database
 pacman -Si         # sync package database
 ```
 
-[AUR](https://wiki.archlinux.org/title/Arch_User_Repository) has packages descriptions (PKGBUILDs) that can be compiled from source with makepkg and installed via pacman. There are wrappers/helpers around **pacman** to handle packages from AUR. A prominent helper is [yay](https://aur.archlinux.org/packages/yay).
+[AUR](https://wiki.archlinux.org/title/Arch_User_Repository) has packages descriptions (PKGBUILDs) that can be compiled from source with makepkg and installed via pacman. There are wrappers/helpers around **pacman** to handle packages from AUR. A prominent helper is [AUR Helper yay](https://aur.archlinux.org/packages/yay), more infos in [yay's GitHub](https://github.com/Jguer/yay?tab=readme-ov-file#installation).
 
 ```bash
 # Install yay

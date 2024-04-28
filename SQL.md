@@ -3,7 +3,8 @@ PostgreSQL, MS Access & Oracle are **R**elational **D**atabase **M**anagement **
 
 Fake data to practice: https://www.mockaroo.com/  
 DrawSQL https://drawsql.app/  
-Draw diagrams https://app.diagrams.net/
+Draw diagrams https://app.diagrams.net/  
+[Nelson from freeCodeCamp.org](https://youtu.be/qw--VYLpxG4)
 
 ## ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
 Invented at the Berkeley Computer Science Department, University of California, it started as a project in 1986 with the goal of creating a database system with the minimal features needed to support multiple data types.
@@ -127,6 +128,8 @@ Function outputs can be cast or transformed with the `::` operator:
 ```SQL
 -- Round the output to 2 decimals
 SELECT AVG(price)::NUMERIC(10,2) FROM products;
+-- Alternativelly:
+SELECT cast('5' AS NUMERIC) > 4;
 ```
 
 ### TRIGGERS
@@ -259,6 +262,71 @@ pg_dump -U username -h source_host -d sourc_database > backup.sql
 # Restore
 pg_restore -U username -h target_host -d target_database < backup.sql
 ```
+
+### To-Order
+#### MODIFYING TABLE
+```sql
+ ALTER TABLE person ...
+   DROP CONSTRAINT person_pkey;					removes the primary key constraint
+   RENAME people;						renames table
+   ADD PRIMARY KEY (id);					adds primary key
+   ADD CONSTRAINT ...
+     constraint_name UNIQUE (email);				makes email unique
+     constraint_name CHECK (gender IN ('Male', 'Female'));	creates a check constraint
+ DELETE FROM table;						deletes all in the table
+ DELETE FROM table WHERE condition;				deletes all where condition evaluates true
+```
+
+ON CONFLICT - useful for insert a new register, or update if exists
+ statement...
+```sql
+    ON CONFLICT (id) DO NOTHING;				if hindered by a constraing involving id, do nothing
+    ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;	user tries to register again with other e-mail. conflict happens. email updated
+```
+- Export a query to csv
+```sql
+\copy (SELECT * FROM person LEFT JOIN car ON car.id = person.car_id) TO 'path' DELIMITER ',' CSV HEADER;
+```
+- Work with geospatial data .gpkg and .shp:  
+  Add PostGIS Bundle  3.2.1 for PostgreSQL x64 14 via StackBuilder (postgis_32_sample <- database name
+  a series of Environmental Variables will be set
+  PROJ
+  GDAL_DATA (env variable)
+
+- Running several commands from a file "\i path"  
+On Windows, the path must have `/` instead of `\`
+```sql
+\i 'C:/juliano/sapotec/Memoria/2022 08 01/SQL (Thomas)/Dados_brutos/SQL_commands.sql'
+```
+- Errors 
+  - pgadmin4 : postgresql application server could not be contacted. [pgAdmin4 err]  
+Solution: delete content inside
+`C:\Users\%USERNAME%\AppData\Roaming\pgAdmin\sessions`
+
+  - postgresql permission denied while importing from file  
+Solution: Windows does not accept backslash '\'; change em to '/'
+
+
+SQL: <https://youtu.be/zsjvFFKOm3c>
+
+Further videos:
+https://youtu.be/17AZQ2-5Rrk
+https://youtu.be/eddcoyLtqqs
+https://youtu.be/gC0z4miZmtQ
+https://youtu.be/7OUxHAhqMv8
+https://youtu.be/m6jLnEOoZvw
+https://youtu.be/0yMXbew4tsA
+https://youtu.be/QpUZd2TQ0H0
+https://youtu.be/gUKrlBNYxlg
+https://youtu.be/t8-BQjWJFKw
+https://youtu.be/F3AkNXiSv50
+https://youtu.be/Vfq0Mje1z-E
+https://youtu.be/vlqLJtZW3AA
+https://youtu.be/nqRjg5SQJiw
+https://youtu.be/P-iHxxj7heE
+
+Still cant see tables in QGIS:
+https://gis.stackexchange.com/questions/285543/tables-do-not-show-in-qgis-postgis
 
 ## ![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
 Microsoft Access is part of Microsoft Office. It joins the Microsoft Jet Engine as RBDMS with IDE tools, which GUI is specially adequate for targetting DB user groups. MS Access supports (to a certain degree) SQL from version 2007 on. The system is for entry-level size databases. 
