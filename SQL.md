@@ -1,10 +1,11 @@
 # Structured Query Language (SQL)
 PostgreSQL, MS Access & Oracle are **R**elational **D**atabase **M**anagement **S**ystems (RDBMS) that support the SQL language. In SQL, a **PRIMARY KEY (PK)** identifies uniquely each register in a table and may be used to associate differente tables. **FOREIGN KEYS (FK)**, on the other hand, are the link to associate to other table's **PK**. A **PK** and its counterpart, the **FK**, must be of the same **data type**.
 
+My 1st contact with SQL: [Nelson from freeCodeCamp.org](https://youtu.be/qw--VYLpxG4)  
 Fake data to practice: https://www.mockaroo.com/  
 DrawSQL https://drawsql.app/  
 Draw diagrams https://app.diagrams.net/  
-[Nelson from freeCodeCamp.org](https://youtu.be/qw--VYLpxG4)
+
 
 ## ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
 Invented at the Berkeley Computer Science Department, University of California, it started as a project in 1986 with the goal of creating a database system with the minimal features needed to support multiple data types.
