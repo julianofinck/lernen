@@ -1,5 +1,15 @@
-# Structured Query Language (SQL)
-PostgreSQL, MS Access & Oracle are **R**elational **D**atabase **M**anagement **S**ystems (RDBMS) that support the SQL language. In SQL, a **PRIMARY KEY (PK)** identifies uniquely each register in a table and may be used to associate differente tables. **FOREIGN KEYS (FK)**, on the other hand, are the link to associate to other table's **PK**. A **PK** and its counterpart, the **FK**, must be of the same **data type**.
+# SQL - Structured Query Language
+
+SQL is used in RDBMS (Relational Database Management Systems) like PostgreSQL, MS Access & Oracle. A RDBMS typically build relations between table using keys. A PK (Primary Key) uniquely identify each register in a origin table and a FK (Foreign Key) is the attribute in a foreign table. PK-FK paris must be of the same data type.
+
+The SQL standard is maintained by ISO and ANSI and each RDBMS partially implements it adding some extra features. While SQLite is lightweight and optimal for small applications and embedded systems, Oracle and PostgreSQL are enterprise-level. Whereas MS Access supports only basic SQL, PostgreSQL is known for being standard-conformant. It has the SQL-conform **information_schema** and also the **pg_catalog**.
+
+```SQL
+-- Show all Tables & Views in the information_schema
+SELECT table_name FROM information_schema.tables
+WHERE table_schema = 'information_schema'
+ORDER BY table_name;
+```
 
 My 1st contact with SQL: [Nelson from freeCodeCamp.org](https://youtu.be/qw--VYLpxG4)  
 Fake data to practice: https://www.mockaroo.com/  
@@ -8,62 +18,76 @@ Draw diagrams https://app.diagrams.net/
 
 
 ## ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
+`>>` [Current Documentation](https://www.postgresql.org/docs/current) `<<`
+
 Invented at the Berkeley Computer Science Department, University of California, it started as a project in 1986 with the goal of creating a database system with the minimal features needed to support multiple data types.
 
-PSQL is a frontend terminal for PostgreSQL. You can set  environment variables (`PGDATABASE, PGHOST, PGPORT, PGUSER, PGPASSWORD`). For additional environment variables, see Section 34.15. It is also convenient to have a ~/.pgpass file.
+### 1. PostgreSQL Components
+#### 1.1 PSQL
+**PSQL** is the CLI-based frontend to PostgreSQL. It supports typing queries interactively, running commands directly (`-c`) or from a file (`-f`). It is usually under `C:\Program Files\PostgreSQL\<VERSION>5\bin\psql.exe`.
 
-|Command|Description|
-|---|---|
-|\list|list databases in server|
-|\c <db_name> | connects to the database
-|\?|internal Statement, like "\copy" or "\list"|
-|\h|SQL-Statements|
-
-**Data Manipulation Language ([DML](https://docs.getdbt.com/terms/dml))** is a class of SQL statements that are 
-used to query, edit, add and delete row-level data from database tables or views. 
-The main DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`.
-```sql
--- SELECT
--- General select statement
-SELECT * FROM table1 WHERE uf IN ('SP', 'MG', 'RJ') ORDER BY first_name DESC LIMIT 3;
-SELECT * FROM table1 LIMIT 20 OFFSET 40;
-SELECT DISTINCT country FROM customers;
-SELECT COUNT(DISTINCT country) AS no_countries FROM customers;
--- Check versions
-SELECT version() AS "Versao PostgreSQL"; -- Alias with space require double quotes
-SELECT PostGIS_full_version();
--- Check information schema
-SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'table';
-
--- INSERT
-INSERT INTO cars (brand, model, year) 
-VALUES ('Volvo', 'p1800', 1968), ('BMW', 'M1', 1978); -- many tuples can be given
-
--- DELETE accepts WHERE & logs row deletions
-DELETE FROM cars WHERE brand = 'Volvo';
-
--- UPDATE
-UPDATE table1 SET column1 = 'str1' WHERE column2 = 'str2';
+Although several environment variables can be set to avoid having to type them ([doc](https://www.postgresql.org/docs/current/libpq-envars.html): `PGDATABASE`, `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`), it is more secure to just set a `PGPASSFILE` environment variable and keep all the credentials there. The convention is to save it in the home directory as `~/.pgpass`:
+```.pgpass
+# hostname:port:database:username:password
+10.10.12.10:5432:database1:john:p4ssw0rd
+10.11.10.9:5432:database2:larry:p4ssw0rd
 ```
-**Data Definition Language ([DDL](https://docs.getdbt.com/terms/ddl))** contrasts DML in that it is a series of 
-SQL statements that you can use to edit and manipulate the structure of 
-databases and the objects in them. The main DDL are `ALTER`, `DROP`, `CREATE`, `TRUNCATE`. A column might have constraints: `UNIQUE`, `NOT NULL`, `PRIMARY KEY`, `ENUM`.
+
+|Command      |Description                                 |
+|-------------|--------------------------------------------|
+|\list or \l  |list databases in server                    |
+|\dt          |describe tables                             |
+|\c <db_name> |connects to the database                    |
+|\?           |internal Statement, like "\copy" or "\list" |
+|\h           |SQL-Statements                              |
+
+Examples of PSQL commands
+```bash
+# Load data from CSV
+psql -h localhost -U postgres -c "\copy table1 FROM 'file.csv' DELIMITER ',' CSV HEADER ENCODING 'UTF8';"
+
+# List database and version
+psql -h localhost -U postgres -c "SELECT version()" -f "sql_expression.sql"
+```
+#### 1.2 PgAdmin
+PgAdmin is a frontend GUI application. It is a component that can be selected in the install wizard of PostgreSQL.  
+More often than we would like a "application server could not be contacted" error pops up. Follow these steps to solve it. Usually the first step solve it.
+1. Delete from App Data `C:\Users\%USERNAME%\AppData\Roaming\pgAdmin`
+2. Add to Path Variables `C:\Program Files\PostgreSQL\9.6\bin` (to both user and system)
+3. Right click and start as admin.  
+Source: [stackoverflow post](https://stackoverflow.com/questions/43211296/pgadmin4-postgresql-application-server-could-not-be-contacted)
+
+#### 1.3 StackBuilder
+Like the name suggests, it is a helper to install extensions to PostgreSQL like PostGIS.
+
+---
+### 2. DDL & DML
+SQL statements fall under two classes **DDL**, that changes database structure, and **DML**.
+- **Data Definition Language ([DDL](https://docs.getdbt.com/terms/ddl))**  
+Used to edit and manipulate the structure of 
+databases and the objects in them.  
+The main DDL are `ALTER`, `DROP`, `CREATE`, `TRUNCATE`, `GRANT`.  
+A column might have constraints: `UNIQUE`, `NOT NULL`, `PRIMARY KEY`, `ENUM`.
 ```SQL
--- ALTER
+-- ALTER --------------------------------------------------------------------------------
 ALTER USER postgres PASSWORD 'new_password';
 -- Alter field
 ALTER TABLE table1 ALTER COLUMN price TYPE DOUBLE PRECISION;
 ALTER TABLE table1 ADD username VARCHAR(255);
 ALTER TABLE table1 DROP COLUMN price;
+ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
+-- Alter table, view, ...
+ALTER TABLE old_table_name RENAME TO new_table_name;
+ALTER VIEW old_view_name RENAME TO new_view_name;
 
--- DROP
-DROP table1;
+-- DROP ---------------------------------------------------------------------------------
+DROP TABLE table1;
 
--- CREATE
+-- CREATE -------------------------------------------------------------------------------
 -- Create a database
 CREATE DATABASE db_w_postgis;
 -- Add extension
-CREATE EXTENSION postgis;  -- must be connected to the database
+CREATE EXTENSION postgis;  -- must be SUPERUSER in the desired database
 -- Create table
 CREATE TABLE table1 (
    id SERIAL NOT NULL PRIMARY KEY,
@@ -86,8 +110,10 @@ CREATE TABLE Rooms (
 -- Indexes accelerate queries using column1, but slows down the write-time.
 CREATE INDEX column1_index ON table1(column1);
 
--- TRUNCATE
-TRUNCATE TABLE cars; -- remove all registers & dont log row deletions
+-- TRUNCATE -----------------------------------------------------------------------------
+-- DDL's DELETE FROM; doesnt allow WHERE; 
+-- remove all registers faster, doesnt log row deletions, cannot rollback
+TRUNCATE TABLE cars;
 
 -- Insert in table from csv (\copy bypass restrictions)
 COPY table1 FROM '.../datei.csv' DELIMITER ',' CSV HEADER ENCODING 'UTF-8';
@@ -99,48 +125,117 @@ GRANT USAGE ON SCHEMA public TO django;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO django;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO django;
 ```
+
+- **Data Manipulation Language ([DML](https://docs.getdbt.com/terms/dml))**  
+Used to query, edit, add and delete row-level data from database tables or views.  
+The main DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`.
+```sql
+-- SELECT -------------------------------------------------------------------------------
+-- Check versions
+SELECT version() AS "PostgreSQL Version"; -- Alias for columns double-quotes
+SELECT PostGIS_full_version();
+-- Check information schema
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'table';
+-- General select statement
+SELECT * FROM table1 WHERE uf IN ('SP', 'MG', 'RJ') ORDER BY first_name DESC LIMIT 3;
+SELECT * FROM table1 LIMIT 20 OFFSET 40;
+SELECT DISTINCT country FROM customers;
+SELECT COUNT(DISTINCT country) AS no_countries FROM customers;
+
+-- INSERT -------------------------------------------------------------------------------
+INSERT INTO cars (brand, model, year) 
+VALUES ('Volvo', 'p1800', 1968), ('BMW', 'M1', 1978); -- many tuples can be given
+
+-- DELETE accepts WHERE & logs row deletions --------------------------------------------
+DELETE FROM cars WHERE brand = 'Volvo';
+
+-- UPDATE -------------------------------------------------------------------------------
+UPDATE table1 SET column1 = 'str1' WHERE column2 = 'str2';
+```
+> DISTINCT  
+`SELECT` outputs all the matching rows. `SELECT DISTINCT` eliminates duplicates. `SELECT DISTINCT ON (field1, field2)`, for instance, keeps only the first occurrences for the unique combination **field1-field2**.
+
 ### Operators in WHERE clause:  
  `=`, `<`, `>`, `<=`, `=>`,  
  `<>` (ISO-conform), `!=` (not conform),  
-  `LIKE`, `ILIKE` (case insentive),  
+  `LIKE`, `ILIKE` (case insentive), ('%' and '_' are often used in conjunction with LIKE)  
   `AND`, `OR`, `IN`, `BETWEEN...AND` (works for numeric, text and dates), `IS NULL`, `NOT`.
 ```SQL
--- '%' and '_' are often used in conjunction with LIKE
 -- '_' the underscore sign represents one, single character
--- '%' The percent sign represents zero, one, or multiple characters
 -- Select Eduardo and Eduarda
 SELECT * FROM customers
 WHERE customer_name LIKE 'Eduard_';
+
+-- '%' The percent sign represents zero, one, or multiple characters
 -- Names ending with a
 SELECT * FROM customers
 WHERE customer_name ILIKE '%a';
 ```
-### Other operators
-Columns can be concatenated with `||`:  
-`SELECT product_name || ' ' || unit AS product
-FROM products;`
-
-### SQL Functions
-- AGGREGATION FUNCTIONS
-
-They tipically ignore NULL values.  
-COUNT, MIN, MAX, SUM, AVG.  
-Function outputs can be cast or transformed with the `::` operator:
+Moreover, `||` is used to concatenate columns. Check the example below:
 ```SQL
--- Round the output to 2 decimals
-SELECT AVG(price)::NUMERIC(10,2) FROM products;
--- Alternativelly:
-SELECT cast('5' AS NUMERIC) > 4;
+SELECT * FROM cars;
+--
+--   brand  |  model  | year | color
+--  --------+---------+------+-------
+--   Ford   | Mustang | 1964 |
+--   BMW    | M1      | 1978 |
+--   Volvo  | p1800   | 1968 | red
+--   Toyota | Celica  | 1970 | white
+--  (4 Zeilen)
+
+SELECT brand || ' ' || model || ' im Jahre ' || year AS "Brand Model im Jahre" FROM cars;
+--  
+--      Brand Model im Jahre
+--  -----------------------------
+--   Ford Mustang im Jahre 1964
+--   BMW M1 im Jahre 1978
 ```
 
-### TRIGGERS
+### CTE - Common Table Expressions
+They are essentially temporary views that can be used to break up complex queries. They cannot be used in WHERE-clauses.  
+ Their syntax uses `WITH`, `AS` and `SELECT`
+```SQL
+-- 1st CTE
+WITH import_orders AS (
+    SELECT * FROM orders
+),
+-- 2nd CTE
+aggregate_orders AS (
+    SELECT
+        customer_id,
+        COUNT(order_id) AS count_orders
+    FROM import_orders
+    WHERE status NOT IN ('returned', 'return pending')
+    GROUP BY customer_id
+),
+-- 3rd CTE
+segment_users AS (
+    SELECT
+        *,
+        CASE
+            WHEN count_orders >= 3 THEN 'super_buyer'
+            WHEN count_orders >= 2 THEN 'regular_buyer'
+            ELSE 'single_buyer'
+        END AS buyer_type
+    FROM aggregate_orders
+)
+SELECT * FROM segment_users;
+```
 
+### UNIONS & JOINS
+While `UNION ALL` concatenate registers (duplicate or not) from tables with the same structure (same nº of columns, data types and order), `UNION` only allow non-duplicated.
+```SQL
+SELECT product_id
+FROM products
 
-### Joins
-<div align="center">
-  <img src="./images/sql_join_types.png" style='background-color: white; max-width: 300px'>
-</div>
+UNION [ALL]
 
+SELECT testproduct_id
+FROM testproducts
+ORDER BY product_id;
+```
+
+`JOIN`s combine different table, and it is often used in RDBMS.
 ```SQL
 -- INNER
 SELECT testproduct_id, product_name, category_name
@@ -155,7 +250,8 @@ LEFT JOIN categories ON testproducts.category_id = categories.category_id;
 -- RIGHT
 SELECT testproduct_id, product_name, category_name
 FROM testproducts
-RIGHT JOIN categories ON testproducts.category_id = categories.category_id;
+RIGHT JOIN categories USING (category_id); 
+-- `USING` is a special-case `ON` for when fields have the same name.
 
 -- FULL
 SELECT testproduct_id, product_name, category_name
@@ -167,32 +263,221 @@ SELECT testproduct_id, product_name, category_name
 FROM testproducts
 CROSS JOIN categories;
 ```
+<div align="center">
+  <img src="./images/sql_join_types.svg" style='background-color: white; max-width: 1200px'>
+</div>
 
-### UNION ALL
-The queries in the union must result in tables 
-with the same number of columns, data types and order. To accept duplicated, change `UNION` for `UNION ALL`
+### Iterate through array of arrays
+https://stackoverflow.com/questions/9783422/loop-over-array-dimension-in-plpgsql
 ```SQL
-SELECT product_id
-FROM products
-UNION [ALL]
-SELECT testproduct_id
-FROM testproducts
-ORDER BY product_id;
+DO -- Execute anonymous code blocks without needing to create procedure/function
+$do$ -- code block starts
+DECLARE
+  m    varchar[];
+  arr  varchar[] := array[['key1','val1'],['key2','val2']];
+BEGIN
+  FOREACH m SLICE 1 IN ARRAY arr 
+  LOOP
+    RAISE NOTICE 'a text %', m[1];
+  END LOOP;
+END
+$do$; -- code block ends
 ```
 
-### The GROUP BY clause
-It groups rows that have the same values into summary rows, like "find the number of customers in each country". 
 
-The GROUP BY clause is often used with aggregate functions like COUNT(), MAX(), MIN(), SUM(), AVG() to group the result-set by one or more columns. `WHERE` cannot be used with `GROUP BY`. Because if this, `HAVING` was added.
+### GROUP-BY CLAUSE, FUNCTIONS & TRIGGERS
+> "Find the quantity of customers per country". 
+
+The **GROUP BY Clause** uses Aggregate Functions to summarize the result-set by one or more columns. Note: `GROUP BY` does not accept `WHERE`; it uses `HAVING`.
+
+Aggregation Functions tipically ignore NULL values. Some examples are **COUNT, MIN, MAX, SUM, AVG, GROUP_CONCAT (or STRING_AGG), STDDEV (or STDEV), VAR (or VARIANCE)**. Furthermore, function outputs can be cast or transformed with the `::` operator: 
 ```SQL
-SELECT COUNT(customer_id), country FROM customers GROUP BY country [HAVING country LIKE 'I%'] [ORDER BY country];
+SELECT COUNT(customer_id), country 
+FROM customers 
+GROUP BY country 
+[HAVING country LIKE 'I%'] 
+[ORDER BY country];
+
+-- Round the output to 2 decimals
+SELECT AVG(price)::NUMERIC(10,2) FROM products;
+```
+[**Functions**](https://www.postgresql.org/docs/16/sql-createfunction.html) are created via `CREATE [OR REPLACE] FUNCTION`. The user must have `USAGE`. `PROCEDURE` is a `FUNCTION` that does not return a value, only does an administrative task. In **TRIGGERS**, the keyword `PROCEDURE` is still usable, but historical and deprecated.
+
+Functions often use the **plpgsql language** for loops, private variable declaration and etc. `RAISE NOTICE` is used within codeblocks to print messages during function runtime. 
+
+Some examples of functions:
+```SQL
+CREATE OR REPLACE FUNCTION increment(i integer) RETURNS integer AS 
+$BODY$
+  BEGIN
+    RETURN i + 1;
+  END;
+$BODY$
+LANGUAGE plpgsql;
+
+-- Count nulls in a table
+CREATE OR REPLACE FUNCTION count_nulls(tb_name text)
+RETURNS TABLE (name_column text, null_count bigint)
+AS $$
+DECLARE
+    column_record record;
+    query_text text;
+BEGIN
+    FOR column_record IN 
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_name = tb_name
+    LOOP
+		name_column := column_record.column_name;
+        query_text := format('SELECT COUNT(*) FROM %I WHERE %I IS NULL', tb_name, column_record.column_name);
+        EXECUTE query_text INTO null_count;
+		
+        RETURN NEXT;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+SELECT * FROM test_func('table_name_as_string');
+
+-- Count registers in a table with prefix
+CREATE OR REPLACE FUNCTION count_tbs(condition text)
+RETURNS TABLE (tb_name text, count bigint)
+AS $$
+DECLARE
+    tb_name text;
+    query_text text;
+BEGIN
+    FOR tb_name IN 
+        SELECT table_name
+        FROM information_schema.tables
+        WHERE condition
+    LOOP
+        query_text := format('SELECT COUNT(*) FROM %I', tb_name);
+        EXECUTE query_text INTO count;
+		
+        RETURN NEXT;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Count distinct in column
+CREATE OR REPLACE FUNCTION occurrences_count_distinct_and_null(tb_name text)
+RETURNS TABLE (name_column text, null_registers bigint, unique_registers bigint, occurrences text)
+AS $$
+DECLARE
+    column_record record;
+    query_text text;
+BEGIN
+    FOR column_record IN 
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_name = tb_name
+    LOOP
+		name_column := column_record.column_name;
+        query_text := format('SELECT COUNT(DISTINCT %I) FROM %I', column_record.column_name, tb_name);
+		EXECUTE query_text INTO unique_registers;
+		query_text := format('SELECT COUNT(*) FROM %I WHERE %I IS NULL', tb_name, column_record.column_name);
+		EXECUTE query_text INTO null_registers;
+		query_text := query_text := $q$
+            SELECT 
+                array_to_string(
+                CASE 
+                    WHEN array_length(array_agg(DISTINCT $1),1) > 8
+                        THEN (array_agg(DISTINCT $1::TEXT))[:8]
+                    ELSE array_agg(DISTINCT $1)
+                END, ', ')
+            FROM $2
+        $q$;
+        EXECUTE query_text INTO occurrences USING column_record.column_name, tb_name;
+	
+        RETURN NEXT;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+SELECT * FROM count_distinct_and_null('ctf_pessoasgeoctf');
 ```
 
-### EXISTS/NOT EXISTS
-The EXISTS operator is used to test for the existence of any record in a sub query.
+[**Triggers**](https://www.postgresql.org/docs/current/sql-createtrigger.html) are a special case of **Functions**, in that they happen BEFORE, AFTER or INSTEAD OF an event. A `FOR EACH ROW` + `WHEN`-Clause in a trigger might reference OLD (if UPDATE or DELETE) or NEW (if UPDATE or INSERT). The language `pgpsql` has a couple of useful pre-defined variables ([doc](https://www.postgresql.org/docs/current/plpgsql-trigger.html)). Examples:
+```sql
+-- Adjusting a point register updated with "field1" empty
+CREATE OR REPLACE FUNCTION update_point() RETURNS TRIGGER AS
+$BODY$
+  BEGIN
+    UPDATE schema.points
+    SET
+      sremg = schema.highroad.sremg,
+      rodovia = schema.highroad.rodovia
+    FROM schema.highroad
+    WHERE ST_Intersects(schema.highroad.st_buffer, schema.points.shape);
+    RETURN NEW;
+  END;
+$BODY$ 
+LANGUAGE plpgsql;
+CREATE [OR REPLACE] TRIGGER update_ponto_critico_trigger
+    AFTER UPDATE ON schema.points
+    FOR EACH ROW
+    WHEN (NEW.field1 IS NULL)
+    EXECUTE FUNCTION update_ponto_critico();
 
-The EXISTS operator returns TRUE if the sub query returns one or more records.
 
+-- Archiving DELETE or UPDATE operations
+CREATE TABLE R (
+  ID        int PRIMARY KEY,
+  r         int
+);
+CREATE TABLE R_Archiv (
+  ID        int,
+  r         int,
+  Zeitpunkt timestamp with time zone,
+  Operation text,
+  PRIMARY KEY (ID, Zeitpunkt)
+);
+CREATE OR REPLACE FUNCTION archiviereTupel() RETURNS TRIGGER AS
+$BODY$
+  BEGIN
+    INSERT INTO R_Archiv
+      VALUES (OLD.id, OLD.r, now(), TG_OP);
+    RETURN NEW;
+  END;
+$BODY$
+LANGUAGE plpgsql;
+CREATE TRIGGER archivTrigger 
+    AFTER DELETE OR UPDATE ON R
+    FOR EACH ROW
+    EXECUTE FUNCTION archiviereTupel();
+```
+
+### TRANSACTIONS
+It bundles multiple steps into a single, all-or-nothing operation; it is _atomic_. Transactions are logged. A transaction can be `ROLLBACK` instead of `COMMIT` if the results are not exactly the expected ones. One can also use `SAVEPOINT` ([doc](https://www.postgresql.org/docs/current/tutorial-transactions.html));
+```SQL
+-- >> Start Transaction
+BEGIN;
+
+-- >> Write Statements
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+-- etc etc
+
+-- >> Commit (finish) Transaction
+COMMIT;
+```
+
+### INDEXES & TABLESPACES
+**Indexes** accelerate the time querying with that field, but they add _overhead_ to general queries. An index is like the index of a book. A reader can use the index to quickly go to the occurences in the book, and the writer is responsible for elaborating the index table. Indexes can also benefit `UPDATE` and `DELETE` commands with search conditions. Indexes can moreover be used in join searches. Thus, an index defined on a column that is part of a join condition can also significantly speed up queries with joins. (check Instagram saved)
+
+**Tablespaces** represent where in disk that the data will be kept. 
+This allows the DBA (Database Administrator) not only to manage the database backup in parts
+but also to pump up indexes of certain table which consequently speed up data requests.
+
+### coalesce()
+A function that returns the first of its arguments that is not null.
+
+
+### VIEW, MATERIALIZED VIEW & TABLE
+A **TABLE** is somewhat static in structure and laboursome to update. A **VIEW** is versatile in structure and always computes _on-the-fly_, which might not be optimal. A **MATERIALIZED VIEW** is versatile in structure, caches the last run, but scheduled maintenance for updates.
+
+### [NOT] EXISTS
+The `EXISTS` operator is used to test for the existence of any object
+```SQL
 SELECT customers.customer_name
 FROM customers
 WHERE EXISTS (
@@ -200,6 +485,7 @@ WHERE EXISTS (
   FROM orders
   WHERE customer_id = customers.customer_id
 );
+```
 
 ### ANY & ALL
 The ANY/ALL operator:
@@ -215,27 +501,34 @@ WHERE product_id = ALL (
   );
 ```
 
-### CASE
-The CASE expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement).
+### `CASE-WHEN-ELSE`, `IIF` and `IF-ELSIF-ELSE`
+`CASE-WHEN-ELSE` is an expression, goes through conditions and returns a value when the first condition is met. Once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause. If there is no ELSE part and no conditions are true, it returns NULL.
 
-Once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+`IIF` is the "imediate if". It works as "IIF(CONDITION, TRUE, FALSE)".
 
-If there is no ELSE part and no conditions are true, it returns NULL.
+`IF-ELSIF-ELSE` is used to control structure, ie to chose what blocks/statements are executed.
 ```SQL
--- Case example with alias
-SELECT product_name,
-CASE
-  WHEN price < 10 THEN 'Low price product'
-  WHEN price > 50 THEN 'High price product'
-ELSE
-  'Normal product'
-END AS "price category"
+SELECT 
+  product_name,
+  -- CASE-WHEN-ELSE
+  CASE
+    WHEN price < 10 THEN 'Low price product'
+    WHEN price > 50 THEN 'High price product'
+    ELSE 'Normal product'
+  END AS "price category"
+
+  -- IIF
+  IIF(price < 10, 'Low price product', 
+    IIF(price > 50, 'High price product', 'Normal product'))
+    AS "price category"
 FROM products;
 ```
 
-### DATASPACE
 
-## Allow outside connections
+### `Role` & `Group roles` in PostgreSQL
+ROLE is used for users. GROUP ROLE is used to set permits that will more than one user might acquire.
+
+## Allow any outside connection
 In PostgreSQL's dir make sure `data/postgresql.conf` is listening all addresses: `listen_addresses = '*'`; and that `pg_hba.conf` allow all ips connections `host all all 0.0.0.0/0 md5`.
 
 Restart PostgreSQL service in Windows 
@@ -263,6 +556,93 @@ pg_dump -U username -h source_host -d sourc_database > backup.sql
 # Restore
 pg_restore -U username -h target_host -d target_database < backup.sql
 ```
+
+
+## > PostGIS
+PostGIS is an extension for PostgreSQL to work with geospatial data. It adds functions, views and tables to schema PUBLIC, which then enables users connected to any schema to use it.
+
+Examples using PostGIS:
+```SQL
+-- Selecting the intersections and showing them in m2
+SELECT 
+    uc.nome AS Nome_UC, 
+    pdot.sigla AS Sigla_PDOT, 
+    pdot.macroarea AS Nome_PDOT,
+    SUM(ST_Area(ST_Intersection(uc.geom, pdot.geom)))::INT AS Area_Sobreposta_em_m2
+FROM 
+    v03.d1_2_unidade_protecao_integral AS uc
+JOIN 
+    v03.d3_1_pdot_zoneamento AS pdot 
+ON 
+    ST_Intersects(uc.geom, pdot.geom)
+GROUP BY 
+    Nome_UC, Sigla_PDOT, Nome_PDOT 
+ORDER BY 
+    Nome_UC, Area_Sobreposta_em_m2 DESC;
+
+-- Create a new geospatially enabled table from the union of geometries of another table
+CREATE TABLE sisdia.apa_planalto_central AS 
+SELECT
+    1::integer AS objectid, 
+    'Área de Proteção Ambiental do Planalto Central'::varchar(255) AS nome, 
+    'Decreto da Presidência da República de 10 de janeiro de 2002'::varchar(255) AS ato_legal, 
+    'zn_apa_planalto_central'::varchar(255) AS camada_zoneamento,
+    ST_Simplify(ST_Union(geom), 0.01)::geometry AS geom 
+FROM sisdia.zn_apa_planalto_central;
+```
+
+## > DBLINK - SQL statement inter-servers
+It only work between PostgreSQL database servers.  
+Ensure the extension is available. You can add it as superuser: `CREATE EXTENSION dblink;`.  
+Use dblink to create a connection a name it with an alias:
+
+`SELECT dblink_connect('choose_an_alias', 'hostaddr=123.123.123.123 port=5432 dbname=gdf user=the_username password=p4ssw0rd');`
+
+Statements using dblink must specify the type of the fields:  
+https://www.postgresql.org/docs/10/contrib-dblink-function.html
+
+The clause inside `dblink` must be possible to run in the target server. Columns can be likewise converted during the clause. Their type must still be declared.
+
+```SQL
+CREATE TABLE v02.utmf_distritos_jun_2018 AS
+  SELECT * 
+  FROM dblink('gdf','
+    SELECT 
+      gid, 
+      utmf, 
+      nome_ofc, 
+      modulo, 
+      distrito::float8, 
+      geom
+    FROM dflegal.utmf_distritos_jun_2018 
+    ORDER BY 1
+  ') AS t(
+    gid integer, 
+    utmf character varying, 
+    nome_ofc character varying, 
+    modulo character varying, 
+    distrito float8, 
+    geom geometry(MultiPolygon, 31983)
+    );
+```
+
+### In SQL, 
+```SQL
+-- string_agg(expression, delimiter)
+SELECT 
+  string_agg(campotexto || ' #' || conta, ' | ') 
+FROM (
+  SELECT 
+    bacia_hidr AS campotexto,
+    count(*) AS conta 
+  FROM 
+    sisdia.outorga_aguas_pluviais
+  GROUP BY 
+    bacia_hidr
+) AS subquery;
+```
+
+---
 
 ### To-Order
 #### MODIFYING TABLE
