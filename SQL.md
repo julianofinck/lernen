@@ -23,6 +23,11 @@ Draw diagrams https://app.diagrams.net/
 Invented at the Berkeley Computer Science Department, University of California, it started as a project in 1986 with the goal of creating a database system with the minimal features needed to support multiple data types.
 
 ### 1. PostgreSQL Components
+PostgreSQL installer has 4 components: 
+- PostgreSQL Server
+- pgAdmin 4
+- Stack Builder
+- Command Line Tools
 #### 1.1 PSQL
 **PSQL** is the CLI-based frontend to PostgreSQL. It supports typing queries interactively, running commands directly (`-c`) or from a file (`-f`). It is usually under `C:\Program Files\PostgreSQL\<VERSION>5\bin\psql.exe`.
 
