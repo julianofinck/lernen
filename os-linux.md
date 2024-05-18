@@ -41,6 +41,12 @@ This split every line considering space as delimiter and prints the 3rd and 6th 
 
 `| sort` sorts the output; `| uniq` shows only uniques; `wc -l` counts the number of lines.
 
+Substitute leading "./" for "" in a path. `"././string" | sed 's/^.\///g'`. **sed** works in the format 's/regex/regex/g'. The regex for getting the leading "./" is:
+- `^` (at the start)
+- `.\/` (slash must be escaped with back slash)
+- then nothing is kept between the last two slashs to precisely erase it.
+
+
 
 ## Linux's directories - [Fireship YouTube Video](https://youtu.be/42iQKuQodW4)
 All the binaries are mapped together with the `$PATH` env variable. Find out where a binary lives by `which curl`
