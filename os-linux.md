@@ -133,6 +133,13 @@ umount -R /mnt
 nano /etc/sudoers
 # uncomment the "wheel group" line
 ```
+## Multimedia
+For Bluetooth to work, bluez bluez-utils, load kernel module btusb and systemctl enable bluetooth [source](https://wiki.archlinux.org/title/bluetooth).
+
+For audio to work, linux-firmware was not enough in my laptop; I needed sof-firmware. 
+> Specific firmware for other devices not included in linux-firmware (e.g. sof-firmware for onboard audio, linux-firmware-marvell for Marvell wireless and any of the multiple firmware packages for Broadcom wireless) [source](https://wiki.archlinux.org/title/Installation_guide#Install_essential_packages)
+
+
 
 ## Bootloader - GRUB
 **Main partition** should be mount in `/mnt` and **EFI Partition** in
