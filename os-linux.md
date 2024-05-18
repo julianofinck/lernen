@@ -164,3 +164,27 @@ sudo mkdir -p /var/backup/boot & sudo cp -R /boot /var/backup/
 # Get size of it
 du -sh /var/backup/boot/
 ```
+
+## Terminal
+```shell
+# Update package manager & get packages
+pacman -Syu
+pacman -S gnome-terminal nu starship
+
+# Get font
+
+# Open gnome-terminal
+gnome-terminal
+# Preferences > Profile > Command > Custom command: nu 
+
+# Config nu to use starship
+nu
+"mkdir ~/.cache/starship" | save $nu.env-path --append
+"starship init nu | save -f ~/.cache/starship/init.nu" | save $nu.env-path --append
+"use ~/.cache/starship/init.nu" | save $nu.config-path --append
+
+# Add preset to starship
+starship preset pastel-powerline -o ~/.config/starship.toml
+
+# Restart terminal
+```
