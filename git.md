@@ -116,7 +116,6 @@ type FILENAME.pub   # Windows
 Additionally, you can set a config file so that git knows what username to use for each domain when using the SSH protocol:
 ```bash
 # CREATE CONFIG FILE (optional)  
-touch config  
 nano config  
 
 #--------------------------------------------#  
@@ -191,6 +190,9 @@ git remote -v
 # 10) Push the changes in your local repository up to the remote repository you specified as "origin"
 	git push origin main
 ```
+
+#### Reset the author without editting
+git commit --amend --reset-author --no-edit
 
 #### **When local already exists**
 ```

@@ -5,6 +5,11 @@ LINUX is a FOSS derivative of UNIX, mainly defined by the kernel (which controls
 
 POSIX (maintained by IEEE) and SUS are standards. Standards are meant to guarantee compatibility.
 
+## Running .sh scripts
+chmod +x script.sh
+sh script.sh
+bash script.sh
+
 ---
 ## Sheetcode
 | Command         | Action                                                     |
@@ -38,6 +43,8 @@ This split every line considering space as delimiter and prints the 3rd and 6th 
 
 
 ## Linux's directories - [Fireship YouTube Video](https://youtu.be/42iQKuQodW4)
+All the binaries are mapped together with the `$PATH` env variable. Find out where a binary lives by `which curl`
+
 | Directory | Description                                                          |
 |-----------|----------------------------------------------------------------------|
 |/bin       | binaries/executables (gzip, curl, ls) that can run from the terminal |
@@ -54,7 +61,6 @@ This split every line considering space as delimiter and prints the 3rd and 6th 
 |/tmp       | temporary files -- arent persistent between reboots |
 |/proc      | illusionary filesystem that is created on memory on the fly by the kernel to keep track of running processes|
 
-All the binaries are mapped together with the `$PATH` env variable. Find out where a binary lives by `which curl`
 
 
 ## [Arch Linux](https://archlinux.org/)
