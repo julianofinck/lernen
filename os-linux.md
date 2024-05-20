@@ -157,7 +157,7 @@ Make the configuration file with `grub-mkconfig -o /boot/grub/grub.cfg`
 
 
 `pacman -Syu` may crash mid-update while updating the boot files [reddit post](https://www.reddit.com/r/archlinux/comments/vaz14l/you_can_end_up_without_any_kernel_to_boot_if_your/). I keep copies at `/var/backup/boot` just in case. 
-```shell
+```bash
 # Backup /boot
 sudo mkdir -p /var/backup/boot & sudo cp -R /boot /var/backup/
 
@@ -166,12 +166,25 @@ du -sh /var/backup/boot/
 ```
 
 ## Terminal
-```shell
+```bash
 # Update package manager & get packages
 pacman -Syu
 pacman -S gnome-terminal nu starship
 
 # Get font
+# Install necessary packages
+sudo pacman -S curl unzip --noconfirm
+curl -L -o CascadiaCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip
+unzip CascadiaCode.zip -d CascadiaCode
+mkdir -p ~/.local/share/fonts
+mv CascadiaCode/*.ttf ~/.local/share/fonts/
+
+# Update the font cache
+fc-cache -fv
+
+# Clean up
+rm -rf CascadiaCode.zip CascadiaCode
+echo "Cascadia Code Nerd Font installed successfully."
 
 # Open gnome-terminal
 gnome-terminal
