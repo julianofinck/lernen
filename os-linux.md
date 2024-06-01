@@ -46,6 +46,8 @@ Substitute leading "./" for "" in a path. `"././string" | sed 's/^.\///g'`. **se
 - `.\/` (slash must be escaped with back slash)
 - then nothing is kept between the last two slashs to precisely erase it.
 
+## Utils
+`tree` is a package that print the file structure being used
 
 
 ## Linux's directories - [Fireship YouTube Video](https://youtu.be/42iQKuQodW4)
