@@ -202,46 +202,49 @@ pipreqs folder/
 ```
 
 ### 2.3) Package & Dependency Manager (requires Python 3.8+)  
-`pipenv` is said to be a direct competitor of `Poetry`
-
-`pip` is not particularly great at solving transitive dependencies (you want to install package A and B, which both directly depend on the listed packages C and D, but these might have depencies E and F, which are not listed in package A and B. E and F are called transitive dependencies). 
-
-Since 2018/19 with PEP 517 and PEP 518 (which are related to defining build backend and package dependencies, 
-respectively), Poetry is gaining popularity as a modern package manager for Python and it is encouraged to use 
+Since 2018/19 with PEP 517 and PEP 518 (Definitions for build backend and for package dependencies, 
+respectively), **Poetry** gains popularity as a modern package manager for Python and is encouraged to use 
 in production code 
 ([source](https://community.sap.com/t5/application-development-blog-posts/why-you-should-use-poetry-instead-of-pip-or-conda-for-python-projects/ba-p/13545646)). 
-The main reasons to adopt Poetry is that is simplify the workflow when dealing both with private repositories 
+Poetry aims at simplifying workflows when dealing with private repositories 
 and switching between development and production environments.
 
-According to [Poetry Doc](https://python-poetry.org/docs/), it should be install via `pipx install poetry` 
-because of it's global CLI nature and it will manage upgrades and uninstalls when used to install Poetry. 
-`poetry install` creates a **"pyproject.toml"**, which aims to solve the the build-tool dependency chicken and 
-egg problem, i.e. pip can read pyproject.toml and what version of setuptools or wheel one may need. 
+Also, `pip` is not particularly good at solving transitive dependencies 
+(if package A has a listed dependency B, but B depends on a C package not listed in A, then C is called a transitive dependency) 
+Some people prefer to use `pipenv` instead of `poetry`. They are said to be a direct competitors.
+
+According to [Poetry Doc](https://python-poetry.org/docs/), **Poetry** should be installed via `pipx install poetry` 
+because of it's global CLI nature. `pipx` can manage upgrades and uninstalls of **Poetry** and 
+keeps it globally while isolated from other packages. 
+`poetry install` creates a **"pyproject.toml"**, which aims to solve the the build-tool dependency _chicken-and-egg 
+problem_, i.e. pyproject.toml ensures what version of setuptools, wheel and other dependencies are needed. 
+
+Add auto-completion in **bash** for **Poetry** with `poetry completions bash >> ~/.bash_completion`
 
 ```bash
-# Activate auto-completion in Bash
-poetry completions bash >> ~/.bash_completion
-
-# When initialising a pre-existing project
+# Initialise a pre-existing project
 cd <project_dir>
 poetry init
 
-> To keep the virtual env inside the project
-> poetry config virtualenvs.in-project true
+# To keep the virtual env inside the project
+poetry config virtualenvs.in-project true
 
-
-# Install the ing only production dependencies
-poetry install --no-dev
-
-# Installing both development and production dependencies
-poetry install
-
-# Install production dependency
+# Add dependencies
+### production
 poetry add numpy[@1.3.1]
 poetry add git+https://github.com/karantan/ansible.git@v2.6.0.1
-
-# Install development dependency
+### development only
 poetry add pytest --dev
+
+# Install packages 
+### for production only
+poetry install --only main
+### both development and production dependencies
+poetry install
+
+# Activate environment (type "deactivate" to deactivate it)
+poetry shell
+# Exit the shell with "exit"
 
 # Add private repo in .toml
 [[tool.poetry.source]]
