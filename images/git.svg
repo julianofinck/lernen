@@ -7,7 +7,7 @@
    viewBox="0 0 104.4694 62.18586"
    version="1.1"
    id="svg5"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    sodipodi:docname="git.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,13 +25,13 @@
      inkscape:document-units="mm"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="2.1089995"
-     inkscape:cx="221.90617"
-     inkscape:cy="154.57566"
-     inkscape:window-width="1920"
-     inkscape:window-height="1121"
-     inkscape:window-x="0"
-     inkscape:window-y="29"
+     inkscape:zoom="5.9651514"
+     inkscape:cx="166.46686"
+     inkscape:cy="104.77521"
+     inkscape:window-width="1680"
+     inkscape:window-height="979"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -96,7 +96,7 @@
          id="tspan1237"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace;text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
          x="38.839325"
-         y="38.175346">feat: conexão ajustada</tspan><tspan
+         y="38.175346">bugfix: conexão ajustada</tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace;text-align:end;text-anchor:end;stroke:none;stroke-width:0.412"
          x="38.839325"
@@ -141,17 +141,17 @@
          x="1.0899429"
          y="4.6749539"
          id="tspan2636"
-         sodipodi:role="line">Git - ferramenta de versionamento de arquivos </tspan><tspan
+         sodipodi:role="line">Git - file versioning tool </tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Monospace;-inkscape-font-specification:Monospace;stroke:none;stroke-width:0.412"
          x="1.0899429"
          y="9.0846786"
          id="tspan2744"
-         sodipodi:role="line"> GitHub: repositórios globais</tspan><tspan
+         sodipodi:role="line"> GitHub: public repositories </tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Monospace;-inkscape-font-specification:Monospace;stroke:none;stroke-width:0.412"
          x="1.0899429"
          y="13.494404"
          id="tspan2746"
-         sodipodi:role="line"> GitLab: repositórios do lab (nossos)</tspan></text>
+         sodipodi:role="line"> GitLab: lab repositories (enterprise)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.82223px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke:#000000;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
@@ -227,5 +227,21 @@
        style="fill:#000000;fill-opacity:1;stroke:#fc8800;stroke-width:0.412001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        d="m 54.523714,23.276936 1.496968,1.49697"
        id="path5135" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.52777px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';text-align:center;text-anchor:middle;fill:#000000;stroke:#1d0b00;stroke-width:0.01;stroke-linecap:round;stroke-linejoin:round"
+       x="3.2723606"
+       y="22.923521"
+       id="text426"><tspan
+         sodipodi:role="line"
+         id="tspan424"
+         style="stroke-width:0.01"
+         x="3.2723606"
+         y="22.923521">p</tspan></text>
+    <path
+       style="fill:#000000;stroke:#1d0b00;stroke-width:0.21;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 36.30076,18.050833 H 47.632883"
+       id="path495"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>

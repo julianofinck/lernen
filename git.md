@@ -1,4 +1,5 @@
 # [Git](https://en.wikipedia.org/wiki/Git) - File versioning control tool
+
 It helps to track changes in a project. You can [download](https://git-scm.com/download/win)
 **git-bash** for Windows, a Linux-like terminal that supports git commands (I always select the default installation, except for the editor).
 
@@ -22,6 +23,9 @@ Further, **push** sends all the closed boxes off to the warehouse (remote),
 there they're out of your control. **pull** asks the warehouse to bring the new boxes to an existing location; 
 **clone** makes a copy of the entire warehouse and bring it to a new location. 
 ---
+<div align="center">
+  <img src="./images/git.svg" style='background-color: rgb(250, 250, 250)'>
+</div>
 
 ## Sheetcode - Fundamentals
 
@@ -157,7 +161,12 @@ git checkout <branch-name>
 # Merges the <remote-branch> to the current branch
 git merge <remote-branch> 
 ```
-
+# Search for a substring in Git history
+These are two out of other commands one can use to
+```bash
+git grep -i "substring" $(git rev-list --all)
+git log -S "substring" --source --all
+```
 
 
 # Create new local from scratch
@@ -254,8 +263,3 @@ git clean -df
 | Warning                     | Fix                                     | Source                                                                                                                    |
 |-----------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | LF will be replaced by CRLF | git config --global core.autocrlf false | https://stackoverflow.com/questions/17628305/windows-git-warning-lf-will-be-replaced-by-crlf-is-that-warning-tail-backwar |
-
-
-<div align="center">
-  <img src="./images/git.svg" style='background-color: rgb(250, 250, 250)'>
-</div>
