@@ -1,7 +1,7 @@
 # [Git](https://en.wikipedia.org/wiki/Git) - File versioning control tool
 
 It helps to track changes in a project. You can [download](https://git-scm.com/download/win)
-**git-bash** for Windows, a Linux-like terminal that supports git commands (I always select the default installation, except for the editor).
+**git-bash** for Windows (or `winget install --id Git.Git -e --source winget`), a Linux-like terminal that supports git commands (I always select the default installation, except for the editor).
 
 - Repositories (repo): **remote** (online) or **local** (in machine)
 - Copying repo: **clone** (replica stored in local) or **fork** (replica stored in remote)
