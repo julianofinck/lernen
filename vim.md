@@ -6,11 +6,65 @@ Based on the original Unix text editor Vi, which came about in 1976 by Bill Joy.
 Vim (Vi improved) followed it in 1991 by Bram Moolenaar.
 
 ## Vim Modes
-Toggle between modes:
-- esc = Normal mode
-- i = Insert mode
-- : = Command mode
-- v = Visual mode
+Enter Normal mode `ESC`  
+Enter Command mode with `:`
+
+|Insert Mode||
+|---|---|
+|i|before caret|
+|shift + i| beginning of line|
+|a|after caret|
+|shift + a| end of the line |
+|o|insert in next line|
+|shift + o | insert in line above|
+
+|Visual Mode||
+|---|---|
+|v|visual|
+|ctrl + v| visual block|
+|shift + v|visual line|
+
+YANK
+- all inside (, [, or a {: `y + i + ( [ {`
+- all inside incuding braces: `y + i + ( [ {`
+
+`.` repeats any operation done in Normal MOde
+
+CHANGE
+- word: `c w` + "new word"
+
+DELETE
+- word: `d i w`
+- sentence: `d i s`
+- paragraph: `d i p`
+
+VERTICAL NAVIGATION
+- sentence: `(` & `)`
+- paragraph: `{` & `}`  (next block of blank line)
+- half-page: ctrl + d/u
+- full-age: ctrl + f/b
+- go to beginning of the page: gg
+- go to end of the page:G
+
+undo - U  
+redo - ctrl + R
+
+MARK (normal mode)
+- mark-current-position with a: `m a`
+- jump-to mark-a: `~a`
+- toggle last cursor position: `~~`
+- go-to last edit position: `~.`
+
+SEARCH
+- `/pattern` (iterate by typing `n`/`N`)
+- search for the next word like the current word `*` (`#`, backwards)
+
+
+# change in a word
+c i w
+
+Then, if I go to any word and click ".", the last operation will run again
+
 
 ### Sheetcode
 |command | description|
