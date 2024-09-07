@@ -40,7 +40,7 @@ Although several environment variables can be set to avoid having to type them (
 
 |Command      |Description                                 |
 |-------------|--------------------------------------------|
-|\list or \l  |list databases in server                    |
+|rlist or \l  |list databases in server                    |
 |\dt          |describe tables                             |
 |\c <db_name> |connects to the database                    |
 |\?           |internal Statement, like "\copy" or "\list" |
