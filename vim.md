@@ -5,8 +5,12 @@ Based on the original Unix text editor Vi, which came about in 1976 by Bill Joy.
 
 Vim (Vi improved) followed it in 1991 by Bram Moolenaar.
 
+<div align="center">
+  <img src="./images/vim_sheetcode.png" style='background-color: rgb(250, 250, 250)'>
+</div>
+
 ## Vim Modes
-Enter Normal mode `ESC`  
+Enter Normal mode: `ESC` or `Ctrl + C`  
 Enter Command mode with `:`
 
 |Insert Mode||
@@ -24,19 +28,21 @@ Enter Command mode with `:`
 |ctrl + v| visual block|
 |shift + v|visual line|
 
-YANK
-- all inside (, [, or a {: `y + i + ( [ {`
-- all inside incuding braces: `y + i + ( [ {`
-
-`.` repeats any operation done in Normal MOde
-
-CHANGE
-- word: `c w` + "new word"
+Commands: D C Y V  
+(`.` repeats any operation done in Normal Mode)
 
 DELETE
 - word: `d i w`
 - sentence: `d i s`
 - paragraph: `d i p`
+
+CHANGE
+- word: `c w` + "new word"
+
+YANK
+- all inside (, [, or a {: `y + i + ( [ {`
+- all inside incuding braces: `y + i + ( [ {`
+
 
 VERTICAL NAVIGATION
 - sentence: `(` & `)`
@@ -86,7 +92,7 @@ Then, if I go to any word and click ".", the last operation will run again
 |:w | write/save|
 |:!node hello.js | runs a shell command directly from Vim|
 
-## Setup Vim in VSCode
+## Setup Vim in VS Code
 - Add extension "vscodevim.vim"  
 - Setup key-repeat  
 On Google, search for "vscode vim github". Open repository "VSCodeVim/Vim"  
