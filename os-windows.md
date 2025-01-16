@@ -10,11 +10,11 @@
 
 
 ## Windows Integrity Level: 
-The trustworthiness or priviledge of an object or program
+The trustworthiness or privilege of an object or program
 - Untrusted: even more restricted
 - Low: very restricted read and write (for instance, browser might run in low as a security)
 - Medium: regular user rights
-- High: admin priviledges
+- High: admin privileges
 - System: like "root", can do whatever
 - Installer: ...
 
@@ -47,6 +47,27 @@ If you try to open Ubuntu right off the bat without restarting your computador, 
 > WslRegisterDistribution failed with error: 0x8004032d  
 > Error: 0x8004032d (null)  
 > Press any key to continue...
+
+### Port forwarding from WSL to Windows
+```ps
+# 1. Add Port Forwarding
+netsh interface portproxy add v4tov4 listenport=8050 listenaddress=0.0.0.0 connectport=8050 connectaddress=$($(wsl hostname -I).Trim());
+
+# Check that it got added
+netsh interface portproxy show v4tov4
+
+# Delete if necessary
+netsh interface portproxy delete v4tov4 listenport=8050 listenaddress=0.0.0.0
+
+
+# 2. Add a new firewall rule to allow inbound traffic on port 8050
+New-NetFirewallRule -DisplayName "Allow Port 8050" `
+    -Direction Inbound `
+    -LocalPort 8050 `
+    -Protocol TCP `
+    -Action Allow `
+    -Profile Any
+```
 
 ## WSL in Windows VS Code - [Tutorial](https://code.visualstudio.com/docs/remote/wsl-tutorial)
 To allow WSL Terminal in VS Code, add the VS Code extension "WSL".
