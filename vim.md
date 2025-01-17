@@ -52,6 +52,15 @@ LSP provides autocompletion (C-n and C-p to navigate; C-y to accept; C-e to canc
 LSP-zero has 3 dependencies, and each desired LSP server must be download separate and a `require('lspconfig').example_server.setup({})` must be added to LazyVim's plugin spec.
 
 
+%s/pattern/new_pattern  ("\1" in new-pattern gets the first character from pattern)
+```
+leader<y>
+leader<p>
+leader<d>
+leader<s> - substitute globally the word you are on
+leader<x> - runs chmod on the file (make it executable)
+```
+
 <div align="center">
   <img src="./images/vim_sheetcode.png" style='background-color: rgb(250, 250, 250)'>
 </div>
