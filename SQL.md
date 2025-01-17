@@ -458,12 +458,17 @@ It bundles multiple steps into a single, all-or-nothing operation; it is _atomic
 BEGIN;
 
 -- >> Write Statements
-UPDATE accounts SET balance = balance - 100.00
-    WHERE name = 'Alice';
+UPDATE accounts 
+SET balance = balance - 100.00
+WHERE name = 'Alice'
+RETURNING col1, col2, col3; -- OR *
 -- etc etc
 
 -- >> Commit (finish) Transaction
+-- accept
 COMMIT;
+-- cancel
+ROLLBACK;
 ```
 
 ### INDEXES & TABLESPACES
@@ -528,7 +533,14 @@ SELECT
     AS "price category"
 FROM products;
 ```
-
+### XML
+```SQL
+-- Get a string value in Node2
+SELECT
+  unnest(xpath('string(//Node1/Node2)'), table.xml)
+FROM 
+    table;
+```
 
 ### `Role` & `Group roles` in PostgreSQL
 ROLE is used for users. GROUP ROLE is used to set permits that will more than one user might acquire.
