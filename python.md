@@ -313,6 +313,22 @@ Pycodestyle follows some conventions of pep8, and categorizes it with error-code
 PEP8
 PEP257
 
+### 3.4) Ruff
+Install **ruff** system-wide
+`pipx install ruff`
+or `pip install ruff` project-specific. 
+
+By Default, **Ruff** does not check for **stylistic rules** that overlap with the use of a formatter.  
+Nevertheless, you can add still these rules. The **formatting rules** are fixed with specific command
+
+| Command | Description |
+| --- | --- |
+|`ruff check [path] [--fix]` | check for errors in all files, alerting when easy fixable|
+|`ruff rule [RULE_CODE]` | returns the rule description|
+|`ruff check --watch`| can be run in another terminal that let you know if errors pop up during development |
+|`ruff check --select E` | include all E rules in check |
+|`ruff format [--diff]` | format all files |
+
 
 ## 4. Tests
 `unitest` and `pytest` are popular python libraries for testing.

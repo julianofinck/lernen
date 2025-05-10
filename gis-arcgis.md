@@ -3,7 +3,7 @@ TODO:
 
 
 # 1. ArcGIS EGDB on PostgreSQL RDBMS 
-The ArcGIS Enteprise Geodatabase (EGDB) is a component of the ArcGIS Enterprise suite. Its difference to a GDB is that it is implemented via a RDBMS and not system files. Consequently, it supports multiple connections, versioned editting, more flexible lock mechanism, history and access via SQL. Esri recommends its creation via the `Create Enterprise Geodatabase` tool of the respective ArcGIS Desktop, which works different for each RDBMS.
+The ArcGIS Enteprise Geodatabase (EGDB) is a component of the ArcGIS Enterprise suite. An EGDB differs from a FGDB in that it is implemented via a RDBMS and not system files. Consequently, it supports multiple connections, versioned editing, more flexible lock mechanism, history and access via SQL. Esri recommends its creation via the `gp.Create Enterprise Geodatabase` tool of the respective ArcGIS Desktop, which works different for each RDBMS.
 
 ## About the EGDB
 The public schema only serves managing. PostGIS and EGDB uses it to keep reference table, like the coordinate system list. Each table registered in a EGDB has an associated `i###` table, which controls the counter for the respective `objectid`.
@@ -16,18 +16,15 @@ Data Editors must only access EGDBs via ArcGIS Pro or ArcMap because these can c
 
 Feature Datasets are structures to keep Feature Classes together and under the same reference system. Feature Datasets can not be seen in PostgreSQL but in ArcGIS Pro and are required to STABLISH RELATIONSHIP OF TOPOLOGY, NETWORK DATASET, TERRAIN, GEOMETRIC NETWORK & PARCEL FABRIC. Relationships 1:m can be created in ArcGIS Pro by right-clicking over the EGDB "New > Relationship Class".
 
-## 1.1. Setting up an EGDB
-### 1.1.1. Installing RDBMS PostgreSQL
-1. Install ArcGIS Server and authorize it.
-2. Copy **keycodes** to somewhere accessible by ArcGIS Pro  
-Keycodes path: `\Program Files\Esri\License<release#>\sysgen\keycodes`
-3. Install PostgreSQL with PostGIS
-4. For the RDBMS to be recognized in the installation of a EGDB, copy `st_geometry.dll` from ArcGIS Server installation  
-(e.g. `C:\ArcGIS\Server\DatabaseSupport\PostgreSQL\10\Windows64\st_geometry.dll`  
-to `C:\Program Files\PostgreSQL\11\lib\st_geometry.dll`)
-5. Restart the RDBMS service
-### 1.1.2. Prior Configurations in PostgreSQL
-6. A superuser called "sde" is necessary for managing procedures in a EGDB. If this user is not found under ROLEs, it gets automatically created with `Create Enterprise Geodatabase`. To create a superuser, you need to be a superuser like `postgres`.
+## Setting up an EGDB
+Prior to installing an EGDB, the ArcGIS Server must be installed and authorized. Its authorization generates a `keycodes` file usually under `\Program Files\Esri\License<release#>\sysgen\keycodes`. Double-check that the file is valid: the file is a .csv and each line has the authorization code for one component of the Enterprise Suite. There should be a row with `arcsdeserver` and its expiry date.
+
+PostgreSQL with PostGIS must be installed and it must be able to understand Esri's `ST_GEOMETRY` type. Consequently, copy `st_geometry.dll` from `Program Files (x86)\ArcGIS\Desktop10.6`  
+to `C:\Program Files\PostgreSQL\11\lib\st_geometry.dll`. Restart the RDBMS service.
+>\* (CHECK) The .dll can also be copied from the ArcGIS Server installation `C:\ArcGIS\Server\DatabaseSupport\PostgreSQL\10\Windows64\st_geometry.dll`
+
+### > Prior Configurations in PostgreSQL
+The superuser `sde` is responsible for creating EGDBs. To create it, you need to be a superuser such as `postgres`. If it does not exist under roles, `Create Enterprise Geodatabase` automatically creates it. 
 ```SQL
 -- Manager in SQL to remove lock of layers and perform admin procedures
 CREATE ROLE sde WITH
@@ -69,9 +66,10 @@ CREATE DATABASE database_name
 
 -- Search for tables first in schema named after the user, then public, then sde  
 ALTER DATABASE database_name
-SET search_path TO "$user", public, sde;
+    SET search_path TO "$user", public, sde;
 
--- Create schema (the owner is the user that created it)
+-- Access the database & create the SDE schema
+--  (the owner for this schema is the user that creates it)
 CREATE SCHEMA sde AUTHORIZATION sde;
  
 -- Give GRANTS to certain roles or group roles:
@@ -94,9 +92,9 @@ CREATE EXTENSION postgis;
 
 -- Enable "PG_GEOMETRY" as default (recent ArcGIS Pro versions have the "spatial type" option in "Create Enterprise Geodatabase", which is then selected as POSTGIS, not requiring this step in SQL necessarily. )
 UPDATE sde.sde_dbtune
-  SET config_string = "PG_GEOMETRY"
-  WHERE KEYWORD = "DEFAULTS"
-  AND parameter_name = "GEOMETRY_STORAGE";
+  SET config_string = 'PG_GEOMETRY'
+  WHERE KEYWORD = 'DEFAULTS'
+  AND parameter_name = 'GEOMETRY_STORAGE';
 ```
 #### 1.1.3.2 Add dblink extension (connect between others pg_db)
 Adding the dblink extension can be useful to connect other pg_db isntances.

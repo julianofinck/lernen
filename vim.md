@@ -1,52 +1,78 @@
 # Vim - the ubiquitous text editor
-Vim is a modal editor centered on efficiently doing all via the keyboard.
+Vim is a modal key-board oriented editor: .
 
-Based on the original Unix text editor Vi, which came about in 1976 by Bill Joy.
-Vim (Vi improved) followed it in 1991 by Bram Moolenaar.
+In 1976, Vi came about by Bill Joy, based on the original Unix text editor Vi.  
+In 1991, Vi got improved as Vim by Bram Moolenaar.  
+In 2014, Neovim came along [Neovim in 100 seconds](https://youtu.be/c4OyfL5o7DU).
 
-In Ubuntu `sudo apt get neovim` ([doc](https://github.com/neovim/neovim/blob/master/INSTALL.md)).
+## Install
 
+In Ubuntu, `sudo apt get neovim` ([doc](https://github.com/neovim/neovim/blob/master/INSTALL.md)).
+
+In Windows via PS, `winget install neovim` and `Set-Alias -Name nvim -Value "C:\Program Files\Neovim\bin\nvim.exe"`
+winget install microsoft.powershell  # This powershell is better
+https://www.nerdfonts.com/font-downloads download CaskaydiaCove NF
+
+## Getting started
+Neovim config files are written in `vim` or `lua`. On Linux, they are stored in `~/.config/nvim`.  
+Setup example by **Primeagen**: [0 to LSP: Neovim RC From Scratch](https://youtu.be/w7i4amO_zaE).  
+While he uses the not more supported Packer, I use [Lazy Vim](https://github.com/folke/lazy.nvim) as plugin manager in view of [Packer](https://github.com/wbthomason/packer.nvim)'s discontinuation and its README recommendation .
+
+Lazy-Vim expected plugins to be inside a plugins folder and are therefrom automatically loaded.
+LazyVim does not typically uses "after". It uses its modular structure.
+
+```bash
+# Any dir inside lua/ can be loaded by lua via `require`
+#  "init.lua" are like index.html or __init__.py
+.config/neovim/init.lua
+.config/neovim/lua/config/init.lua
+.config/neovim/lua/config/lazy.lua
+.config/neovim/lua/config/remap.lua
+.config/neovim/lua/config/set.lua
+.config/neovim/lua/plugins/all.lua
+.config/neovim/lua/plugins/dap-python.lua
+```
+
+
+## Plugins
+> Neovim is after all about Plugins and customization
+
+| Plugin | Usage |
+| ------ | ----- |
+| Telescope | fuzzy finder to search through your system |
+| Treesitter | Parser + linter |
+| Harpoon | navigate between files |
+| Undotree | |
+| Fugitive | git integration (- to stage, :Git commit -m <msg>) |
+| LSP-Zero | |
+
+## Neovim Editor 
 Check Primeagen's [Vim As Your Editor](https://www.youtube.com/watch?v=X6AR2RMB5tE&list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R&index=1) playlist.
+### Explorer
+| Description | Cmd |
+|---|---|
+| New file | `%` |
+| New dir | `d` |
+| To explorer | `:Ex` (remap, `<leader>pv`)|
+| Open file (buffer) | `o` |
 
-Normal, Insert, Visual, Command
 ||||
 |---|---|---|
 ||k||
 |h|j|l|
 
+### Commands
+4 modes: Normal, Insert, Visual, Command
 
-
-## NeoVim Editor
-[0 to lsp: Neovim RC From Scratch](https://youtu.be/w7i4amO_zaE)  
-`%` create a new file  
-`d` create a dir  
-`:Ex` go to Explorer (remapped to `<leader>pv` while on Normal)  
-`o` open the file in new buffer
-
-```sh
-cd ~/.config
-mkdir nvim
-cd nvim
-nvim .
-
-# Any dir inside lua/ can be loaded by lua via `require`
-#  "init.lua" are like index.html or __init__.py
-```
-In view of its discontinuation, plugin manager [Packer](https://github.com/wbthomason/packer.nvim)'s README recommends [Lazy Vim](https://github.com/folke/lazy.nvim).
 
 Visual Line + `=` -> aligns text
 
-after dir should be in lua/
-try out telescope keybindings from "after/telescope" (C-p is CTRL+P)
-
-LazyVim does not typically uses "after". It uses its modular structure.
-# TODO:
-
-Organize this .MD
-Check Harpoon keybinds and how it works  
-Check telescope keybinds and take note   
-Leader u (see branch of undotree)  
-Leader gs (fugitive, for git control)  
+## Check out
+Telescope keybindings (C-p is CTRL+P)  
+Harpoon keybinds and how it works  
+Undotree: `<leader>u`  
+Fugitive: `<leader>gs` (go to git control, s to save, cc to commit, :wq, dv while on main to open the git conflict solving windows, gh (select ))  
+TMUX
 
 LSP provides autocompletion (C-n and C-p to navigate; C-y to accept; C-e to cancel)  
 LSP-zero has 3 dependencies, and each desired LSP server must be download separate and a `require('lspconfig').example_server.setup({})` must be added to LazyVim's plugin spec.
@@ -61,19 +87,18 @@ leader<s> - substitute globally the word you are on
 leader<x> - runs chmod on the file (make it executable)
 ```
 
+DAB - Debug Adapter
+https://github.com/mfussenegger/nvim-dap-python
+
+```bash
+pip install debugpy
+```
+
 <div align="center">
   <img src="./images/vim_sheetcode.png" style='background-color: rgb(250, 250, 250)'>
 </div>
 
 = indent code
-f h <-- goes to next "h"
-
-install brew in linux, install 
-https://brew.sh/
-
-"insert vertical mode"
-enter visual block mode (ctrl+v or ctrl+q), highlight text, "shift + i", type it and hit Esc
-
 
 ## Vim Modes
 Enter Normal mode: `ESC` or `Ctrl + C`  
@@ -81,24 +106,32 @@ Enter Command mode with `:`
 
 |Insert Mode||
 |---|---|
-|i|before caret|
-|I| beginning of line|
-|a|after caret|
-|A| end of the line |
-|o|insert in next line|
+|i| before caret|
+|I| line beginning|
+|a| after caret|
+|A| line end |
+|o| insert in next line|
 |O| insert in line above|
 
 |Visual Mode||
 |---|---|
 |v|visual|
-|ctrl + v| visual block|
+|ctrl + v/q| visual block (allegedly "shirt + i" would then start insert block mode)|
 |shift + v|visual line|
+|% | extend selection to include the matching parenthesis, bracket, or brace |
+|o | change your cursor to the other side of the selection |
+|g C-a C-a | increment the numbers in order the selected lines 0, 1, 2, 3, 4 ...|
 
-[Command] + [count] + [Motion]
-
-For instance, `dt(` will delete up to the next ( in line
-
-What is a motion?
+### Anatomy of [Command] + [count] + [Motion]
+| Commands | Effect |
+| -------- | ------ |
+| `vi(` | select all inside parenthesis |
+| `vi{` | select all inside curly braces |
+| `va{` | select all inclusive curly braces |
+| `dt(` | delete all up to the next `(` |
+| `ya{` | yank all in the [next] curly braces |
+| `viw` | select all current word |
+| `=ap` | indent the who paragraph |
 
 Commands: D C Y V  
 (`.` repeats any operation done in Normal Mode)
@@ -107,43 +140,42 @@ DELETE
 - word: `d i w`
 - sentence: `d i s`
 - paragraph: `d i p`
+- line: `dd` or `Vd`
 
 CHANGE
 - word: `c w` + "new word"
+- word: `c i w`
+
+Repeat last operation: `.`
 
 YANK
 - all inside (, [, or a {: `y + i + ( [ {`
 - all inside incuding braces: `y + i + ( [ {`
-
+- line: `yy` or `Vy`
 
 VERTICAL NAVIGATION
+- half-page: ctrl + d/u (**Primeagen suggestion**)
+- full-page: ctrl + f/b
+- File beginning: gg
+- File end: G
 - sentence: `(` & `)`
 - paragraph: `{` & `}`  (next block of blank line)
-- half-page: ctrl + d/u
-- full-age: ctrl + f/b
-- go to beginning of the page: gg
-- go to end of the page:G
+- :4 goto line 4
 
-undo - U  
-redo - ctrl + R
+SEARCH
+- `f` + character (`;` forward, `,` backward) _(inverse `F`)_
+- `t` + character (jumps to but not on top) _(inverse `T`)_
+- SearchDown `/pattern` (iterate by typing `n`/`N`)
+- SearchUp `?pattern`
+- Search the next occurrence of the current word `*` (`#`, backwards)
+- undo - U  
+- redo - ctrl + R
 
 MARK (normal mode)
 - mark-current-position with a: `m a`
 - jump-to mark-a: `~a`
 - toggle last cursor position: `~~`
 - go-to last edit position: `~.`
-
-SEARCH
-- `f` + character (`;` forward, `,` backward) _(inverse `F`)_
-- `t` + character (jumps to but not on top) _(inverse `T`)_
-- `/pattern` (iterate by typing `n`/`N`)
-- search for the next word like the current word `*` (`#`, backwards)
-
-
-# change in a word
-c i w
-
-Then, if I go to any word and click ".", the last operation will run again
 
 
 ### Sheetcode
@@ -165,6 +197,13 @@ Then, if I go to any word and click ".", the last operation will run again
 |+p | paste|
 |:w | write/save|
 |:!node hello.js | runs a shell command directly from Vim|
+|ctrl + a | increases the number of the line by 1 |
+| * | goes to the next occurrence of the current word |
+| C-w o| close all the windows |
+| C-w h/j/k/l| change window in direction |
+| C-w = | equal all the windows |
+|:terminal | leave insert mode `C-\ C-n`
+
 
 ## Setup Vim in VS Code
 - Add extension "vscodevim.vim"  
@@ -180,18 +219,4 @@ Caret should be wider.
 :inoremap jh <Esc>
 " Remove the recursive mapping "jh"
 :iunmap jh      
-```
-
-Vimrc
-
-goto `.config/nvim`, create `init.lua` and a folder `lua`.
-inside it create a folder with your username. Inside it, create `init.lua` and `remap.lua`
-```lua
--- .config/nvim/profile/init.lua
-require("juliano.remap")
-print("hello from juliano")
-
--- .config/nvim/profile/remap.lua
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 ```

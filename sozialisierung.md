@@ -1,0 +1,1 @@
+At presentations while demonstrating something, say "no, you cannot train it. you are born with it". That is a big ice breaker

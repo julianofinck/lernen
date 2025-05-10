@@ -59,7 +59,8 @@ Substitute leading "./" for "" in a path. `"././string" | sed 's/^.\///g'`. **se
 - then nothing is kept between the last two slashs to precisely erase it.
 
 ## Utils
-`tree` is a package that print the file structure being used
+`tree` is a package that print the file structure being used  
+Create aliases in .bashrc like `alias proj="code ~/projects/project1"` 
 
 
 ## Linux's directories - [Fireship YouTube Video](https://youtu.be/42iQKuQodW4)
