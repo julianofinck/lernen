@@ -220,3 +220,14 @@ Caret should be wider.
 " Remove the recursive mapping "jh"
 :iunmap jh      
 ```
+
+## Über Hilfe auf NeoVim selbst
+Wenn ich in Zukunft nochmal nach Standard-Shortcuts suchen möchte und kein Internet habe, kann ich das verlässliche Wissen direkt in Neovim nachschlagen:
+1. :help – Neovims integrierte Dokumentation.  
+Zum Beispiel: :help vim.diagnostic oder :help lsp.  
+Fast jede Funktion, die in Lua oder Vimscript verfügbar ist, ist dort dokumentiert.
+2. :help index – Zeigt eine alphabetische Liste aller Hilfeseiten.
+3. :h key-mapping – Erklärt, wie man Tastenkürzel liest, setzt oder herausfindet.
+4. :LspInfo – Zeigt dir, welche LSP-Server aktiv sind, welche Clients laufen und welche Features verfügbar sind.
+5. :lua print(vim.inspect(vim.diagnostic.get(0))) – Zeigt dir die aktuellen Diagnosen in Lua, wenn du den genauen Fehler sehen willst.  
+Kurz gesagt: Neovims eingebaute Dokumentation und LSP-Befehle sind auch offline eine zuverlässige Quelle.
