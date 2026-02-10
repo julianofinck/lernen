@@ -1,6 +1,6 @@
 # Go (https://go.dev/)
 Statically typed compiled language. Popular choice for high performance server-side application.  
-Created at Google in 2007, released v1.0 as opensource in 2012.
+Created in 2007 at Google, released v1.0 as opensource in 2012.
 
 Design Motto: **Simplicity** & **Efficiency**
 
