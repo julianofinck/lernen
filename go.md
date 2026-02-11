@@ -2,6 +2,8 @@
 Statically typed compiled language. Popular choice for high performance server-side application.  
 Created in 2007 at Google, released v1.0 as opensource in 2012.
 
+Go initial release: 2009-11-10 23:00:00 UTC
+
 Design Motto: **Simplicity** & **Efficiency**
 
 Standard libraries: https://pkg.go.dev/std  
@@ -20,29 +22,34 @@ rm $GOLANG_VERSION.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 source ~/.profile
 ```
-In VS Code, get `Go` extension by Google and update all via `> Go install/update tools`.  
-Additionally, get `Error Lens` for a better dev experience.
+In VS Code, get extensions:
+- `Go` by Google and update all via `> Go install/update tools`. 
+- `Error Lens` for a better dev experience.
 ```bash
-# Initialize Go module
+# Initialize Go module/project
 go mod init github.com/rocketseat-education/semana-tech-go-react-server
 ```
 
 # 2. Fundamentals in Go
 |action | Description|
 |---|---|
-|go mod tidy | auto-add/remove modules|
+|go mod tidy | automatically add/remove modules|
+|go fmt | format Go source code according to the Go standard style (Worth binding to a Shortcut) |
 |go generate ./... | run all the `go:generate` directives in *.go files in the current and subdirectories|
 |go get <github.repo>| install the package |
 |go build | compiles the pkg or the binary <br> if run in a dir with a main pck, it produces an exec |
 |go test| |
 |go run <file.go> | compiles and runs the specified Go file. |
-|go fmt | formats Go source code according to the Go standard style |
 
 `:=`, the short assignment statement, only works inside functions
 
 variables declared inside a if-statement are restricted to the block
 
 # 3. Conventions in Go
+Every Go program is made up of packages.
+
+Programs start running in package `main`.
+
 | dir | Description
 |---|---|
 |cmd/ | binaries internal to your package. <br> Functionalities you cannot use outside your module. <br> Typically each subdir is an executable|
