@@ -22,6 +22,7 @@ rm $GOLANG_VERSION.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 source ~/.profile
 ```
+
 In VS Code, get extensions:
 - `Go` by Google and update all via `> Go install/update tools`. 
 - `Error Lens` for a better dev experience.
@@ -49,6 +50,8 @@ variables declared inside a if-statement are restricted to the block
 Every Go program is made up of packages.
 
 Programs start running in package `main`.
+
+In packages, exported (public) names must be written CamelCase. 
 
 | dir | Description
 |---|---|
@@ -120,6 +123,72 @@ float32 float64
 
 complex64 complex128
 ```
+
+## About Pointers
+```go
+
+var age int
+age = 42
+
+// Declare a variable as "pointer"
+//    This saves a place in memory
+//    This place can hold up to a int size
+var pointer *int
+// saves the memory address of age in var pointer
+pointer = &age 
+
+// Deferencing (* in front of a variable)
+//   i.e. access the value in the memory address
+//   that the pointer points to
+fmt.Println(*pointer)
+
+// The pointer can also be used to change
+//   what is in the memory of age
+*pointer = 24
+```
+
+Why would one use a pointer?  
+- _When the state of an object must be updated_
+- _ Pointer has 8 bytes: when you dont want to copy the inputs inside the scope_
+
+```go
+type User struct {
+    email     string
+    username  string
+    age       int
+}
+
+func (u *User) updateEmail(email string) {
+    u.email = email
+}
+
+func main() {
+    user := User{
+        email: "agg@foo.com",
+    }
+    // without *, the change of state inside
+    // updateEmail will not be passed to the
+    // memory location after the function runs
+    // the email changes only in the scope of
+    // the functions
+    user.updateEmail("foo@bar.com")
+    fmt.Println(user.email)
+}
+```
+
+In this example, the return `nil, err` is better than  
+initializing a whole User with empty values.
+```go
+func getUser(id int) (*User, error) {
+    user, err := db.FindUser(id)
+    if err != nil {
+        return nil, err
+    }
+    return user, nil
+}
+```
+
+
 
 ---
 Example
@@ -206,7 +275,7 @@ func main() {
     fmt.Printf("His name is %s", strings.Join([]string{"John", "Wick"}, " "))
 }
 
-func defer_func() {
+func deferFunc() {
     // Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.
     defer fmt.Println("!")
 
